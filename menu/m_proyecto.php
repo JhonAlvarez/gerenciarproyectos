@@ -19,11 +19,11 @@
 
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
 
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="crear_personal.php"><i class="icon-plus"></i> Crear Personal</a>
+                 <li role="presentation"><a role="menuitem" tabindex="-1" href="/gerenciarproyectos/Modulos/Personal/crear_personal.php"><i class="icon-plus"></i> Crear Personal</a>
 
                     </li>
 
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="listado_personal.php"><i class="icon-list"></i> Listado del Personal</a>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/gerenciarproyectos/Modulos/Personal/listado_personal.php"><i class="icon-list"></i> Listado del Personal</a>
 
                     </li>
 
