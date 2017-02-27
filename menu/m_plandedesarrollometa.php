@@ -31,11 +31,13 @@
 
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
 
-                   <li role="presentation"><a role="menuitem" tabindex="-1" href="/gerenciarproyectos/Modulos/Personal/crear_personal.php"><i class="icon-plus"></i> Crear Personal</a>
+                   <li role="presentation"><a role="menuitem" tabindex="-1" href="../../Modulos/Personal/crear_personal.php"><i class="icon-plus"></i> Crear Personal</a>
 
                     </li>
 
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/gerenciarproyectos/Modulos/Personal/listado_personal.php"><i class="icon-list"></i> Listado del Personal</a>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="../../Modulos/Personal/listado_personal.php"><i class="icon-list"></i> Listado del Personal</a>
+
+                    </li>
 
                     </li>
 
@@ -61,14 +63,13 @@
 <li class="dropdown">
                 <a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown"> Proyectos<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="../Proyectos/crear_proyecto.php"><i class="icon-plus"></i> Crear Proyecto</a></li>
+                     <li><a href="../Proyectos/crear_proyecto.php"><i class="icon-plus"></i> Crear Proyecto</a></li>
                     <li><a href="../Proyectos/listado_proyecto.php"><i class="icon-list"></i> Listado de Proyectos</a></li>
                     <li><a href="../Proyectos/estructuracion.php"><i class="icon-plus"></i> Estructuracion</a></li>
-                    <li><a href="Modulos/Proyectos/tablafinanciera.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
-                    <li><a href="/gerenciarproyectos/Modulos/Proyectos/tablafinanciera.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
-                    <li><a href="/gerenciarproyectos/Modulos/Proyectos/licitacion.php"><i class="icon-plus"></i> Licitacion</a></li>
-                    <li><a href="/gerenciarproyectos/Modulos/Proyectos/ejecucion.php"><i class="icon-plus"></i> Ejecucion</a></li>
-                    <li><a href="/gerenciarproyectos/Modulos/Proyectos/liquidacion.php"><i class="icon-plus"></i> Liquidacion</a></li>
+                   <li><a href="../../Modulos/Proyectos/tablafinanciera.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
+                    <li><a href="../../Modulos/Proyectos/licitacion.php"><i class="icon-plus"></i> Licitacion</a></li>
+                    <li><a href="../../Modulos/Proyectos/ejecucion.php"><i class="icon-plus"></i> Ejecucion</a></li>
+                    <li><a href="../../Modulos/Proyectos/liquidacion.php"><i class="icon-plus"></i> Liquidacion</a></li>
                 </ul>
 </li>
 
@@ -118,8 +119,8 @@
  <li class="dropdown">
                 <a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown">Usuarios<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/gerenciarproyectos/Modulos/Usuarios/crear_usuario.php"><i class="icon-plus"></i> Crear Usuario</a></li>
-                    <li><a href="/gerenciarproyectos/Modulos/Usuarios/ver_usuario.php"><i class="icon-list"></i> Ver Usuarios</a></li>
+                    <li><a href="../Usuarios/crear_usuario.php"><i class="icon-plus"></i> Crear Usuario</a></li>
+                    <li><a href="../Usuarios/ver_usuario.php"><i class="icon-list"></i> Ver Usuarios</a></li>
                 </ul>
 </li>
             </ul>
