@@ -10,6 +10,25 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="../../Principal.php" style="color:#FFF">Inicio</a></li>
+
+    <li class="dropdown">
+
+                <a href="#" id="drop2" style="color:#FFF" role="button" class="dropdown-toggle" data-toggle="dropdown">
+
+                  Personal <b class="caret"></b>
+
+                </a>
+
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="../Personal/crear_personal_supervisor.php"><i class="icon-plus"></i> Crear Personal</a>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="../Personal/listado_personal_supervisor.php"><i class="icon-list"></i> Listado del Personal</a>
+
+                    </li>
+
+                </ul>
+
+
               <li class="dropdown">
               	<a href="#" id="drop2" style="color:#FFF" role="button" class="dropdown-toggle" data-toggle="dropdown">
                 	Proyectos <b class="caret"></b>
