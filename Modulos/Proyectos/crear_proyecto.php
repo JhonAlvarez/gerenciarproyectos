@@ -1,3 +1,9 @@
+<!--
+Modificado 01-03-2017
+-->
+
+
+
 <?php 
 	session_start();
 	include_once "../php_conexion.php";
@@ -59,6 +65,7 @@
                   <tr class="well">
                     <td>
                     	<h2 align="center">Crear Proyecto</h2>
+
                         <?php 
 							if($existe==TRUE){ 
 								$url1=cadenas().encrypt($id_codigo,'URLCODIGO');
@@ -72,19 +79,19 @@
                                 </div>
                             </center>
 						<?php }	?>
-                    </td>
-                  </tr>
-                </table>
-                <div align="right">
-                    <a href="#nuevo" role="button" class="btn" data-toggle="modal"><strong>Crear Proyecto</strong></a>
-                </div>
-                
-                <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form2" method="post" action="">
-                    <div class="modal-header">
-    	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-	                    <h3 id="myModalLabel">Crear Proyecto</h3>
-                    </div>
+                   
+
+
+
+                 <!--
+         Quite el DIV de crear proyecto 
+         -->
+                	<form name="form2" method="post" action="" align="center">
+
+                   <!--
+                   Eliminado el titulo del encabezado del crea Proyecto
+                   -->
+
                     <div class="modal-body">
                         <div class="row-fluid">
                             <div class="span6">
@@ -184,12 +191,12 @@
                             </div>
        					</div>
                     </div>
-                	<div class="modal-footer">
-            		    <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-    		            <button class="btn btn-primary"><strong>Crear</strong></button>
-	                </div>
+                	
+            		    
+    		            <button class="btn btn-primary"><strong align="right" >Crear</strong></button>
+	              
                     </form>
-                </div>
+               
                 
                 <div id="existe" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 	<form name="form1" method="post" action="">
@@ -276,121 +283,13 @@
 					}
 				?>
                 
-                <table class="table table-bordered table table-hover">
-                  <tr class="well">
-                    <td><strong>Codigo Proyecto</strong></td>
-                    <td><strong>Objeto del Proyecto</strong></td>
-                    <td><strong>Municipio 1</strong></td>
-                    <td><strong>Municipio 2</strong></td>
-                    <td><strong>Estado del Proyecto</strong></td>
-                    <td><strong>Supervisor</strong></td>
-                    <td><strong>Politica</strong></td>
-                    <td><strong>Sector de Inversion</strong></td>
-                    <td><strong>Subsector</strong></td>
-                    <td><strong>Ente Ejecutor</strong></td>
+                <!-- Tablas estaticas eliminadas las de abajo
+                -->
+                	 </td>
                   </tr>
-                  <?php
-					if($existe==TRUE){				  				  	
-						$pa=mysql_query("SELECT * FROM proyectosxxxxxxxxxxxxxx WHERE cod_proyecto='$cod_proyecto'");				
-						while($row=mysql_fetch_array($pa)){
-							$oProveedor=new Consultar_Proveedor($row['proveedor']);
-				  ?>
-                  <tr>
-                  	<td><?php echo $oProveedor->consultar('Nombres'); ?></td>
-                    <td><?php echo $oProveedor->consultar('dir'); ?></td>
-                    <td><?php echo $oProveedor->consultar('tel'); ?></td>
-                    <td><?php echo $oProveedor->consultar('fax'); ?></td>
-                    <td><?php echo $oProveedor->consultar('contacto'); ?></td>
-                  </tr>
-                  <?php }}else{ 
-					  $pa=mysql_query("SELECT * FROM proyectos ORDER BY cod_proyecto DESC");				
-						while($row=mysql_fetch_array($pa)){
-				  ?>
-                  <tr>
-                    <td><?php echo $row['cod_proyecto']; ?></td>
-                    <td><?php echo $row['objetivoproyecto']; ?></td>
-			<td>
-			<?php
-				$id_municipio=$row['municipio1'];
-				$consultamunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-						echo $filamunicipio['municipio'];
-					}
-			?>
-			</td>
+                </table><!--Qued todo en una misma tabla OK BASES DE DATOS
+                -->
 
-			<td>
-			<?php
-				$id_municipio=$row['municipio2'];
-				$consultamunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-						echo $filamunicipio['municipio'];
-					}
-			?>
-			</td>
-
-			<td>
-			<?php
-				$id_estadodelproyecto=$row['estadodelproyecto'];
-				$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto WHERE cod_estadodelproyecto=$id_estadodelproyecto");
-					while($filaestadodelproyecto=mysql_fetch_array($consultaestadodelproyecto)){
-						echo $filaestadodelproyecto['estadodelproyecto'];
-					}
-			?>
-			</td>
-
-			<td>
-			<?php
-				$id_supervisor=$row['supervisor'];
-				$consultasupervisor=mysql_query("SELECT * FROM personal WHERE Cedula=$id_supervisor");
-					while($filasupervisor=mysql_fetch_array($consultasupervisor)){
-						echo $filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'];
-					}
-			?>
-			</td>
-
-			<td>
-			<?php
-				$id_estrategiadelproyecto=$row['estrategia'];
-				$consultaestrategiadelproyecto=mysql_query("SELECT * FROM estrategiadelproyecto WHERE cod_estrategiadelproyecto=$id_estrategiadelproyecto");
-					while($filaestrategiadelproyecto=mysql_fetch_array($consultaestrategiadelproyecto)){
-						echo $filaestrategiadelproyecto['estrategiadelproyecto'];
-					}
-			?>
-			</td>
-
-			<td>
-			<?php
-				$id_sectordeinversion=$row['sectordeinversion'];
-				$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion WHERE cod_sectordeinversion=$id_sectordeinversion");
-					while($filasectordeinversion=mysql_fetch_array($consultasectordeinversion)){
-						echo $filasectordeinversion['sectordeinversion'];
-					}
-			?>
-			</td>
-
-			<td>
-			<?php
-				$id_subsector=$row['subsector'];
-				$consultasubsector=mysql_query("SELECT * FROM subsector WHERE cod_subsector=$id_subsector");
-					while($filasubsector=mysql_fetch_array($consultasubsector)){
-						echo $filasubsector['subsector'];
-					}
-			?>
-			</td>
-
-			<td>
-			<?php
-				$id_enteejecutor=$row['enteejecutor'];
-				$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor WHERE cod_enteejecutor=$id_enteejecutor");
-					while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
-						echo $filaenteejecutor['enteejecutor'];
-					}
-			?>
-			</td>
-                  </tr>
-                  <?php }} ?>
-                </table>
             </td>
           </tr>
         </table>
