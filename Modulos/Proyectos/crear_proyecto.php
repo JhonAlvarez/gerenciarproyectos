@@ -58,7 +58,7 @@ Modificado 01-03-2017
 
     <?php include_once "../../menu/m_proyecto.php"; ?>
 	<div align="center">
-    	<table width="90%">
+    	<table width="70%">
           <tr>
             <td>
             	<table class="table table-bordered">

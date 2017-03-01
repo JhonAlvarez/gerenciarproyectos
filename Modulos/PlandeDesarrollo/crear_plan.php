@@ -113,7 +113,7 @@ Y guarda en la base de datos OK
 
 	<div align="center">
 
-    	<table width="90%">
+    	<table width="40%">
 
           <tr>
 

@@ -37,8 +37,8 @@
     <link href="../../css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
-        padding-top: 60px;
-        padding-bottom: 40px;
+        padding-top: 40px;
+        padding-bottom: 30px;
       }
     </style>
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
@@ -52,7 +52,7 @@
 
    <?php include_once "../../menu/m_solicitudescomunidad.php"; ?>
 	<div align="center">
-    	<table width="90%">
+    	<table width="70%" heigth="300%">
           <tr>
             <td>
             	<table class="table table-bordered">
@@ -72,19 +72,9 @@
                                 </div>
                             </center>
 						<?php }	?>
-                    </td>
-                  </tr>
-                </table>
-                <div align="center">
-                    <a href="#nuevo" role="button" class="btn" data-toggle="modal"><strong>Ingresar Solicitud de la Comunidad</strong></a>
-                </div>
-                
-                <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form2" method="post" action="">
-                    <div class="modal-header">
-    	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-	                    <h3 id="myModalLabel">Ingresar Solicitud de la Comunidad</h3>
-                    </div>
+                 
+                	<form name="form2" method="post" action="" align="center">
+                    
                     <div class="modal-body">
                         <div class="row-fluid">
                             <div class="span6">
@@ -163,13 +153,11 @@
                             </div>
        					</div>
                     </div>
-                	<div class="modal-footer">
-            		    <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
+                	
     		            <button class="btn btn-primary"><strong>Ingresar</strong></button>
-	                </div>
+	              
                     </form>
-                </div>
-                
+               
                 <div id="existe" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 	<form name="form1" method="post" action="">
                     <div class="modal-header">
@@ -263,119 +251,11 @@
 
 					}
 				?>
-                
-                <table class="table table-bordered table table-hover">
-                  <tr class="well">
-                    <td><strong>Num Radicado AIM</strong></td>
-                    <td><strong>Fecha solicitud</strong></td>
-                    <td><strong>Num Radicado Gobernacion</strong></td>
-                    <td><strong>Contestada</strong></td>
-                    <td><strong>Municipio</strong></td>
-                    <td><strong>Asunto de la solicitud</strong></td>
-                    <td><strong>Sector</strong></td>
-                    <td><strong>Remitido por</strong></td>
-                    <td><strong>Nombre Peticionario</strong></td>
-                    <td><strong>Cargo Peticionario</strong></td>
-                    <td><strong>Telefono</strong></td>
-                    <td><strong>Direccion</strong></td>
-                    <td><strong>Barrio</strong></td>
-                    <td><strong>Email</strong></td>
-                    <td><strong>Radicado de la respuesta</strong></td>
-                    <td><strong>Via entrega respuesta</strong></td>
-                    <td><strong>Observaciones</strong></td>
+                           </td>
                   </tr>
-                  <?php
-					if($existe==TRUE){				  				  	
-						$pa=mysql_query("SELECT * FROM solicitudescomunidad WHERE cod_solicitudplan='$cod_solicitudplan'");				
-						while($row=mysql_fetch_array($pa)){
-							$oProveedor=new Consultar_Proveedor($row['proveedor']);
-				  ?>
-                  <tr>
-                  	<td><?php echo $oProveedor->consultar('Nombres'); ?></td>
-                    <td><?php echo $oProveedor->consultar('dir'); ?></td>
-                    <td><?php echo $oProveedor->consultar('tel'); ?></td>
-                    <td><?php echo $oProveedor->consultar('fax'); ?></td>
-                    <td><?php echo $oProveedor->consultar('contacto'); ?></td>
-                  </tr>
-                  <?php }}else{ 
-					//Consulta que muestra el listado
-					  $pa=mysql_query("SELECT * FROM solicitudescomunidad ORDER BY fecha_solicitud DESC");				
-						while($row=mysql_fetch_array($pa)){
-				  ?>
-                  <tr>
-                    <td>
-			<?php echo $row['cod_radicado']; ?>
-			<form method="POST" action="cargar_archivo.php">
-			<?php
-			if (file_exists("../../archivos_comunidad/".$row['cod_radicado'].".pdf")){
-				echo '<a href="../../archivos_comunidad/'.$row['cod_radicado'].'.pdf" target="_blank">';
-				echo '<img src="../../archivos_comunidad/pdf_logo.jpg" width="30" height="30">';
-				echo '</a>';
-			}else{
-				echo '<img src="../../archivos_comunidad/defecto.jpg" width="30" height="30">';
-			}
-			?>
-                            <input type="hidden" name="cod_radicado" autocomplete="off" required readonly value="<?php echo $row['cod_radicado']; ?>">
-                            <input type="hidden" name="fecha_solicitud" autocomplete="off" required readonly value="<?php echo $row['fecha_solicitud']; ?>">
-                            <input type="hidden" name="cod_radicado_gobernacion" autocomplete="off" required readonly value="<?php echo $row['cod_radicado_gobernacion']; ?>">
-        	            <!-- <button type="submit" class="btn btn-primary"><strong>Cargar</strong></button> -->
-			</form>			
-			</td>
-                    <td><?php echo $row['fecha_solicitud']; ?></td>
-                    <td><?php echo $row['cod_radicado_gobernacion']; ?></td>
-			<td>
-			    <?php
-				$id_contestada=$row['contestada'];
-				$consultacontestada=mysql_query("SELECT * FROM contestada WHERE cod_contestada=$id_contestada");
-					while($filacontestada=mysql_fetch_array($consultacontestada)){
-						echo $filacontestada['contestada'];
-					}
-					?>
-			</td>
-
-			<td>
-			    <?php
-				$id_municipio=$row['cod_municipio'];
-				$consultamunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-						echo $filamunicipio['municipio'];
-					}
-					?>
-			</td>
-
-                    <td><?php echo $row['asunto_solicitud']; ?></td>
-
-			<td>
-			    <?php
-				$id_sector=$row['sector'];
-				$consultasector=mysql_query("SELECT * FROM sectores WHERE cod_sector=$id_sector");
-					while($filasector=mysql_fetch_array($consultasector)){
-						echo $filasector['sector'];
-					}
-					?>
-			</td>
-
-			<td>
-			    <?php
-				$id_remitido=$row['remitido'];
-				$consultaremitido=mysql_query("SELECT * FROM remitidos WHERE cod_remitido=$id_remitido");
-					while($filaremitido=mysql_fetch_array($consultaremitido)){
-						echo $filaremitido['remitido'];
-					}
-					?>
-			</td>
-                    <td><?php echo $row['nombrepeticionario']; ?></td>
-                    <td><?php echo $row['cargopeticionario']; ?></td>
-                    <td><?php echo $row['telefono']; ?></td>
-                    <td><?php echo $row['direccion']; ?></td>
-                    <td><?php echo $row['barrio']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['radicadorespuesta']; ?></td>
-                    <td><?php echo $row['entregarespuesta']; ?></td>
-                    <td><?php echo $row['observaciones']; ?></td>
-                  </tr>
-                  <?php }} ?>
                 </table>
+               
+                
             </td>
           </tr>
         </table>

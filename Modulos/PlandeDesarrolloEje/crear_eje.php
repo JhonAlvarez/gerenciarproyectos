@@ -88,7 +88,7 @@ Modificad 01-03-2017
 
 	<div align="center">
 
-    	<table width="90%">
+    	<table width="40%">
 
           <tr>
 
@@ -334,7 +334,7 @@ Quite la clase del boton cerra conecta todo con el formulario
 
     </div>
 
-    <!-- Le javascript ../../js/jquery.js
+   
 
     ================================================== -->
 
