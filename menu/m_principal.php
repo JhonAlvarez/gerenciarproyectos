@@ -38,7 +38,7 @@
                     <li><a href="Modulos/Proyectos/listado_proyecto.php"><i class="icon-list"></i> Listado de Proyectos</a></li>
                     <li><a href="Modulos/Proyectos/estructuracion.php"><i class="icon-plus"></i> Estructuracion</a></li>
                     <li><a href="Modulos/Proyectos/tablafinanciera.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
-                    <li><a href="Modulos/Proyectos/licitacion.php"><i class="icon-plus"></i> Licitacion</a></li>
+                    <!-- Se elimino licitacion 18:00 01,03,2017  borrarla de este mundo-->
                     <li><a href="Modulos/Proyectos/ejecucion.php"><i class="icon-plus"></i> Ejecucion</a></li>
                     <li><a href="Modulos/Proyectos/liquidacion.php"><i class="icon-plus"></i> Liquidacion</a></li>
                 </ul>

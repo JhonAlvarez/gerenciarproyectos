@@ -64,7 +64,7 @@
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="listado_proyecto.php"><i class="icon-list"></i> Listado de Proyectos</a></li>
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="estructuracion.php"><i class="icon-plus"></i> Estructuracion</a></li>
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="tablafinanciera.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
-			<li role="presentation"><a role="menuitem" tabindex="-1" href="licitacion.php"><i class="icon-plus"></i> Licitacion</a></li>
+			<!-- Se Elimino licitacion -->
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="ejecucion.php"><i class="icon-plus"></i> Ejecucion</a></li>
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="liquidacion.php"><i class="icon-plus"></i> Liquidacion</a></li>
                 </ul>
