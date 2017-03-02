@@ -64,27 +64,62 @@
                 </ul>
               </li>
 
-              <li class="dropdown">
-              	<a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown"> Crear<b class="caret"></b></a>
+         <ul class="nav">
+                  <li class="dropdown">
+                <a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown"> Crear<b class="caret"></b></a>
                 <ul class="dropdown-menu">
+
+
+<!--
+Dividir los crear por clases
+-->
+
+  <li><a href="#"><i class=""></i> ------------------Personal-----------------</a></li>
+
                     <li><a href="Modulos/Crear/municipio.php"><i class="icon-plus"></i> Crear Municipio</a></li>
                     <li><a href="Modulos/Crear/cargo.php"><i class="icon-plus"></i> Crear Cargo</a></li>
                     <li><a href="Modulos/Crear/dependencia.php"><i class="icon-plus"></i> Crear Dependencia</a></li>
                     <li><a href="Modulos/Crear/profesion.php"><i class="icon-plus"></i> Crear Profesion</a></li>
-                    <li><a href="Modulos/Crear/enteejecutor.php"><i class="icon-plus"></i> Crear Ente Ejecutor</a></li>
-                    <li><a href="Modulos/Crear/sector.php"><i class="icon-plus"></i> Crear Sector</a></li>
+
+  <li><a href="#"><i class=""></i> ------------Solicitud Desarrollo-----------</a></li>
+
+
+                      <li><a href="Modulos/Crear/sector.php"><i class="icon-plus"></i> 
+                    Crear Sector</a></li>
+
+  <li><a href="#"><i class=""></i> ------------Solicitud Comunidad-----------</a></li>
+     <li><a href="Modulos/Crear/sector.php"><i class="icon-plus"></i> 
+                    Crear Sector</a></li>
+
                     <li><a href="Modulos/Crear/remitido.php"><i class="icon-plus"></i> Crear Remitido</a></li>
-                    <li><a href="Modulos/Crear/estadodelproyecto.php"><i class="icon-plus"></i> Crear Estado del Proyecto</a></li>
-                    <li><a href="Modulos/Crear/estrategiadelproyecto.php"><i class="icon-plus"></i> Crear Estrategia del Proyecto</a></li>
-                    <li><a href="#"><i class=""></i> -------------------------------------------</a></li>
-                    <li><a href="Modulos/Crear/momentoestructuracion.php"><i class="icon-plus"></i> Crear Momento Estructuracion</a></li>
-                    <li><a href="Modulos/Crear/momentotablafinanciera.php"><i class="icon-plus"></i> Crear Momento Tabla Financiera</a></li>
-                    <li><a href="Modulos/Crear/momentolicitacion.php"><i class="icon-plus"></i> Crear Momento Licitacion</a></li>
-                    <li><a href="Modulos/Crear/momentoejecucion.php"><i class="icon-plus"></i> Crear Momento Ejecucion</a></li>
-                    <li><a href="Modulos/Crear/momentoliquidacion.php"><i class="icon-plus"></i> Crear Momento Liquidacion</a></li>
+
+
+
+  <li><a href="#"><i class=""></i> ----------------Proyectos-------------------</a></li>
+
+
+                    <li><a href="Modulos/Crear/enteejecutor.php"><i class="icon-plus"></i>  Ente Ejecutor</a></li>
+
+
+
+                  
+                    <li><a href="Modulos/Crear/estadodelproyecto.php"><i class="icon-plus"></i>  Estado </a></li>
+                    <li><a href="Modulos/Crear/estrategiadelproyecto.php"><i class="icon-plus"></i>  Estrategia </a></li>
+
+
+                    <li><a href="#"><i class=""></i> -----------------Momentos------------------</a></li>
+
+
+                    <li><a href="Modulos/Crear/momentoestructuracion.php"><i class="icon-plus"></i> Estructuracion</a></li>
+                    <li><a href="Modulos/Crear/momentotablafinanciera.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
+                    
+                    <li><a href="Modulos/Crear/momentoejecucion.php"><i class="icon-plus"></i> Ejecucion</a></li>
+                    <li><a href="Modulos/Crear/momentoliquidacion.php"><i class="icon-plus"></i> Liquidacion</a></li>
 
                 </ul>
               </li>
+              </ul>
+
 
 
               <li class="dropdown">

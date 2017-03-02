@@ -106,26 +106,57 @@
               </li>
               </ul>
 
-
-                <ul class="nav">
+<ul class="nav">
                   <li class="dropdown">
                 <a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown"> Crear<b class="caret"></b></a>
                 <ul class="dropdown-menu">
+
+
+<!--
+Dividir los crear por clases
+-->
+
+  <li><a href="#"><i class=""></i> ------------------Personal-----------------</a></li>
+
                     <li><a href="../Crear/municipio.php"><i class="icon-plus"></i> Crear Municipio</a></li>
                     <li><a href="../Crear/cargo.php"><i class="icon-plus"></i> Crear Cargo</a></li>
                     <li><a href="../Crear/dependencia.php"><i class="icon-plus"></i> Crear Dependencia</a></li>
                     <li><a href="../Crear/profesion.php"><i class="icon-plus"></i> Crear Profesion</a></li>
-                    <li><a href="../Crear/enteejecutor.php"><i class="icon-plus"></i> Crear Ente Ejecutor</a></li>
-                    <li><a href="../Crear/sector.php"><i class="icon-plus"></i> Crear Sector</a></li>
+
+  <li><a href="#"><i class=""></i> ------------Solicitud Desarrollo-----------</a></li>
+
+
+                      <li><a href="../Crear/sector.php"><i class="icon-plus"></i> 
+                    Crear Sector</a></li>
+
+  <li><a href="#"><i class=""></i> ------------Solicitud Comunidad-----------</a></li>
+     <li><a href="../Crear/sector.php"><i class="icon-plus"></i> 
+                    Crear Sector</a></li>
+
                     <li><a href="../Crear/remitido.php"><i class="icon-plus"></i> Crear Remitido</a></li>
-                    <li><a href="../Crear/estadodelproyecto.php"><i class="icon-plus"></i> Crear Estado del Proyecto</a></li>
-                    <li><a href="../Crear/estrategiadelproyecto.php"><i class="icon-plus"></i> Crear Estrategia del Proyecto</a></li>
-                    <li><a href="#"><i class=""></i> -------------------------------------------</a></li>
-                    <li><a href="../Crear/momentoestructuracion.php"><i class="icon-plus"></i> Crear Momento Estructuracion</a></li>
-                    <li><a href="../Crear/momentotablafinanciera.php"><i class="icon-plus"></i> Crear Momento Tabla Financiera</a></li>
-                    <li><a href="../Crear/momentolicitacion.php"><i class="icon-plus"></i> Crear Momento Licitacion</a></li>
-                    <li><a href="../Crear/momentoejecucion.php"><i class="icon-plus"></i> Crear Momento Ejecucion</a></li>
-                    <li><a href="../Crear/momentoliquidacion.php"><i class="icon-plus"></i> Crear Momento Liquidacion</a></li>
+
+
+
+  <li><a href="#"><i class=""></i> ----------------Proyectos-------------------</a></li>
+
+
+                    <li><a href="../Crear/enteejecutor.php"><i class="icon-plus"></i>  Ente Ejecutor</a></li>
+
+
+
+                  
+                    <li><a href="../Crear/estadodelproyecto.php"><i class="icon-plus"></i>  Estado </a></li>
+                    <li><a href="../Crear/estrategiadelproyecto.php"><i class="icon-plus"></i>  Estrategia </a></li>
+
+
+                    <li><a href="#"><i class=""></i> -----------------Momentos------------------</a></li>
+
+
+                    <li><a href="../Crear/momentoestructuracion.php"><i class="icon-plus"></i> Estructuracion</a></li>
+                    <li><a href="../Crear/momentotablafinanciera.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
+                    
+                    <li><a href="../Crear/momentoejecucion.php"><i class="icon-plus"></i> Ejecucion</a></li>
+                    <li><a href="../Crear/momentoliquidacion.php"><i class="icon-plus"></i> Liquidacion</a></li>
 
                 </ul>
               </li>
