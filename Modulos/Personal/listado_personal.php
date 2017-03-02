@@ -58,17 +58,17 @@
                   </tr>
                 </table>
                 <div align="right">
-			<strong>Buscar por la Dependencia: </strong>
-				<form method="POST" action="buscar_personal_dependencia.php">
-                                  <select name="cod_dependencia">
-					<?php
-					$consultadependencia=mysql_query("SELECT * FROM dependencias");
-					while($filadependencia=mysql_fetch_array($consultadependencia)){
-						echo '<option value="'.$filadependencia['cod_dependencia'].'">'.$filadependencia['dependencia'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
+			<strong>Buscar por la Dependencia: </strong>
+				<form method="POST" action="buscar_personal_dependencia.php">
+                                  <select name="cod_dependencia">
+					<?php
+					$consultadependencia=mysql_query("SELECT * FROM dependencias");
+					while($filadependencia=mysql_fetch_array($consultadependencia)){
+						echo '<option value="'.$filadependencia['cod_dependencia'].'">'.$filadependencia['dependencia'].'</option>';
+					}
+					?>
+                                  </select>
+				<input type="submit" value="Buscar">
 				</form>
 	                <!--<a href="#nuevo" role="button" class="btn" data-toggle="modal"><strong>Crear Nuevo Personal</strong></a>-->
                 </div>

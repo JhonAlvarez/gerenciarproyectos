@@ -12,6 +12,7 @@
               <li><a href="Principal.php" style="color:#FFF"> Inicio</a></li>
                <?php if($_SESSION['tipo_user']=='a'){   ?>
 
+
               <li class="dropdown">
               	<a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown"> Personal<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -38,7 +39,7 @@
                     <li><a href="Modulos/Proyectos/listado_proyecto.php"><i class="icon-list"></i> Listado de Proyectos</a></li>
                     <li><a href="Modulos/Proyectos/estructuracion.php"><i class="icon-plus"></i> Estructuracion</a></li>
                     <li><a href="Modulos/Proyectos/tablafinanciera.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
-                    <!-- Se elimino licitacion 18:00 01,03,2017  borrarla de este mundo-->
+                    <li><a href="Modulos/Proyectos/licitacion.php"><i class="icon-plus"></i> Licitacion</a></li>
                     <li><a href="Modulos/Proyectos/ejecucion.php"><i class="icon-plus"></i> Ejecucion</a></li>
                     <li><a href="Modulos/Proyectos/liquidacion.php"><i class="icon-plus"></i> Liquidacion</a></li>
                 </ul>
@@ -94,7 +95,7 @@
                 </ul>
               </li>
 
-              <?php } else{	 ?>
+              <?php } elseif(($_SESSION['tipo_user']=='c')){	 ?>
 
               <li class="dropdown">
               	<a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown"> Personal<b class="caret"></b></a>
@@ -117,7 +118,29 @@
               </li>
 
 
-              <?php }	 ?>
+              <?php }elseif($_SESSION['tipo_user']=='b'){	 ?>
+                <li class="dropdown">
+                
+                    <a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown"> Proyectos<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="Modulos/Proyectos/listado_proyecto_usuariob.php"><i class="icon-list"></i> Listado de Proyectos</a></li>
+                    </ul>
+                  </li>
+
+
+                  <li class="dropdown">
+                    <a href="#" style="color:#FFF" class="dropdown-toggle" data-toggle="dropdown"> Plan de Desarrollo<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="Modulos/PlandeDesarrollo/listado_plan.php"><i class="icon-list"></i> Listado de Plan de Desarrollo</a></li>
+                      <li><a href="Modulos/PlandeDesarrolloEje/listado_eje.php"><i class="icon-list"></i> Listado de Eje</a></li>
+                      <li><a href="Modulos/PlandeDesarrolloEstrategia/listado_estrategia.php"><i class="icon-list"></i> Listado de Politicas</a></li>
+                      <li><a href="Modulos/PlandeDesarrolloPrograma/listado_programa.php"><i class="icon-list"></i> Listado de Programa</a></li>
+                      <li><a href="Modulos/PlandeDesarrolloSubprograma/listado_subprograma.php"><i class="icon-list"></i> Listado de Subprograma</a></li>
+                      <li><a href="Modulos/PlandeDesarrolloMeta/listado_meta.php"><i class="icon-list"></i> Listado de Meta</a></li>
+                    </ul>
+                  </li>
+
+              <?php } ?>
 
 
 

@@ -1,3 +1,3 @@
-<?php
-    header("Location: .../Principal.php");
+<?php
+    header("Location: .../Principal.php");
 ?> 

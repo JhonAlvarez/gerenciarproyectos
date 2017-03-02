@@ -128,7 +128,7 @@
                     <td><strong>Nombre de Planes de Desarrollo</strong></td>
                     <td><strong>Codigo Eje</strong></td>
                     <td><strong>Nombre de Eje</strong></td>
-                    <td><strong>Codigo Politica</strong></td>
+                    <td><strong>Codigo Estrategia</strong></td>
                     <td><strong>Nombre de Estrategia</strong></td>
                     <td><strong>Codigo Programa</strong></td>
                     <td><strong>Nombre del Programa</strong></td>
@@ -228,7 +228,7 @@
                                 <input type="text" name="cod_subprograma" autocomplete="off" required readonly value="<?php echo $row['cod_subprograma']; ?>"><br>
                                 <strong>Codigo Programa</strong><br>
                                 <input type="text" name="cod_programa" autocomplete="off" required readonly value="<?php echo $row['cod_programa']; ?>"><br>
-                                <strong>Codigo Politica</strong><br>
+                                <strong>Codigo Estrategia</strong><br>
                                 <input type="text" name="cod_estrategia" autocomplete="off" required readonly value="<?php echo $row['cod_estrategia']; ?>"><br>
                                 <strong>Codigo Eje</strong><br>
                                 <input type="text" name="cod_eje" autocomplete="off" required readonly value="<?php echo $row['cod_eje']; ?>"><br>

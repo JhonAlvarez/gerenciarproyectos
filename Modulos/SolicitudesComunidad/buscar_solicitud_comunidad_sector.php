@@ -58,59 +58,59 @@
                   </tr>
                 </table>
                 <div align="center">
-			<strong>Buscar por Sector: </strong>
-			<?php
-			echo $buscaCod_sector=$_POST['cod_sector'];
-			$id_sector=$buscaCod_sector;
-				$consultasector=mysql_query("SELECT * FROM sectores WHERE cod_sector=$id_sector");
-					while($filasector=mysql_fetch_array($consultasector)){
-						echo " - ".$filasector['sector'];
-					}
-			?>
+			<strong>Buscar por Sector: </strong>
+			<?php
+			echo $buscaCod_sector=$_POST['cod_sector'];
+			$id_sector=$buscaCod_sector;
+				$consultasector=mysql_query("SELECT * FROM sectores WHERE cod_sector=$id_sector");
+					while($filasector=mysql_fetch_array($consultasector)){
+						echo " - ".$filasector['sector'];
+					}
+			?>
 	                <a href="listado_solicitud_comunidad.php"><strong>Nueva Busqueda</strong></a>
 		<table>
 		<tr>
 		<td>
-			<strong>Buscar por el municipio de: </strong>
-				<form method="POST" action="buscar_solicitud_comunidad_municipio.php">
-                                  <select name="cod_municipio">
-					<?php
-					$consultamunicipio=mysql_query("SELECT * FROM municipios");
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-						echo '<option value="'.$filamunicipio['cod_municipio'].'">'.$filamunicipio['municipio'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
+			<strong>Buscar por el municipio de: </strong>
+				<form method="POST" action="buscar_solicitud_comunidad_municipio.php">
+                                  <select name="cod_municipio">
+					<?php
+					$consultamunicipio=mysql_query("SELECT * FROM municipios");
+					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
+						echo '<option value="'.$filamunicipio['cod_municipio'].'">'.$filamunicipio['municipio'].'</option>';
+					}
+					?>
+                                  </select>
+				<input type="submit" value="Buscar">
 				</form>
 		</td>
 		<td>
-			<strong>Buscar por Sector: </strong>
-				<form method="POST" action="buscar_solicitud_comunidad_sector.php">
-                                  <select name="cod_sector">
-					<?php
-					$consultasector=mysql_query("SELECT * FROM sectores");
-					while($filasector=mysql_fetch_array($consultasector)){
-						echo '<option value="'.$filasector['cod_sector'].'">'.$filasector['sector'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
-				</form>
+			<strong>Buscar por Sector: </strong>
+				<form method="POST" action="buscar_solicitud_comunidad_sector.php">
+                                  <select name="cod_sector">
+					<?php
+					$consultasector=mysql_query("SELECT * FROM sectores");
+					while($filasector=mysql_fetch_array($consultasector)){
+						echo '<option value="'.$filasector['cod_sector'].'">'.$filasector['sector'].'</option>';
+					}
+					?>
+                                  </select>
+				<input type="submit" value="Buscar">
+				</form>
 		</td>
 		<td>
-			<strong>Buscar por Contestada: </strong>
-				<form method="POST" action="buscar_solicitud_comunidad_contestada.php">
-                                  <select name="cod_contestada">
-					<?php
-					$consultacontestada=mysql_query("SELECT * FROM contestada");
-					while($filacontestada=mysql_fetch_array($consultacontestada)){
-						echo '<option value="'.$filacontestada['cod_contestada'].'">'.$filacontestada['contestada'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
-				</form>
+			<strong>Buscar por Contestada: </strong>
+				<form method="POST" action="buscar_solicitud_comunidad_contestada.php">
+                                  <select name="cod_contestada">
+					<?php
+					$consultacontestada=mysql_query("SELECT * FROM contestada");
+					while($filacontestada=mysql_fetch_array($consultacontestada)){
+						echo '<option value="'.$filacontestada['cod_contestada'].'">'.$filacontestada['contestada'].'</option>';
+					}
+					?>
+                                  </select>
+				<input type="submit" value="Buscar">
+				</form>
 		</td>
 		</tr>
 		</table>

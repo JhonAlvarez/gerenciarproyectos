@@ -121,7 +121,7 @@
 					echo "</tr>";
 
 					echo "<tr>";
-						echo '<td><strong>Politica del Proyecto: </strong></td>';
+						echo '<td><strong>Estrategia del Proyecto: </strong></td>';
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
 							$consultaestrategiadelproyecto=mysql_query("SELECT * FROM estrategiadelproyecto WHERE cod_estrategiadelproyecto=".$filacod_proyecto['estrategia']);
 							while($filaestrategiadelproyecto=mysql_fetch_array($consultaestrategiadelproyecto)){
@@ -175,7 +175,7 @@
 				echo "<tr>";
 				$consultaestrategia=mysql_query("SELECT * FROM plandedesarrolloestrategia WHERE cod_estrategia=$cod_estrategia and cod_eje=$cod_eje and cod_plan=$cod_plan");
 					while($filaestrategia=mysql_fetch_array($consultaestrategia)){
-						echo '<td><strong>Politica: </strong></td><td>'.$filaestrategia['estrategia'].'</td>';
+						echo '<td><strong>Estrategia: </strong></td><td>'.$filaestrategia['estrategia'].'</td>';
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
 					}
 

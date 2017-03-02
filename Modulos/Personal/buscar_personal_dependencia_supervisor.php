@@ -58,15 +58,15 @@
                   </tr>
                 </table>
                 <div align="right">
-			<strong>Buscar por Dependencia: </strong>
-			<?php
-			echo $buscaCod_dependencia=$_POST['cod_dependencia'];
-			$id_dependencia=$buscaCod_dependencia;
-				$consultadependencia=mysql_query("SELECT * FROM dependencias WHERE cod_dependencia=$id_dependencia");
-					while($filadependencia=mysql_fetch_array($consultadependencia)){
-						echo " - ".$filadependencia['dependencia'];
-					}
-			?>
+			<strong>Buscar por Dependencia: </strong>
+			<?php
+			echo $buscaCod_dependencia=$_POST['cod_dependencia'];
+			$id_dependencia=$buscaCod_dependencia;
+				$consultadependencia=mysql_query("SELECT * FROM dependencias WHERE cod_dependencia=$id_dependencia");
+					while($filadependencia=mysql_fetch_array($consultadependencia)){
+						echo " - ".$filadependencia['dependencia'];
+					}
+			?>
 	                <a href="listado_personal_supervisor.php"><strong>Nueva Busqueda</strong></a>
 
 	                <!--<a href="#nuevo" role="button" class="btn" data-toggle="modal"><strong>Crear Nuevo Personal</strong></a>-->

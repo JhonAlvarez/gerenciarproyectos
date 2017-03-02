@@ -4,7 +4,7 @@
 	include_once "class/class.php";
 	include_once "../funciones.php";
 	include_once "../class_buscar.php";
-	if($_SESSION['tipo_user']=='a'){
+	if($_SESSION['tipo_user']=='a' or $_SESSION['tipo_user']=='b'){
 	}else{
 		header('Location: ../../php_cerrar.php');
 	}
@@ -35,7 +35,13 @@
   </head>
   <body>
 
-    <?php include_once "../../menu/m_proyecto.php"; ?>
+    <?php if($_SESSION['tipo_user']=='a'){
+    		include_once "../../menu/m_proyecto.php";
+    	  }
+    	  if($_SESSION['tipo_user']=='b'){
+    		include_once "../../menu/m_proyecto_ub.php";
+    	  }
+    ?>
 	<div align="center">
     	<table width="90%">
           <tr>
@@ -58,121 +64,213 @@
                   </tr>
                 </table>
                 <div align="center">
-			<strong>Buscar por Ente Ejecutor: </strong>
-			<?php
-			echo $buscaCod_enteejecutor=$_POST['cod_enteejecutor'];
-			$id_enteejecutor=$buscaCod_enteejecutor;
-				$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor WHERE cod_enteejecutor=$id_enteejecutor");
-					while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
-						echo " - ".$filaenteejecutor['enteejecutor'];
-					}
-			?>
+			<strong>Buscar por Ente Ejecutor: </strong>
+
+			<?php
+
+			echo $buscaCod_enteejecutor=$_POST['cod_enteejecutor'];
+
+			$id_enteejecutor=$buscaCod_enteejecutor;
+
+				$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor WHERE cod_enteejecutor=$id_enteejecutor");
+
+					while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
+
+						echo " - ".$filaenteejecutor['enteejecutor'];
+
+					}
+
+			?>
+
 	                <a href="listado_proyecto.php"><strong>Nueva Busqueda</strong></a>
 		<table>
 		<tr>
 		<td>
-			<strong>Buscar por el municipio de: </strong>
-				<form method="POST" action="buscar_proyecto_municipio.php">
-                                  <select name="cod_municipio">
-					<?php
-					$consultamunicipio=mysql_query("SELECT * FROM municipios");
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-						echo '<option value="'.$filamunicipio['cod_municipio'].'">'.$filamunicipio['municipio'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
+			<strong>Buscar por el municipio de: </strong>
+
+				<form method="POST" action="buscar_proyecto_municipio.php">
+
+                                  <select name="cod_municipio">
+
+					<?php
+
+					$consultamunicipio=mysql_query("SELECT * FROM municipios");
+
+					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
+
+						echo '<option value="'.$filamunicipio['cod_municipio'].'">'.$filamunicipio['municipio'].'</option>';
+
+					}
+
+					?>
+
+                                  </select>
+
+				<input type="submit" value="Buscar">
+
 				</form>
 		</td>
 
 		<td>
-			<strong>B. por Estado del Proyecto: </strong>
-				<form method="POST" action="buscar_proyecto_estado.php">
-                                  <select name="cod_estadodelproyecto">
-					<?php
-					$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto");
-					while($filaestadodelproyecto=mysql_fetch_array($consultaestadodelproyecto)){
-						echo '<option value="'.$filaestadodelproyecto['cod_estadodelproyecto'].'">'.$filaestadodelproyecto['estadodelproyecto'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
-				</form>
+			<strong>B. por Estado del Proyecto: </strong>
+
+				<form method="POST" action="buscar_proyecto_estado.php">
+
+                                  <select name="cod_estadodelproyecto">
+
+					<?php
+
+					$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto");
+
+					while($filaestadodelproyecto=mysql_fetch_array($consultaestadodelproyecto)){
+
+						echo '<option value="'.$filaestadodelproyecto['cod_estadodelproyecto'].'">'.$filaestadodelproyecto['estadodelproyecto'].'</option>';
+
+					}
+
+					?>
+
+                                  </select>
+
+				<input type="submit" value="Buscar">
+
+				</form>
+
 		</td>
 
 		<td>
-			<strong>Buscar por Supervisor: </strong>
-				<form method="POST" action="buscar_proyecto_supervisor.php">
-                                  <select name="cod_supervisor">
-					<?php
-					$consultasupervisor=mysql_query("SELECT * FROM personal");
-					while($filasupervisor=mysql_fetch_array($consultasupervisor)){
-						echo '<option value="'.$filasupervisor['Cedula'].'">'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
-				</form>
+			<strong>Buscar por Supervisor: </strong>
+
+				<form method="POST" action="buscar_proyecto_supervisor.php">
+
+                                  <select name="cod_supervisor">
+
+					<?php
+
+					$consultasupervisor=mysql_query("SELECT * FROM personal");
+
+					while($filasupervisor=mysql_fetch_array($consultasupervisor)){
+
+						echo '<option value="'.$filasupervisor['Cedula'].'">'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</option>';
+
+					}
+
+					?>
+
+                                  </select>
+
+				<input type="submit" value="Buscar">
+
+				</form>
+
 		</td>
 
 		<td>
-			<strong>Buscar por Politica: </strong>
-				<form method="POST" action="buscar_proyecto_politica.php">
-                                  <select name="cod_politica">
-					<?php
-					$consultapolitica=mysql_query("SELECT * FROM estrategiadelproyecto");
-					while($filapolitica=mysql_fetch_array($consultapolitica)){
-						echo '<option value="'.$filapolitica['cod_estrategiadelproyecto'].'">'.$filapolitica['estrategiadelproyecto'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
-				</form>
+			<strong>Buscar por Politica: </strong>
+
+				<form method="POST" action="buscar_proyecto_politica.php">
+
+                                  <select name="cod_politica">
+
+					<?php
+
+					$consultapolitica=mysql_query("SELECT * FROM estrategiadelproyecto");
+
+					while($filapolitica=mysql_fetch_array($consultapolitica)){
+
+						echo '<option value="'.$filapolitica['cod_estrategiadelproyecto'].'">'.$filapolitica['estrategiadelproyecto'].'</option>';
+
+					}
+
+					?>
+
+                                  </select>
+
+				<input type="submit" value="Buscar">
+
+				</form>
+
 		</td>
 
 		<td>
-			<strong>B. por Sector de Inversion: </strong>
-				<form method="POST" action="buscar_proyecto_inversion.php">
-                                  <select name="cod_sectordeinversion">
-					<?php
-					$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion");
-					while($filasectordeinversion=mysql_fetch_array($consultasectordeinversion)){
-						echo '<option value="'.$filasectordeinversion['cod_sectordeinversion'].'">'.$filasectordeinversion['sectordeinversion'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
-				</form>
+			<strong>B. por Sector de Inversion: </strong>
+
+				<form method="POST" action="buscar_proyecto_inversion.php">
+
+                                  <select name="cod_sectordeinversion">
+
+					<?php
+
+					$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion");
+
+					while($filasectordeinversion=mysql_fetch_array($consultasectordeinversion)){
+
+						echo '<option value="'.$filasectordeinversion['cod_sectordeinversion'].'">'.$filasectordeinversion['sectordeinversion'].'</option>';
+
+					}
+
+					?>
+
+                                  </select>
+
+				<input type="submit" value="Buscar">
+
+				</form>
+
 		</td>
 
 		<td>
-			<strong>Buscar por Subsector: </strong>
-				<form method="POST" action="buscar_proyecto_subsector.php">
-                                  <select name="cod_subsector">
-					<?php
-					$consultasubsector=mysql_query("SELECT * FROM subsector");
-					while($filasubsector=mysql_fetch_array($consultasubsector)){
-						echo '<option value="'.$filasubsector['cod_subsector'].'">'.$filasubsector['subsector'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
-				</form>
+			<strong>Buscar por Subsector: </strong>
+
+				<form method="POST" action="buscar_proyecto_subsector.php">
+
+                                  <select name="cod_subsector">
+
+					<?php
+
+					$consultasubsector=mysql_query("SELECT * FROM subsector");
+
+					while($filasubsector=mysql_fetch_array($consultasubsector)){
+
+						echo '<option value="'.$filasubsector['cod_subsector'].'">'.$filasubsector['subsector'].'</option>';
+
+					}
+
+					?>
+
+                                  </select>
+
+				<input type="submit" value="Buscar">
+
+				</form>
+
 		</td>
 
 		<td>
-			<strong>Buscar por Ente Ejecutor: </strong>
-				<form method="POST" action="buscar_proyecto_ente.php">
-                                  <select name="cod_enteejecutor">
-					<?php
-					$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor");
-					while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
-						echo '<option value="'.$filaenteejecutor['cod_enteejecutor'].'">'.$filaenteejecutor['enteejecutor'].'</option>';
-					}
-					?>
-                                  </select>
-				<input type="submit" value="Buscar">
-				</form>
+			<strong>Buscar por Ente Ejecutor: </strong>
+
+				<form method="POST" action="buscar_proyecto_ente.php">
+
+                                  <select name="cod_enteejecutor">
+
+					<?php
+
+					$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor");
+
+					while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
+
+						echo '<option value="'.$filaenteejecutor['cod_enteejecutor'].'">'.$filaenteejecutor['enteejecutor'].'</option>';
+
+					}
+
+					?>
+
+                                  </select>
+
+				<input type="submit" value="Buscar">
+
+				</form>
+
 		</td>
 
 		</tr>
