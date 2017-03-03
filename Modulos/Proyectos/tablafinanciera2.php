@@ -193,10 +193,10 @@
 		<table border="1">
 		  <tr>
 		    <td>
-			<strong>Codigo Proyecto</strong>
+			<strong>Proyecto</strong>
 		    </td>
 		    <td>
-			<strong>Codigo Fuente</strong>
+			<strong>Fuente</strong>
 		    </td>
 		    <td>
 			<strong>Fuente de Financiacion</strong>
@@ -288,10 +288,10 @@
 		<table>
 		  <tr>
 		    <td>
-			<strong>Codigo Proyecto</strong>
+			<strong>Proyecto</strong>
 		    </td>
 		    <td>
-			<strong>Codigo Tabla Financiera</strong>
+			<strong>Tabla Financiera</strong>
 		    </td>
 		    <td>
 			<strong>Momento Tabla Financiera</strong>
@@ -328,7 +328,7 @@
 
 		  <tr>
 		    <td>
-			<strong>Fecha T. Financiera (aaaa-mm-dd)</strong>
+			<strong>Fecha </strong>
 		    </td>
 
 		    <td>
@@ -366,16 +366,16 @@
 		<table border="1">
 		  <tr>
 		    <td>
-			<strong>Codigo Proyecto</strong>
+			<strong>Proyecto</strong>
 		    </td>
 		    <td>
-			<strong>Codigo Tabla Financiera</strong>
+			<strong>Tabla Financiera</strong>
 		    </td>
 		    <td>
 			<strong>Momento Tabla Financiera</strong>
 		    </td>
 		    <td>
-			<strong>Fecha Tabla Financiera</strong>
+			<strong>Fecha</strong>
 		    </td>
 		    <td>
 			<strong>Valor</strong>
@@ -452,10 +452,10 @@
                     <div class="modal-body">
                         <div class="row-fluid">
                             <div class="span6">
-                                <strong>Codigo Proyecto</strong><br>
+                                <strong>Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filatablafinanciera['cod_proyecto']; ?>"><br>
 
-                                <strong>Codigo Tabla Financiera</strong><br>
+                                <strong>Tabla Financiera</strong><br>
                                 <input type="text" name="cod_tablafinanciera" autocomplete="off" required readonly value="<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>"><br>
 
                                 <strong>Momento Tabla Financiera</strong><br>
@@ -511,9 +511,9 @@
                     <div class="modal-body">
                         <div class="row-fluid">
                             <div class="span6">
-                                <strong>Codigo Proyecto</strong><br>
+                                <strong>Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filatablafinanciera['cod_proyecto']; ?>"><br>
-                                <strong>Codigo Tabla Financiera</strong><br>
+                                <strong>Tabla Financiera</strong><br>
                                 <input type="text" name="cod_tablafinanciera" autocomplete="off" required readonly value="<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>"><br>
 
 	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
@@ -548,7 +548,7 @@
                     <div class="modal-body">
                         <div class="row-fluid">
                             <div class="span6">
-                                <strong>Codigo Proyecto</strong><br>
+                                <strong>Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $cod_proyecto; ?>"><br>
 
                                 <strong>Fuente de Financiacion</strong><br>
@@ -593,7 +593,7 @@
                     <div class="modal-body">
                         <div class="row-fluid">
                             <div class="span6">
-                                <strong>Codigo Proyecto</strong><br>
+                                <strong>Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $cod_proyecto; ?>"><br>
 
 	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>

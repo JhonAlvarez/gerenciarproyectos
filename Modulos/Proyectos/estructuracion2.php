@@ -227,7 +227,7 @@
 
 		  <tr>
 		    <td>
-			<strong>Momento Estructuracion</strong>
+			<strong>Momento </strong>
 		    </td>
 		    <td>
 			<strong>Observaciones</strong>
@@ -273,7 +273,7 @@
 			<strong>Fecha</strong>
 		    </td>
 		    <td>
-			<strong>Momento Estructuracion</strong>
+			<strong>Momento </strong>
 		    </td>
 		    <td>
 			<strong>Observaciones</strong>
@@ -353,7 +353,7 @@
                                 <input type="text" name="cod_estructuracion" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_estructuracion']; ?>"><br>
 
 
-                                <strong>Momento Estructuracion</strong><br>
+                                <strong>Momento </strong><br>
                                   <select name="momento">
 					<?php
 					$paEstructuracion=mysql_query("SELECT * FROM momentos");
