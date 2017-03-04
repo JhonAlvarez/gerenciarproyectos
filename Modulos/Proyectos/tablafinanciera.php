@@ -49,7 +49,7 @@
                     </td>
                   </tr>
                 </table>
-                <div align="center">
+                <div align="left">
                             	<strong>Elija el Proyecto para la Tabla Financiera</strong><br>
 			<form method="POST" action="tablafinanciera2.php">
                                   <select name="cod_proyecto" class="input-xlarge">

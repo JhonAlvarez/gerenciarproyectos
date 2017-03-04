@@ -261,7 +261,9 @@
 		    <td>
 			<strong>Observaciones</strong>
 		    </td>
-		    
+		    <td>
+			<strong></strong>
+		    </td>
 		  </tr>
 
 		  <tr>
@@ -276,7 +278,9 @@
 		    <td>
 			<input type="text" name="observaciones" >
 		    </td>
-		   
+		    <td>
+			<input type="submit" value="Agregar >>">
+		    </td>
 		  </tr>
 		</table>
 		</form>
@@ -315,7 +319,9 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		   
+		    <td>
+			<strong></strong>
+		    </td>
 		  </tr>
 
 			<?php

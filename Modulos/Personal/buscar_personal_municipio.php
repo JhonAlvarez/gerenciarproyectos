@@ -57,38 +57,20 @@
                     </td>
                   </tr>
                 </table>
-                <div align="left">
-
-
-<br>
-
-
-<!--
-Buscador 
--->
-			<strong >Buscar por la Dependencia: </strong>
-				<form method="POST" action="buscar_personal_dependencia.php">
-                                  <select name="cod_dependencia">
-					<?php
-					$consultadependencia=mysql_query("SELECT * FROM dependencias");
-					while($filadependencia=mysql_fetch_array($consultadependencia)){
-						echo '<option value="'.$filadependencia['cod_dependencia'].'">'.$filadependencia['dependencia'].'</option>';
+                <div align="right">
+			<strong>Buscar por Municipio: </strong>
+			<?php
+			echo $buscaCod_barrio=$_POST['cod_municipio'];
+			$id_municipio=$buscaCod_municipio;
+				$consultamunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
+					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
+						echo " - ".$filamunicipio['municipio'];
 					}
-					?>
-                                  </select>
+			?>
+	                <a href="listado_personal.php"><strong>Nueva Busqueda</strong></a>
 
-
-
-				<input type="submit" value="Buscar">
-				</form>
 	                <!--<a href="#nuevo" role="button" class="btn" data-toggle="modal"><strong>Crear Nuevo Personal</strong></a>-->
                 </div>
-
-
-    <!--
-Tabla de mostrar informacion
-    -->
-
                 
                 <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 	<form name="form1" method="post" action="">
@@ -107,33 +89,16 @@ Tabla de mostrar informacion
                                 <input type="text" name="Apellidos" autocomplete="off" required value=""><br>
                                 <strong>Dependencia</strong><br>
                                 <input type="text" name="Dependencia" autocomplete="off" required value=""><br>
-
-                                <strong>Cargo</strong><br>
-                                <input type="text" name="Cargo" autocomplete="off" required value=""><br>
-
                                 <strong>Observaciones</strong><br>
                                 <input type="text" name="Observaciones" autocomplete="off" value=""><br>
+                                <strong>Celular</strong><br>
+                                <input type="text" name="Celular" autocomplete="off" required value=""><br>
                             </div>
                             <div class="span6">
-                                <strong>Celular</strong><br>
-                                <input type="text" name="Celular" autocomplete="off" value=""><br>
-
+                                <strong>Cargo</strong><br>
+                                <input type="text" name="Cargo" autocomplete="off" required value=""><br>
                                 <strong>Profesion</strong><br>
                                 <input type="text" name="Profesion" autocomplete="off" required value=""><br>
-<!--
-Se agrega municipio y barrio 
--->
-   <strong>Municipio</strong><br>
-                                <input type="text" name="Municipio" autocomplete="off" required value=""><br>
-    <strong>Barrio</strong><br>
-                                <input type="text" name="Barrio" autocomplete="off" required value=""><br>
-<!--
-Codigo nuevo de municipio y barrio
--->
-
-
-
-
                                 <strong>Especializacion</strong><br>
                                 <input type="text" name="Especializacion" autocomplete="off" required value=""><br>
                                 <strong>Email</strong><br>
@@ -147,15 +112,6 @@ Codigo nuevo de municipio y barrio
                     </div>
                     </form>
                 </div>
-
-
-
-
-
-<!--
-Se cambio el orden de la tabla algunas cosas
--->
-
                 
                 <br>
                 <?php 
@@ -164,15 +120,10 @@ Se cambio el orden de la tabla algunas cosas
 						$Nombres=limpiar($_POST['Nombres']);
 						$Apellidos=limpiar($_POST['Apellidos']);
 						$Dependencia=limpiar($_POST['Dependencia']);
-                        $Cargo=limpiar($_POST['Cargo']);
-						
+						$Observaciones=limpiar($_POST['Observaciones']);
 						$Celular=limpiar($_POST['Celular']);
-					$Profesion=limpiar($_POST['Profesion']);
-                    $Municipio=limpiar($_POST['Municipio']);
-                    $Barrio=limpiar($_POST['Barrio']);
-						$Especializacion=limpiar($_POST['Especializacion']);	
-                        $Email=limpiar($_POST['Email']);
-                        $Observaciones=limpiar($_POST['Observaciones']);
+						$Cargo=limpiar($_POST['Cargo']);			$Profesion=limpiar($_POST['Profesion']);
+						$Especializacion=limpiar($_POST['Especializacion']);	$Email=limpiar($_POST['Email']);
 						
 						if(empty($_POST['Cedula'])){
 							$oProv=new Proceso_Personal('', $Cedula, $Nombres, $Apellidos, $Dependencia, $Observaciones, $Celular, $Cargo, $Profesion, $Especializacion, $Email);
@@ -193,42 +144,23 @@ Se cambio el orden de la tabla algunas cosas
                     <td><strong>Nombres</strong></td>
                     <td><strong>Apellidos</strong></td>
                     <td><strong>Dependencia</strong></td>
-
                     <td><strong>Observaciones</strong></td>
                     <td><strong>Celular</strong></td>
                     <td><strong>Cargo</strong></td>
                     <td><strong>Profesion</strong></td>
                     <td><strong>Especializacion</strong></td>
                     <td><strong>Email</strong></td>
-                    <td><strong>Accion</strong></td>
-                    <td><strong>Municipio</strong></td>
-                    <td><strong>Barrio</strong></td>
-                    
                   </tr>
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
 						$buscar=limpiar($_POST['buscar']);
-						$pame=mysql_query("SELECT * FROM personal WHERE Nombres LIKE '%$buscar%' ORDER BY Nombres");	
-						/* determinar el número de filas del resultado */
-
-				$cantRegistros=mysql_num_rows($pame);
-						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
-
+						$pame=mysql_query("SELECT * FROM personal WHERE Dependencia and (Dependencia='$buscar' or Dependencia LIKE '%$buscar%') ORDER BY Dependencia DESC");	
 					}else{
-						$pame=mysql_query("SELECT * FROM personal ORDER BY Nombres");		
-						/* determinar el número de filas del resultado */
-						$cantRegistros=mysql_num_rows($pame);
-						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
-
+						$pame=mysql_query("SELECT * FROM personal WHERE Dependencia=$buscaCod_dependencia ORDER BY Dependencia DESC");		
 					}		
 					while($row=mysql_fetch_array($pame)){
 				  ?>
-
-
-
-
-
- <tr>
+                  <tr>
 		    <td>
 			<?php
 			if (file_exists("../../personal_img/".$row['Cedula'].".jpg")){
@@ -269,38 +201,16 @@ Se cambio el orden de la tabla algunas cosas
 						echo $filaProfesion2['profesion'];
 					}
 					?>
-			</td>                    
-
-            <td><?php echo $row['Especializacion'] ?></td>
-                <td><?php echo $row['Email'] ?></td>
-
-
-
-                 <td>
+			</td>                    <td><?php echo $row['Especializacion'] ?></td>
+                    <td><?php echo $row['Email'] ?></td>
+                    <td>
                     	<center>
-
-            <a href="#act<?php echo $row['Cedula']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
+                            <a href="#act<?php echo $row['Cedula']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
                                 <i class="icon-edit"></i>
-                            </a>
-                            <a href="#eli<?php echo $row['Cedula']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-remove"></i>
                             </a>
                         </center>
                     </td>
-
-                    <td><?php echo $row['Municipio']; ?></td>
-                     
-                    <td><?php echo $row['Barrio']; ?></td>
- </tr>
-
-
-
-
-
-
-<!--Ventana Editar comienza aqui-->
-
-
+                  </tr>
                   <div id="act<?php echo $row['Cedula']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 	<form name="form2" method="post" action="">
                     <input type="hidden" name="Cedula" value="<?php echo $row['Cedula']; ?>">
@@ -340,7 +250,6 @@ Se cambio el orden de la tabla algunas cosas
                             <div class="span6">
                                 <strong>Celular</strong><br>
                                 <input type="text" name="Celular" autocomplete="off" value="<?php echo $row['Celular']; ?>"><br>
-
                             	<strong>Cargo</strong><br>
                                   <select name="Cargo">
 					<?php
@@ -374,15 +283,14 @@ Se cambio el orden de la tabla algunas cosas
                                 <input type="text" name="Especializacion" autocomplete="off" required value="<?php echo $row['Especializacion']; ?>"><br>
                                 <strong>Email</strong><br>
                                 <input type="text" name="Email" autocomplete="off" required value="<?php echo $row['Email']; ?>"><br>
-
-
-
-
+                            </div>
+                    	</div>
+                    </div>
+                    <div class="modal-footer">
     	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
         	            <button type="submit" class="btn btn-primary"><strong>Actualizar Personal</strong></button>
-                            </div>
-                    </form>
 
+                    </form>
 
 			<form method="POST" action="cambiar_imagen.php">
 			<?php
@@ -398,48 +306,8 @@ Se cambio el orden de la tabla algunas cosas
                             <input type="text" name="Apellidos" autocomplete="off" required readonly value="<?php echo $row['Apellidos']; ?>"><br>
         	            <button type="submit" class="btn btn-primary"><strong>Cambiar Imagen</strong></button>
 			</form>
-
-
-
-                    	</div>
-                    </div>
-                    <div class="modal-footer">
-    	               ---------
-
                     </div>
                 </div>
-
-
-
-
-<!--Aqui comienza la ventana Eliminar-->
-
-
-                  <div id="eli<?php echo $row['Cedula']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form3" method="post" action="eliminar_personal.php">
-	                    <input type="hidden" name="Cedula" value="<?php echo $row['Cedula']; ?>">
-	                    <div class="modal-header">
-        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                	        <h3 id="myModalLabel">Eliminar Personal</h3>
-				<font color="red">Esta seguro que desea eliminar este registro?</font>
-	                    </div>
-                    <div class="modal-body">
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <strong>Cedula</strong><br>
-                                <input type="text" name="Cedula" autocomplete="off" required readonly value="<?php echo $row['Cedula']; ?>"><br>
-                                <strong>Nombres</strong><br>
-                                <input type="text" name="Nombres" autocomplete="off" required readonly value="<?php echo $row['Nombres']; ?>"><br>
-                                <strong>Apellidos</strong><br>
-                                <input type="text" name="Apellidos" autocomplete="off" required readonly value="<?php echo $row['Apellidos']; ?>"><br>
-
-	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	     	       <button type="submit" class="btn btn-primary"><strong>Eliminar Personal</strong></button>
-                            </div>
-
-			</form>
-		</div>
-
                   <?php } ?>
                 </table>
             </td>

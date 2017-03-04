@@ -175,8 +175,8 @@ if(!empty($_GET['Cedula'])){
                                     <input type="text" name="Nombres" autocomplete="off" required value="<?php echo $Nombres; ?>" class="input-xlarge"><br>
                                     <strong>Apellidos</strong><br>
                                     <input type="text" name="Apellidos" autocomplete="off" required value="<?php echo $Apellidos; ?>" class="input-xlarge"><br>
-                                    <strong>Dependencia / Municipio</strong><br>
-                                  <select name="Dependencia" class="input-xlarge">
+                   <strong>Dependencia </strong><br>
+                  <select name="Dependencia" class="input-xlarge">
 					<?php
 					$paDependencia=mysql_query("SELECT * FROM dependencias");
 					while($filaDependencia=mysql_fetch_array($paDependencia)){
@@ -189,15 +189,8 @@ if(!empty($_GET['Cedula'])){
 					?>
                                   </select>
 				<br>
-                                    <strong>Observaciones</strong><br>
-                                    <input type="text" name="Observaciones" autocomplete="off" value="<?php echo $Observaciones; ?>" class="input-xlarge"><br>
 
-                                </div>
-    	                        <div class="span4">
-                                    <strong>Celular</strong><br>
-                                    <input type="text" name="Celular" autocomplete="off" value="<?php echo $Celular; ?>" class="input-xlarge"><br>
-
-                                    <strong>Cargo</strong><br>
+				<strong>Cargo</strong><br>
                                   <select name="Cargo" class="input-xlarge">
 					<?php
 					$pa=mysql_query("SELECT * FROM cargos");
@@ -210,8 +203,10 @@ if(!empty($_GET['Cedula'])){
 					}
 					?>
                                   </select>
-				<br>
-                                	<strong>Profesion</strong><br>
+                                  <br>
+
+
+                                  <strong>Profesion</strong><br>
                                   <select name="Profesion" class="input-xlarge">
 					<?php
 					$paProfesion=mysql_query("SELECT * FROM profesiones");
@@ -226,10 +221,57 @@ if(!empty($_GET['Cedula'])){
                                   </select>
 
 				<br>
+                                   
+
+
+                                </div>
+
+
+
+
+    	                        <div class="span4">
+
+
+    	               <strong>Municipio</strong><br>
+
+                                  <select name="cod_municipio">
+
+					<?php
+
+					$consultamunicipio=mysql_query("SELECT * FROM municipios");
+
+					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
+
+						echo '<option value="'.$filamunicipio['cod_municipio'].'">'.$filamunicipio['municipio'].'</option>';
+
+					}
+
+					?>
+
+                                  </select>
+
+				<br>
+
+				<strong>Barrio</strong><br>
+                                    <input type="text" name="Barrio" autocomplete="off" value="<?php echo $Barrio; ?>" class="input-xlarge">
+
+                                    <br>
+
+
+                                    <strong>Celular</strong><br>
+                                    <input type="text" name="Celular" autocomplete="off" value="<?php echo $Celular; ?>" class="input-xlarge"><br>
+
+                                    
+                                	
+				<br>
                                 	<strong>Especializacion</strong><br>
                                     <input type="text" name="Especializacion" autocomplete="off" value="<?php echo $Especializacion; ?>" class="input-xlarge"><br>
                                     <strong>Email</strong><br>
                                     <input type="text" name="Email" autocomplete="off" value="<?php echo $Email; ?>" class="input-xlarge"><br>
+
+
+                              <strong>Observaciones</strong><br>
+                                    <input type="text" name="Observaciones" autocomplete="off" value="<?php echo $Observaciones; ?>" class="input-xlarge"><br>
 
                                 </div>
 

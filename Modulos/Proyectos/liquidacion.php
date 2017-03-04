@@ -49,12 +49,12 @@
                     </td>
                   </tr>
                 </table>
-                <div align="center">
+                <div align="left">
                             	<strong>Elija el Proyecto a Liquidacion</strong><br>
 			<form method="POST" action="liquidacion2.php">
                                   <select name="cod_proyecto" class="input-xlarge">
 					<?php
-					$consultacod_proyecto=mysql_query("SELECT * FROM proyectos ORDER BY cod_proyecto DESC");
+					$consultacod_proyecto=mysql_query("SELECT * FROM proyectos where estadodelproyecto=17");
 					while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
 						echo '<option value="'.$filacod_proyecto['cod_proyecto'].'">'.$filacod_proyecto['cod_proyecto'].' '.$filacod_proyecto['objetivoproyecto'].'</option>';
 					}
