@@ -197,18 +197,16 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
-		    <td>
-			<strong>Codigo Ejecucion</strong>
-		    </td>
+		   
 		    <td>
 			<strong>Momento </strong>
 		    </td>
 		    <td>
-			<strong>Fecha Inicial (aaaa-mm-dd)</strong>
+			<strong>Fecha Inicial </strong>
 		    </td>
 
 		    <td>
-			<strong>Fecha Final (aaaa-mm-dd)</strong>
+			<strong>Fecha Final </strong>
 		    </td>
 		  </tr>
 
@@ -216,16 +214,7 @@
 		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
-		    <td>
-			<?php
-				$consultaejecucion=mysql_query("SELECT MAX(cod_ejecucion) AS ultimaEjecucion FROM ejecuciones");
-					while($filaejecucion=mysql_fetch_array($consultaejecucion)){
-						$nuevoCod_ejecucion=$filaejecucion['ultimaEjecucion']+1;
-						echo '<input type="text" name="cod_ejecucion" readonly value="'.$nuevoCod_ejecucion.'">';
-					}
-			?>
-
-		    </td>
+		    
 
 		    <td>
                                   <select name="cod_momentoejecucion">
@@ -239,11 +228,11 @@
 
 		    </td>
 		    <td>
-			<input type="text" name="fecha_ejecucion">
+			<input type="date" name="fecha_ejecucion">
 		    </td>
 
 		    <td>
-			<input type="text" name="fecha_ejecucion_final">
+			<input type="date" name="fecha_ejecucion_final">
 		    </td>
 
 		  </tr>
@@ -292,9 +281,7 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
-		    <td>
-			<strong>Codigo Ejecucion</strong>
-		    </td>
+		   
 		    <td>
 			<strong>Momento </strong>
 		    </td>
@@ -325,15 +312,15 @@
 		  </tr>
 
 			<?php
-				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto'");
+				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_ejecucion_final desc");
 				while($filaejecucion=mysql_fetch_array($consultaejecucion)){
 					echo '<tr>';
 					echo '<td>'.$filaejecucion['cod_proyecto'].'</td>';
-					echo '<td>'.$filaejecucion['cod_ejecucion'].'</td>';
+					
 					$momentoejecucion=$filaejecucion['momento_ejecucion'];
 						$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones WHERE cod_momentoejecucion='$momentoejecucion'");
 						while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
-							echo '<td>'.$filamomentoejecucion['cod_momentoejecucion'].' '.$filamomentoejecucion['momentoejecucion'].'</td>';
+							echo '<td>'.$filamomentoejecucion['momentoejecucion'].'</td>';
 						}
 
 					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
@@ -343,7 +330,7 @@
 					echo '<td>'.$filaejecucion['observaciones'].'</td>';
 			?>
                     <td>
-			<?php echo $filaejecucion['cod_ejecucion']; ?>
+			
 			<form method="POST" action="cargar_archivo_ejecucion.php">
 			<?php
 			if (file_exists("../../archivos_ejecucion/".$filaejecucion['cod_ejecucion'].".pdf")){
@@ -362,7 +349,7 @@
 
                     <td>
                     	<center>
-			<?php echo $filaejecucion['cod_ejecucion']; ?>
+			
                             <a href="#act<?php echo $filaejecucion['cod_ejecucion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
                                 <i class="icon-edit"></i>
                             </a>
@@ -392,10 +379,9 @@
                                 <strong>Codigo Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filaejecucion['cod_proyecto']; ?>"><br>
 
-                                <strong>Codigo Ejecucion</strong><br>
-                                <input type="text" name="cod_ejecucion" autocomplete="off" required readonly value="<?php echo $filaejecucion['cod_ejecucion']; ?>"><br>
+                               
 
-                                <strong>Momento Ejecucion</strong><br>
+                                <strong>Momento</strong><br>
                                   <select name="momento_ejecucion">
 					<?php
 					$paEjecucion=mysql_query("SELECT * FROM momentosejecuciones");
@@ -410,12 +396,12 @@
                                   </select><br>
 
                                 <strong>Fecha Inicial</strong><br>
-                                <input type="text" name="fecha_ejecucion" autocomplete="off" value="<?php echo $filaejecucion['fecha_ejecucion']; ?>"><br>
+                                <input type="date" name="fecha_ejecucion" autocomplete="off" value="<?php echo $filaejecucion['fecha_ejecucion']; ?>"><br>
 
 			    </div>
                             <div class="span6">
                                 <strong>Fecha Final</strong><br>
-                                <input type="text" name="fecha_ejecucion_final" autocomplete="off" value="<?php echo $filaejecucion['fecha_ejecucion_final']; ?>"><br>
+                                <input type="date" name="fecha_ejecucion_final" autocomplete="off" value="<?php echo $filaejecucion['fecha_ejecucion_final']; ?>"><br>
 
                                 <strong>Avance Programado</strong><br>
                                 <input type="text" name="avance_programado" autocomplete="off" value="<?php echo $filaejecucion['avance_programado']; ?>"><br>

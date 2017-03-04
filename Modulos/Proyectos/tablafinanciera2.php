@@ -290,9 +290,9 @@
 		    <td>
 			<strong>Proyecto</strong>
 		    </td>
-		    <td>
-			<strong>Tabla Financiera</strong>
-		    </td>
+		    <!--
+Eliminar tabla financiera
+		    -->
 		    <td>
 			<strong>Momento Tabla Financiera</strong>
 		    </td>
@@ -302,16 +302,7 @@
 		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
-		    <td>
-			<?php
-				$consultatablafinanciera=mysql_query("SELECT MAX(cod_tablafinanciera) AS ultimaTablafinanciera FROM tablasfinancieras");
-					while($filatablafinanciera=mysql_fetch_array($consultatablafinanciera)){
-						$nuevoCod_tablafinanciera=$filatablafinanciera['ultimaTablafinanciera']+1;
-						echo '<input type="text" name="cod_tablafinanciera" readonly value="'.$nuevoCod_tablafinanciera.'">';
-					}
-			?>
-
-		    </td>
+		    
 		    <td>
                                   <select name="cod_momentotablafinanciera">
 					<?php
@@ -344,7 +335,7 @@
 
 		  <tr>
 		    <td>
-			<input type="text" name="fecha_tablafinanciera">
+			<input type="date" name="fecha_tablafinanciera">
 		    </td>
 
 		    <td>
@@ -363,16 +354,14 @@
 
 <hr>
 
-		<table border="1">
+		<table border="1" align="center">
 		  <tr>
 		    <td>
 			<strong>Proyecto</strong>
 		    </td>
+		    
 		    <td>
-			<strong>Tabla Financiera</strong>
-		    </td>
-		    <td>
-			<strong>Momento Tabla Financiera</strong>
+			<strong>Momento </strong>
 		    </td>
 		    <td>
 			<strong>Fecha</strong>
@@ -388,27 +377,25 @@
 			<strong>Soporte Digital</strong>
 		    </td>
 		    <td>
-			<strong>Accion</strong>
+			<strong></strong>
 		    </td>
 		  </tr>
 
 			<?php
-				$consultatablafinanciera=mysql_query("SELECT * FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto'");
+				$consultatablafinanciera=mysql_query("SELECT * FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_tablafinanciera desc "  );
 				while($filatablafinanciera=mysql_fetch_array($consultatablafinanciera)){
 					echo '<tr>';
 					echo '<td>'.$filatablafinanciera['cod_proyecto'].'</td>';
-					echo '<td>'.$filatablafinanciera['cod_tablafinanciera'].'</td>';
-					$momentotablafinanciera=$filatablafinanciera['momento_tablafinanciera'];
-						$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras WHERE cod_momentotablafinanciera='$momentotablafinanciera'");
+										$momentotablafinanciera=$filatablafinanciera['momento_tablafinanciera'];
+	$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras WHERE cod_momentotablafinanciera='$momentotablafinanciera'");
 						while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
-							echo '<td>'.$filamomentotablafinanciera['cod_momentotablafinanciera'].' '.$filamomentotablafinanciera['momentotablafinanciera'].'</td>';
+							echo '<td>'.$filamomentotablafinanciera['momentotablafinanciera'].'</td>';
 						}
 					echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
 					echo '<td>'.$filatablafinanciera['valor'].'</td>';
 					echo '<td>'.$filatablafinanciera['observaciones'].'</td>';
 			?>
                     <td>
-			<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>
 			<form method="POST" action="cargar_archivo_tablafinanciera.php">
 			<?php
 			if (file_exists("../../archivos_tablafinanciera/".$filatablafinanciera['cod_tablafinanciera'].".pdf")){
@@ -426,7 +413,6 @@
 
                     <td>
                     	<center>
-			<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>
                             <a href="#act<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
                                 <i class="icon-edit"></i>
                             </a>
@@ -455,10 +441,9 @@
                                 <strong>Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filatablafinanciera['cod_proyecto']; ?>"><br>
 
-                                <strong>Tabla Financiera</strong><br>
-                                <input type="text" name="cod_tablafinanciera" autocomplete="off" required readonly value="<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>"><br>
+                                
 
-                                <strong>Momento Tabla Financiera</strong><br>
+                                <strong>Momento </strong><br>
                                   <select name="momento_tablafinanciera">
 					<?php
 					$paTablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras");
@@ -473,7 +458,7 @@
                                   </select><br>
 
                                 <strong>Fecha</strong><br>
-                                <input type="text" name="fecha_tablafinanciera" autocomplete="off" value="<?php echo $filatablafinanciera['fecha_tablafinanciera']; ?>"><br>
+                                <input type="date" name="fecha_tablafinanciera" autocomplete="off" value="<?php echo $filatablafinanciera['fecha_tablafinanciera']; ?>"><br>
 
 
                                 <strong>Valor</strong><br>

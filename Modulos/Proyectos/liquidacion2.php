@@ -197,11 +197,9 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
+		    
 		    <td>
-			<strong>Codigo Liquidacion</strong>
-		    </td>
-		    <td>
-			<strong>Fecha Liquidacion (aaaa-mm-dd)</strong>
+			<strong>Fecha Liquidacion </strong>
 		    </td>
 		  </tr>
 
@@ -209,18 +207,9 @@
 		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
+		    
 		    <td>
-			<?php
-				$consultaliquidacion=mysql_query("SELECT MAX(cod_liquidacion) AS ultimaLiquidacion FROM liquidaciones");
-					while($filaliquidacion=mysql_fetch_array($consultaliquidacion)){
-						$nuevoCod_liquidacion=$filaliquidacion['ultimaLiquidacion']+1;
-						echo '<input type="text" name="cod_liquidacion" readonly value="'.$nuevoCod_liquidacion.'">';
-					}
-			?>
-
-		    </td>
-		    <td>
-			<input type="text" name="fecha_liquidacion">
+			<input type="date" name="fecha_liquidacion">
 		    </td>
 		  </tr>
 
@@ -230,13 +219,13 @@
 			<strong>Momento Liquidacion</strong>
 		    </td>
 		    <td>
-			<strong>Fecha Fin Liquidacion (aaaa-mm-dd)</strong>
+			<strong>Fecha Fin Liquidacion </strong>
 		    </td>
 		    <td>
 			<strong>Observaciones</strong>
 		    </td>
 		    <td>
-			<strong>Accion</strong>
+			<strong></strong>
 		    </td>
 		  </tr>
 
@@ -253,7 +242,7 @@
 
 		    </td>
 		    <td>
-			<input type="text" name="fecha_liquidacion_final">
+			<input type="date" name="fecha_liquidacion_final">
 		    </td>
 
 		    <td>
@@ -273,14 +262,12 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
-		    <td>
-			<strong>Codigo Liquidacion</strong>
-		    </td>
+		    
 		    <td>
 			<strong>Fecha Liquidacion</strong>
 		    </td>
 		    <td>
-			<strong>Momento Liquidacion</strong>
+			<strong>Momento </strong>
 		    </td>
 		    <td>
 			<strong>Fecha Liquidacion Final</strong>
@@ -293,16 +280,16 @@
 			<strong>Soporte Digital</strong>
 		    </td>
 		    <td>
-			<strong>Accion</strong>
+			<strong></strong>
 		    </td>
 		  </tr>
 
 			<?php
-				$consultaliquidacion=mysql_query("SELECT * FROM liquidaciones WHERE cod_proyecto='$cod_proyecto'");
+				$consultaliquidacion=mysql_query("SELECT * FROM liquidaciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_liquidacion_final desc");
 				while($filaliquidacion=mysql_fetch_array($consultaliquidacion)){
 					echo '<tr>';
 					echo '<td>'.$filaliquidacion['cod_proyecto'].'</td>';
-					echo '<td>'.$filaliquidacion['cod_liquidacion'].'</td>';
+					
 					echo '<td>'.$filaliquidacion['fecha_liquidacion'].'</td>';
 					$momentoliquidacion=$filaliquidacion['momento_liquidacion'];
 						$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones WHERE cod_momentoliquidacion='$momentoliquidacion'");
@@ -313,7 +300,7 @@
 					echo '<td>'.$filaliquidacion['observaciones'].'</td>';
 			?>
                     <td>
-			<?php echo $filaliquidacion['cod_liquidacion']; ?>
+			
 			<form method="POST" action="cargar_archivo_liquidacion.php">
 			<?php
 			if (file_exists("../../archivos_liquidacion/".$filaliquidacion['cod_liquidacion'].".pdf")){
@@ -331,7 +318,6 @@
 
                     <td>
                     	<center>
-			<?php echo $filaliquidacion['cod_liquidacion']; ?>
                             <a href="#act<?php echo $filaliquidacion['cod_liquidacion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
                                 <i class="icon-edit"></i>
                             </a>
@@ -361,10 +347,9 @@
                                 <strong>Codigo Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filaliquidacion['cod_proyecto']; ?>"><br>
 
-                                <strong>Codigo Liquidacion</strong><br>
-                                <input type="text" name="cod_liquidacion" autocomplete="off" required readonly value="<?php echo $filaliquidacion['cod_liquidacion']; ?>"><br>
+                                
 
-                                <strong>Momento Liquidacion</strong><br>
+                                <strong>Momento </strong><br>
                                   <select name="momento_liquidacion">
 					<?php
 					$paLiquidacion=mysql_query("SELECT * FROM momentosliquidaciones");
@@ -378,11 +363,11 @@
 					?>
                                   </select><br>
 
-                                <strong>Fecha</strong><br>
-                                <input type="text" name="fecha_liquidacion" autocomplete="off" value="<?php echo $filaliquidacion['fecha_liquidacion']; ?>"><br>
+                                <strong>Fecha Liquidacion</strong><br>
+                                <input type="date" name="fecha_liquidacion" autocomplete="off" value="<?php echo $filaliquidacion['fecha_liquidacion']; ?>"><br>
 
-                                <strong>Fecha</strong><br>
-                                <input type="text" name="fecha_liquidacion_final" autocomplete="off" value="<?php echo $filaliquidacion['fecha_liquidacion_final']; ?>"><br>
+                                <strong>Fecha Liquidacion Final</strong><br>
+                                <input type="date" name="fecha_liquidacion_final" autocomplete="off" value="<?php echo $filaliquidacion['fecha_liquidacion_final']; ?>"><br>
 
                                 <strong>Observaciones</strong><br>
                                 <input type="text" name="observaciones" autocomplete="off" value="<?php echo $filaliquidacion['observaciones']; ?>"><br>

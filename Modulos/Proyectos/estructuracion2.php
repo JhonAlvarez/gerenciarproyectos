@@ -197,11 +197,9 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
+		    
 		    <td>
-			<strong>Codigo Estructuracion</strong>
-		    </td>
-		    <td>
-			<strong>Fecha (aaaa-mm-dd)</strong>
+			<strong>Fecha</strong>
 		    </td>
 		  </tr>
 
@@ -209,18 +207,9 @@
 		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
+		    
 		    <td>
-			<?php
-				$consultaestructuracion=mysql_query("SELECT MAX(cod_estructuracion) AS ultimaEstructuracion FROM estructuracion");
-					while($filaestructuracion=mysql_fetch_array($consultaestructuracion)){
-						$nuevoCod_estructuracion=$filaestructuracion['ultimaEstructuracion']+1;
-						echo '<input type="text" name="cod_estructuracion" readonly value="'.$nuevoCod_estructuracion.'">';
-					}
-			?>
-
-		    </td>
-		    <td>
-			<input type="text" name="fecha_estructuracion">
+			<input type="date" name="fecha_estructuracion">
 		    </td>
 		  </tr>
 
@@ -267,9 +256,6 @@
 			<strong>Codigo Proyecto</strong>
 		    </td>
 		    <td>
-			<strong>Codigo Estructuracion</strong>
-		    </td>
-		    <td>
 			<strong>Fecha</strong>
 		    </td>
 		    <td>
@@ -282,26 +268,25 @@
 			<strong>Soporte Digital</strong>
 		    </td>
 		    <td>
-			<strong>Accion</strong>
+			<strong></strong>
 		    </td>
 		  </tr>
 
 			<?php
-				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto'");
+				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_estructuracion desc");
 				while($filaestructuracion=mysql_fetch_array($consultaestructuracion)){
 					echo '<tr>';
 					echo '<td>'.$filaestructuracion['cod_proyecto'].'</td>';
-					echo '<td>'.$filaestructuracion['cod_estructuracion'].'</td>';
 					echo '<td>'.$filaestructuracion['fecha_estructuracion'].'</td>';
 					$momento=$filaestructuracion['momento'];
 						$consultamomento=mysql_query("SELECT * FROM momentos WHERE cod_momento='$momento'");
 						while($filamomento=mysql_fetch_array($consultamomento)){
-							echo '<td>'.$filamomento['cod_momento'].' '.$filamomento['momento'].'</td>';
+							echo '<td>'.$filamomento['momento'].'</td>';
 						}
 					echo '<td>'.$filaestructuracion['observaciones'].'</td>';
 			?>
                     <td>
-			<?php echo $filaestructuracion['cod_estructuracion']; ?>
+			
 			<form method="POST" action="cargar_archivo_estructuracion.php">
 			<?php
 			if (file_exists("../../archivos_estructuracion/".$filaestructuracion['cod_estructuracion'].".pdf")){
@@ -319,7 +304,7 @@
 
                     <td>
                     	<center>
-			<?php echo $filaestructuracion['cod_estructuracion']; ?>
+			
                             <a href="#act<?php echo $filaestructuracion['cod_estructuracion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
                                 <i class="icon-edit"></i>
                             </a>
@@ -349,8 +334,7 @@
                                 <strong>Codigo Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_proyecto']; ?>"><br>
 
-                                <strong>Codigo Estructuracion</strong><br>
-                                <input type="text" name="cod_estructuracion" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_estructuracion']; ?>"><br>
+                               
 
 
                                 <strong>Momento </strong><br>
@@ -368,7 +352,7 @@
                                   </select><br>
 
                                 <strong>Fecha</strong><br>
-                                <input type="text" name="fecha_estructuracion" autocomplete="off" value="<?php echo $filaestructuracion['fecha_estructuracion']; ?>"><br>
+                                <input type="date" name="fecha_estructuracion" autocomplete="off" value="<?php echo $filaestructuracion['fecha_estructuracion']; ?>"><br>
 
                                 <strong>Observaciones</strong><br>
                                 <input type="text" name="observaciones" autocomplete="off" value="<?php echo $filaestructuracion['observaciones']; ?>"><br>
