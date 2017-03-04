@@ -105,6 +105,8 @@ Dividir los crear por clases
                   
                     <li><a href="Modulos/Crear/estadodelproyecto.php"><i class="icon-plus"></i>  Estado </a></li>
                     <li><a href="Modulos/Crear/estrategiadelproyecto.php"><i class="icon-plus"></i>  Estrategia </a></li>
+                    <li><a href="Modulos/Crear/inversion.php"><i class="icon-plus"></i>  Sector de Inversion </a></li>
+                    <li><a href="Modulos/Crear/subsector.php"><i class="icon-plus"></i>  SUB-Sector de Inversion </a></li>
 
 
                     <li><a href="#"><i class=""></i> -----------------Momentos------------------</a></li>
