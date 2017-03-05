@@ -217,14 +217,12 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
+		    
 		    <td>
-			<strong>Codigo Liquidacion</strong>
+			<strong>Fecha Liquidacion </strong>
 		    </td>
 		    <td>
-			<strong>Fecha Liquidacion (aaaa-mm-dd)</strong>
-		    </td>
-		    <td>
-			<strong>Momento Liquidacion</strong>
+			<strong>Momento</strong>
 		    </td>
 		    <td>
 			<strong>Fecha Liquidacion Final</strong>
@@ -235,9 +233,7 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    <td>
-			<strong>Accion</strong>
-		    </td>
+		    
 		  </tr>
 
 			<?php
@@ -245,18 +241,16 @@
 				while($filaliquidacion=mysql_fetch_array($consultaliquidacion)){
 					echo '<tr>';
 					echo '<td>'.$filaliquidacion['cod_proyecto'].'</td>';
-					echo '<td>'.$filaliquidacion['cod_liquidacion'].'</td>';
 					echo '<td>'.$filaliquidacion['fecha_liquidacion'].'</td>';
 					$momentoliquidacion=$filaliquidacion['momento_liquidacion'];
 						$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones WHERE cod_momentoliquidacion='$momentoliquidacion'");
 						while($filamomentoliquidacion=mysql_fetch_array($consultamomentoliquidacion)){
-							echo '<td>'.$filamomentoliquidacion['cod_momentoliquidacion'].' '.$filamomentoliquidacion['momentoliquidacion'].'</td>';
+							echo '<td>'.$filamomentoliquidacion['momentoliquidacion'].'</td>';
 						}
 					echo '<td>'.$filaliquidacion['fecha_liquidacion_final'].'</td>';
 					echo '<td>'.$filaliquidacion['observaciones'].'</td>';
 			?>
                     <td>
-			<?php echo $filaliquidacion['cod_liquidacion']; ?>
 			<form method="POST" action="cargar_archivo_liquidacion.php">
 			<?php
 			if (file_exists("../../archivos_liquidacion/".$filaliquidacion['cod_liquidacion'].".pdf")){

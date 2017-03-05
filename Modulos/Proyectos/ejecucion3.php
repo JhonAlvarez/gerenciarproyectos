@@ -221,11 +221,9 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
+		    
 		    <td>
-			<strong>Codigo Ejecucion</strong>
-		    </td>
-		    <td>
-			<strong>Momento Ejecucion</strong>
+			<strong>Momento </strong>
 		    </td>
 
 		    <td>
@@ -247,21 +245,18 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    <td>
-			<strong>Accion</strong>
-		    </td>
+		   
 		  </tr>
 
 			<?php
-				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto'");
+				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_ejecucion_final desc ");
 				while($filaejecucion=mysql_fetch_array($consultaejecucion)){
 					echo '<tr>';
 					echo '<td>'.$filaejecucion['cod_proyecto'].'</td>';
-					echo '<td>'.$filaejecucion['cod_ejecucion'].'</td>';
 					$momentoejecucion=$filaejecucion['momento_ejecucion'];
 						$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones WHERE cod_momentoejecucion='$momentoejecucion'");
 						while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
-							echo '<td>'.$filamomentoejecucion['cod_momentoejecucion'].' '.$filamomentoejecucion['momentoejecucion'].'</td>';
+							echo '<td>'.$filamomentoejecucion['momentoejecucion'].'</td>';
 						}
 
 					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
@@ -271,7 +266,6 @@
 					echo '<td>'.$filaejecucion['observaciones'].'</td>';
 			?>
                     <td>
-			<?php echo $filaejecucion['cod_ejecucion']; ?>
 			<form method="POST" action="cargar_archivo_ejecucion.php">
 			<?php
 			if (file_exists("../../archivos_ejecucion/".$filaejecucion['cod_ejecucion'].".pdf")){

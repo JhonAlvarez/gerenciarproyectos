@@ -216,14 +216,12 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
-		    <td>
-			<strong>Codigo Estructuracion</strong>
-		    </td>
+		    
 		    <td>
 			<strong>Fecha</strong>
 		    </td>
 		    <td>
-			<strong>Momento Estructuracion</strong>
+			<strong>Momento </strong>
 		    </td>
 		    <td>
 			<strong>Observaciones</strong>
@@ -231,27 +229,24 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    <td>
-			<strong>Accion</strong>
-		    </td>
+		    
 		  </tr>
 
 			<?php
-				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto'");
+				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto'  ORDER BY  fecha_estructuracion desc ");
 				while($filaestructuracion=mysql_fetch_array($consultaestructuracion)){
 					echo '<tr>';
 					echo '<td>'.$filaestructuracion['cod_proyecto'].'</td>';
-					echo '<td>'.$filaestructuracion['cod_estructuracion'].'</td>';
+					
 					echo '<td>'.$filaestructuracion['fecha_estructuracion'].'</td>';
 					$momento=$filaestructuracion['momento'];
 						$consultamomento=mysql_query("SELECT * FROM momentos WHERE cod_momento='$momento'");
 						while($filamomento=mysql_fetch_array($consultamomento)){
-							echo '<td>'.$filamomento['cod_momento'].' '.$filamomento['momento'].'</td>';
+							echo '<td>'.$filamomento['momento'].'</td>';
 						}
 					echo '<td>'.$filaestructuracion['observaciones'].'</td>';
 			?>
                     <td>
-			<?php echo $filaestructuracion['cod_estructuracion']; ?>
 			<form method="POST" action="cargar_archivo_estructuracion.php">
 			<?php
 			if (file_exists("../../archivos_estructuracion/".$filaestructuracion['cod_estructuracion'].".pdf")){

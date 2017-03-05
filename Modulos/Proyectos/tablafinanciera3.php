@@ -217,14 +217,12 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
+		    
 		    <td>
-			<strong>Codigo Tabla Financiera</strong>
+			<strong>Momento </strong>
 		    </td>
 		    <td>
-			<strong>Momento Tabla Financiera</strong>
-		    </td>
-		    <td>
-			<strong>Fecha Tabla Financiera</strong>
+			<strong>Fecha </strong>
 		    </td>
 
 		    <td>
@@ -236,28 +234,24 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    <td>
-			<strong>Accion</strong>
-		    </td>
+		   
 		  </tr>
 
 			<?php
-				$consultatablafinanciera=mysql_query("SELECT * FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto'");
+				$consultatablafinanciera=mysql_query("SELECT * FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto'  ORDER BY fecha_tablafinanciera desc ");
 				while($filatablafinanciera=mysql_fetch_array($consultatablafinanciera)){
 					echo '<tr>';
 					echo '<td>'.$filatablafinanciera['cod_proyecto'].'</td>';
-					echo '<td>'.$filatablafinanciera['cod_tablafinanciera'].'</td>';
 					$momentotablafinanciera=$filatablafinanciera['momento_tablafinanciera'];
 						$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras WHERE cod_momentotablafinanciera='$momentotablafinanciera'");
 						while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
-							echo '<td>'.$filamomentotablafinanciera['cod_momentotablafinanciera'].' '.$filamomentotablafinanciera['momentotablafinanciera'].'</td>';
+							echo '<td>'.$filamomentotablafinanciera['momentotablafinanciera'].'</td>';
 						}
 					echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
 					echo '<td>'.$filatablafinanciera['valor'].'</td>';
 					echo '<td>'.$filatablafinanciera['observaciones'].'</td>';
 			?>
                     <td>
-			<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>
 			<form method="POST" action="cargar_archivo_tablafinanciera.php">
 			<?php
 			if (file_exists("../../archivos_tablafinanciera/".$filatablafinanciera['cod_tablafinanciera'].".pdf")){
