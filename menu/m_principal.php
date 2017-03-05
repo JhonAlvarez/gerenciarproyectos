@@ -148,7 +148,7 @@ Dividir los crear por clases
                     <li><a href="Modulos/Proyectos/listado_proyecto_supervisor.php"><i class="icon-list"></i> Listado de Proyectos</a></li>
                     <li><a href="Modulos/Proyectos/estructuracion_supervisor.php"><i class="icon-plus"></i> Estructuracion</a></li>
                     <li><a href="Modulos/Proyectos/tablafinanciera_supervisor.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
-                    <li><a href="Modulos/Proyectos/licitacion_supervisor.php"><i class="icon-plus"></i> Licitacion</a></li>
+                    
                     <li><a href="Modulos/Proyectos/ejecucion_supervisor.php"><i class="icon-plus"></i> Ejecucion</a></li>
                     <li><a href="Modulos/Proyectos/liquidacion_supervisor.php"><i class="icon-plus"></i> Liquidacion</a></li>
                 </ul>

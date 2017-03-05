@@ -37,7 +37,7 @@
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="listado_proyecto_supervisor.php"><i class="icon-list"></i> Listado Proyectos</a></li>
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="estructuracion_supervisor.php"><i class="icon-plus"></i> Estructuracion</a></li>
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="tablafinanciera_supervisor.php"><i class="icon-plus"></i> Tabla Financiera</a></li>
-			<li role="presentation"><a role="menuitem" tabindex="-1" href="licitacion_supervisor.php"><i class="icon-plus"></i> Licitacion</a></li>
+			
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="ejecucion_supervisor.php"><i class="icon-plus"></i> Ejecucion</a></li>
 			<li role="presentation"><a role="menuitem" tabindex="-1" href="liquidacion_supervisor.php"><i class="icon-plus"></i> Liquidacion</a></li>
                 </ul>
