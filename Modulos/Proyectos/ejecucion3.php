@@ -223,15 +223,13 @@
 		    </td>
 		    
 		    <td>
-			<strong>Momento </strong>
+			<strong>Momento Ejecucion</strong>
 		    </td>
 
 		    <td>
-			<strong>Fecha Inicial</strong>
+			<strong>Fecha </strong>
 		    </td>
-		    <td>
-			<strong>Fecha Final</strong>
-		    </td>
+		   
 		    <td>
 			<strong>Avance Programado</strong>
 		    </td>
@@ -245,11 +243,11 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		   
+		    
 		  </tr>
 
 			<?php
-				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_ejecucion_final desc ");
+				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_ejecucion desc");
 				while($filaejecucion=mysql_fetch_array($consultaejecucion)){
 					echo '<tr>';
 					echo '<td>'.$filaejecucion['cod_proyecto'].'</td>';
@@ -260,7 +258,6 @@
 						}
 
 					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
-					echo '<td>'.$filaejecucion['fecha_ejecucion_final'].'</td>';
 					echo '<td>'.$filaejecucion['avance_programado'].'</td>';
 					echo '<td>'.$filaejecucion['avance_ejecutado'].'</td>';
 					echo '<td>'.$filaejecucion['observaciones'].'</td>';

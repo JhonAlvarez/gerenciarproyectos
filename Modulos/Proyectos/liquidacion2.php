@@ -199,7 +199,7 @@
 		    </td>
 		    
 		    <td>
-			<strong>Fecha Liquidacion </strong>
+			<strong>Fecha  </strong>
 		    </td>
 		  </tr>
 
@@ -216,11 +216,9 @@
 
 		  <tr>
 		    <td>
-			<strong>Momento Liquidacion</strong>
+			<strong>Momento </strong>
 		    </td>
-		    <td>
-			<strong>Fecha Fin Liquidacion </strong>
-		    </td>
+		  
 		    <td>
 			<strong>Observaciones</strong>
 		    </td>
@@ -235,15 +233,13 @@
 					<?php
 					$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones");
 					while($filamomentoliquidacion=mysql_fetch_array($consultamomentoliquidacion)){
-						echo '<option value="'.$filamomentoliquidacion['cod_momentoliquidacion'].'">'.$filamomentoliquidacion['cod_momentoliquidacion'].' '.$filamomentoliquidacion['momentoliquidacion'].'</option>';
+						echo '<option value="'.$filamomentoliquidacion['cod_momentoliquidacion'].'">'.$filamomentoliquidacion['momentoliquidacion'].'</option>';
 					}
 					?>
                                   </select>
 
 		    </td>
-		    <td>
-			<input type="date" name="fecha_liquidacion_final">
-		    </td>
+		   
 
 		    <td>
 			<input type="text" name="observaciones" >
@@ -264,14 +260,11 @@
 		    </td>
 		    
 		    <td>
-			<strong>Fecha Liquidacion</strong>
+			<strong>Fecha </strong>
 		    </td>
 		    <td>
 			<strong>Momento </strong>
-		    </td>
-		    <td>
-			<strong>Fecha Liquidacion Final</strong>
-		    </td>
+		    
 
 		    <td>
 			<strong>Observaciones</strong>
@@ -285,7 +278,7 @@
 		  </tr>
 
 			<?php
-				$consultaliquidacion=mysql_query("SELECT * FROM liquidaciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_liquidacion_final desc");
+				$consultaliquidacion=mysql_query("SELECT * FROM liquidaciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_liquidacion desc");
 				while($filaliquidacion=mysql_fetch_array($consultaliquidacion)){
 					echo '<tr>';
 					echo '<td>'.$filaliquidacion['cod_proyecto'].'</td>';
@@ -294,9 +287,8 @@
 					$momentoliquidacion=$filaliquidacion['momento_liquidacion'];
 						$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones WHERE cod_momentoliquidacion='$momentoliquidacion'");
 						while($filamomentoliquidacion=mysql_fetch_array($consultamomentoliquidacion)){
-							echo '<td>'.$filamomentoliquidacion['cod_momentoliquidacion'].' '.$filamomentoliquidacion['momentoliquidacion'].'</td>';
+							echo '<td>'.$filamomentoliquidacion['momentoliquidacion'].'</td>';
 						}
-					echo '<td>'.$filaliquidacion['fecha_liquidacion_final'].'</td>';
 					echo '<td>'.$filaliquidacion['observaciones'].'</td>';
 			?>
                     <td>

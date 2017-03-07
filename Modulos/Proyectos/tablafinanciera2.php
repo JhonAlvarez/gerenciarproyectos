@@ -205,7 +205,7 @@
 			<strong>Tipo de Fuente de Financiacion</strong>
 		    </td>
 		    <td>
-			<strong>Accion</strong>
+			<strong></strong>
 		    </td>
 		  </tr>
 
@@ -294,7 +294,7 @@
 Eliminar tabla financiera
 		    -->
 		    <td>
-			<strong>Momento Tabla Financiera</strong>
+			<strong>Momento </strong>
 		    </td>
 		  </tr>
 
@@ -308,7 +308,7 @@ Eliminar tabla financiera
 					<?php
 					$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras");
 					while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
-						echo '<option value="'.$filamomentotablafinanciera['cod_momentotablafinanciera'].'">'.$filamomentotablafinanciera['cod_momentotablafinanciera'].' '.$filamomentotablafinanciera['momentotablafinanciera'].'</option>';
+						echo '<option value="'.$filamomentotablafinanciera['cod_momentotablafinanciera'].'">'.$filamomentotablafinanciera['momentotablafinanciera'].'</option>';
 					}
 					?>
                                   </select>
@@ -329,7 +329,7 @@ Eliminar tabla financiera
 			<strong>Observaciones</strong>
 		    </td>
 		    <td>
-			<strong>Accion</strong>
+			<strong></strong>
 		    </td>
 		  </tr>
 
