@@ -50,11 +50,34 @@
                   </tr>
                 </table>
                 <div align="left">
-                            	<strong>Elija el Proyecto a Liquidacion</strong><br>
-			<form method="POST" action="liquidacion2.php">
-                                  <select name="cod_proyecto" class="input-xlarge">
+                            	
+			
+
+
+
+
 					<?php
 					$consultacod_proyecto=mysql_query("SELECT * FROM proyectos where estadodelproyecto=17");
+                     $cantRegistros=mysql_num_rows( $consultacod_proyecto);
+                        echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
+
+
+
+
+
+
+                    ?>
+
+
+                    <form method="POST" action="liquidacion2.php">
+                                  <select name="cod_proyecto" class="input-xlarge">
+
+            <?php
+
+
+
+
+
 					while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
 						echo '<option value="'.$filacod_proyecto['cod_proyecto'].'">'.$filacod_proyecto['cod_proyecto'].' '.$filacod_proyecto['objetivoproyecto'].'</option>';
 					}
