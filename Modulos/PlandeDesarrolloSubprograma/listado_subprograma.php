@@ -195,7 +195,7 @@
                     <?php
                       if($_SESSION['tipo_user']=='a'){
                     ?>
-                    <td><strong>Editar</strong></td>
+                    
                     <?php } ?>
 
                   </tr>
@@ -220,7 +220,18 @@
 
                   <tr>
 
-                    <td><?php echo $row['cod_plan']; ?></td>
+                    <td><a href="#act<?php echo $row['cod_subprograma']; ?>"  data-toggle="modal">
+
+                              
+
+                            
+
+
+                    <?php echo $row['cod_plan']; ?>
+                        
+</a>
+
+                    </td>
 
 					<?php
 
@@ -296,19 +307,7 @@
                     <?php
                          if($_SESSION['tipo_user']=='a'){
                     ?>
-                    <td>
-
-                    	<center>
-
-                            <a href="#act<?php echo $row['cod_subprograma']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-
-                                <i class="icon-edit"></i>
-
-                            </a>
-
-                        </center>
-
-                    </td>
+                   
                     <?php } ?>
 
                   </tr>

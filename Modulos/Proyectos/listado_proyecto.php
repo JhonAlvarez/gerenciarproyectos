@@ -328,28 +328,30 @@
                   <tr class="well">
                     <td><strong>Codigo Proyecto</strong></td>
                     <td><strong>Objeto del Proyecto</strong></td>
-                    <td><strong>Municipio 1</strong></td>
-                    <td><strong>Municipio 2</strong></td>
+                    <td><strong>Municipio </strong></td>
                     <td><strong>Estado del Proyecto</strong></td>
                     <td><strong>Supervisor</strong></td>
                     <td><strong>Politica</strong></td>
                     <td><strong>Sector de Inversion</strong></td>
                     <td><strong>Subsector</strong></td>
                     <td><strong>Ente Ejecutor</strong></td>
-                    <td><strong>Editar</strong></td>
-                    <td><strong>Agregar Meta</strong></td>
+
+                    <!--
+                    Con opcion de quitar la meta
+                    -->
+                    
                   </tr>
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
 						$buscar=limpiar($_POST['buscar']);
 						$pame=mysql_query("SELECT * FROM proyectos WHERE cod_proyecto LIKE '%$buscar%' ORDER BY cod_proyecto DESC");	
-						/* determinar el número de filas del resultado */
+						/* determinar el nÃºmero de filas del resultado */
 						$cantRegistros=mysql_num_rows($pame);
 						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
 
 					}else{
 						$pame=mysql_query("SELECT * FROM proyectos ORDER BY cod_proyecto DESC");		
-						/* determinar el número de filas del resultado */
+						/* determinar el nÃºmero de filas del resultado */
 						$cantRegistros=mysql_num_rows($pame);
 						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
 
@@ -357,7 +359,20 @@
 					while($row=mysql_fetch_array($pame)){
 				  ?>
                   <tr>
-                    <td><?php echo $row['cod_proyecto']; ?></td>
+                    <td>
+
+
+                    
+                    <button  data-toggle="modal" data-target="#act<?php echo $row['cod_proyecto']; ?>" class="btn-link"><?php echo $row['cod_proyecto']; ?></button>   
+                    
+
+                    <!--
+						Editar 
+                    -->
+                    	
+
+
+                    </td>
                     <td><?php echo $row['objetivoproyecto']; ?></td>
 			<td>
 			<?php
@@ -369,16 +384,7 @@
 			?>
 			</td>
 
-			<td>
-			<?php
-				$id_municipio=$row['municipio2'];
-				$consultamunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-						echo $filamunicipio['municipio'];
-					}
-			?>
-			</td>
-
+		
 			<td>
 			<?php
 				$id_estadodelproyecto=$row['estadodelproyecto'];
@@ -440,24 +446,9 @@
 			</td>
 
 
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $row['cod_proyecto']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-                        </center>
-                    </td>
+                  
 
-                    <td>
-                    	<center>
-			<form method="POST" action="agregar_meta.php">
-				<?php
-				 echo '<input type="hidden" name="cod_proyecto" value="'.$row['cod_proyecto'].'">';
-				?>
-				<input type="submit" value="Agregar Meta">
-			</form>
-                        </center>
-                    </td>
+                 
                   </tr>
                   <div id="act<?php echo $row['cod_proyecto']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 	<form name="form2" method="post" action="">

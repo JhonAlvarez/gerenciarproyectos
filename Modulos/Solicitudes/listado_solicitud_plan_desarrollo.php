@@ -164,6 +164,8 @@
                     <td><strong>Fase</strong></td>
                     <td><strong>Valor del Proyecto</strong></td>
                   </tr>
+
+
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
 						$buscar=limpiar($_POST['buscar']);
@@ -182,7 +184,13 @@
 					while($row=mysql_fetch_array($pame)){
 				  ?>
                   <tr>
-                    <td><?php echo $row['cod_solicitudplan']; ?></td>
+                    <td >
+
+
+                    <button data-toggle="modal" data-target="#act<?php echo $row['cod_solicitudplan']; ?>" class="btn-link"> <?php echo $row['cod_solicitudplan']; ?> 
+                    </button>
+
+                    </td> 
 			<td>
 			    <?php
 				$id_municipio=$row['cod_municipio'];
@@ -217,14 +225,15 @@
                     <td><?php echo $s.''.formato($row['valorproyecto']) ?></td>
 
 
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $row['cod_solicitudplan']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-                        </center>
-                    </td>
+                   
                   </tr>
+
+
+
+
+        <!--
+Ventana editar 
+        -->
                   <div id="act<?php echo $row['cod_solicitudplan']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 	<form name="form2" method="post" action="">
                     <input type="hidden" name="cod_solicitudplan" value="<?php echo $row['cod_solicitudplan']; ?>">
@@ -264,6 +273,8 @@
 					}
 					?>
                                   </select><br>
+
+
 
                                 <strong>Objetivo y ubicacion del proyecto</strong><br>
                                 <input type="text" name="objetivoyubicacion" autocomplete="off" required value="<?php echo $row['objetivoyubicacion']; ?>"><br>

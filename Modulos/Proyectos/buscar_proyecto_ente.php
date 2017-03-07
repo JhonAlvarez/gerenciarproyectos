@@ -345,16 +345,13 @@
                   <tr class="well">
                     <td><strong>Codigo Proyecto</strong></td>
                     <td><strong>Objeto del Proyecto</strong></td>
-                    <td><strong>Municipio 1</strong></td>
-                    <td><strong>Municipio 2</strong></td>
+                    <td><strong>Municipio </strong></td>
                     <td><strong>Estado del Proyecto</strong></td>
                     <td><strong>Supervisor</strong></td>
                     <td><strong>Politica</strong></td>
                     <td><strong>Sector de Inversion</strong></td>
                     <td><strong>Subsector</strong></td>
                     <td><strong>Ente Ejecutor</strong></td>
-                    <td><strong>Editar</strong></td>
-                    <td><strong>Agregar Meta</strong></td>
                   </tr>
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
@@ -374,7 +371,21 @@
 					while($row=mysql_fetch_array($pame)){
 				  ?>
                   <tr>
-                    <td><?php echo $row['cod_proyecto']; ?></td>
+                    <td>
+<!--
+
+Ventana editar
+-->
+						<a href="#act<?php echo $row['cod_proyecto']; ?>"  data-toggle="modal">
+						<?php echo $row['cod_proyecto']; ?>
+                                
+                            </a>
+
+                    
+                    	
+
+
+                    </td>
                     <td><?php echo $row['objetivoproyecto']; ?></td>
 			<td>
 			<?php
@@ -386,15 +397,7 @@
 			?>
 			</td>
 
-			<td>
-			<?php
-				$id_municipio=$row['municipio2'];
-				$consultamunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-						echo $filamunicipio['municipio'];
-					}
-			?>
-			</td>
+			
 
 			<td>
 			<?php
@@ -457,24 +460,9 @@
 			</td>
 
 
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $row['cod_proyecto']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-                        </center>
-                    </td>
+                   
 
-                    <td>
-                    	<center>
-			<form method="POST" action="agregar_meta.php">
-				<?php
-				 echo '<input type="hidden" name="cod_proyecto" value="'.$row['cod_proyecto'].'">';
-				?>
-				<input type="submit" value="Agregar Meta">
-			</form>
-                        </center>
-                    </td>
+                    
                   </tr>
                   <div id="act<?php echo $row['cod_proyecto']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 	<form name="form2" method="post" action="">

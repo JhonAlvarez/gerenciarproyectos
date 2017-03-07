@@ -161,7 +161,9 @@
 					while($row=mysql_fetch_array($pame)){
 				  ?>
                   <tr>
-                    <td><?php echo $row['cod_solicitudplan']; ?></td>
+                    <td> <a data-toggle="modal" href="#act<?php echo $row['cod_solicitudplan']; ?>">  <?php echo $row['cod_solicitudplan']; ?>
+                       
+                    </td>
 			<td>
 			    <?php
 				$id_municipio=$row['cod_municipio'];
@@ -195,16 +197,11 @@
 			</td>
                     <td><?php echo $s.''.formato($row['valorproyecto']) ?></td>
 
-
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $row['cod_solicitudplan']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-                        </center>
-                    </td>
                   </tr>
+
+
                   <div id="act<?php echo $row['cod_solicitudplan']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
                 	<form name="form2" method="post" action="">
                     <input type="hidden" name="cod_solicitudplan" value="<?php echo $row['cod_solicitudplan']; ?>">
                     <div class="modal-header">

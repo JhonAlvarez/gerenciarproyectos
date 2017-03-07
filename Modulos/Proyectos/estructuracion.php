@@ -50,16 +50,20 @@
                   </tr>
                 </table>
                 <div align="left">
-                            	<strong>Elija el Proyecto a Estructurar</strong><br>
+                                <?php
+                                $consultacod_proyecto=mysql_query("SELECT * FROM proyectos where estadodelproyecto=1 or estadodelproyecto=2 or estadodelproyecto=4 or 
+                        estadodelproyecto=5 or estadodelproyecto=6 or estadodelproyecto=7 or estadodelproyecto=8 or estadodelproyecto=9 or estadodelproyecto=10 or estadodelproyecto=16
+                        ");
+                    $cantRegistros=mysql_num_rows( $consultacod_proyecto);
+                        echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
+                                ?>
 			<form method="POST" action="estructuracion2.php">
                                   <select name="cod_proyecto" class="input-xlarge">
 					<?php
-					$consultacod_proyecto=mysql_query("SELECT * FROM proyectos where estadodelproyecto=1 or estadodelproyecto=2 or estadodelproyecto=4 or 
-                        estadodelproyecto=5 or estadodelproyecto=6 or estadodelproyecto=7 or estadodelproyecto=8 or estadodelproyecto=9 or estadodelproyecto=10 or estadodelproyecto=16
-                        ");
 					while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
 						echo '<option value="'.$filacod_proyecto['cod_proyecto'].'">'.$filacod_proyecto['cod_proyecto'].' '.$filacod_proyecto['objetivoproyecto'].'</option>';
 					}
+
 					?>
                                   </select>
 				<input type="submit" value="Siguiente >>">

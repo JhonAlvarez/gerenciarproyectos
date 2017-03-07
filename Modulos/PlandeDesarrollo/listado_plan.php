@@ -172,7 +172,7 @@
                    if($_SESSION['tipo_user']=='a'){
                     
                   ?>
-                    <td><strong>Editar</strong></td>
+                    
                     <?php } ?>
 
                   </tr>
@@ -197,7 +197,14 @@
 
                   <tr>
 
-                    <td><?php echo $row['cod_plan']; ?></td>
+                    <td>
+                     <button data-target="#act<?php echo $row['cod_plan']; ?>" class="btn-link" data-toggle="modal">
+
+
+                    <?php echo $row['cod_plan']; ?> 
+                    </button>
+
+                    </td>
 
                     <td><?php echo $row['plan']; ?></td>
 
@@ -205,20 +212,7 @@
                     <?php
                          if($_SESSION['tipo_user']=='a'){
                     ?>
-                    <td>
-                        
-                    	<center>
-
-                            <a href="#act<?php echo $row['cod_plan']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-
-                                <i class="icon-edit"></i>
-
-                            </a>
-
-                        </center>
-                        
-
-                    </td>
+                 
                     <?php } ?>
 
                   </tr>
