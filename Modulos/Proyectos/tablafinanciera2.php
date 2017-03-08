@@ -306,7 +306,6 @@ Eliminar tabla financiera
 		    <td>
                                   <select name="cod_momentotablafinanciera">
 					<?php
-					$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras");
 					while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
 						echo '<option value="'.$filamomentotablafinanciera['cod_momentotablafinanciera'].'">'.$filamomentotablafinanciera['momentotablafinanciera'].'</option>';
 					}

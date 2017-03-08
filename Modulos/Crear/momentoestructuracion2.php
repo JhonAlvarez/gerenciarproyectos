@@ -74,19 +74,14 @@
 
 		<table border="1">
 		  <tr>
-		    <td>
-			<strong>Codigo Momento Estructuracion</strong>
-		    </td>
-		    <td>
-			<strong>Momento Estructuracion</strong>
-		    </td>
+		    
 		  </tr>
 
 			<?php
-				$consultamomentoestructuracion=mysql_query("SELECT * FROM momentos ORDER BY cod_momento DESC");
+				$consultamomentoestructuracion=mysql_query("SELECT * FROM momentos ORDER BY momento DESC");
 				while($filamomentoestructuracion=mysql_fetch_array($consultamomentoestructuracion)){
 					echo '<tr>';
-					echo '<td>'.$filamomentoestructuracion['cod_momento'].'</td>';
+					
 					echo '<td>'.$filamomentoestructuracion['momento'].'</td>';
  					echo '<tr>';
 				}

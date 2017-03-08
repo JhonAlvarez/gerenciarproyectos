@@ -53,7 +53,7 @@
 
 		    <form method="POST" action="momentoestructuracion2.php">
 			<?php
-				$consultaCod_momentoestructuracion=mysql_query("SELECT MAX(cod_momento) AS ultimoMomentoestructuracion FROM momentos");
+				$consultaCod_momentoestructuracion=mysql_query("SELECT MAX(cod_momento) AS ultimoMomentoestructuracion FROM momentos  ");
 					while($filamomentoestructuracion=mysql_fetch_array($consultaCod_momentoestructuracion)){
 						$nuevoCod_momentoestructuracion=$filamomentoestructuracion['ultimoMomentoestructuracion']+1;
 						echo '<input type="text" name="cod_momento" readonly value="'.$nuevoCod_momentoestructuracion.'">';
@@ -64,14 +64,14 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Momento Estructuracion </strong></td>
-			<td><strong>Momento Estructuracion </strong></td>
+		
+			<td><strong>Momento  </strong></td>
 
 			<?php
-				$consultamomentoestructuracion=mysql_query("SELECT * FROM momentos");
+				$consultamomentoestructuracion=mysql_query("SELECT * FROM momentos ORDER BY momento asc");
 					while($filamomentoestructuracion=mysql_fetch_array($consultamomentoestructuracion)){
 					echo "<tr>";
-						echo '<td>'.$filamomentoestructuracion['cod_momento'].'</td>';
+						
 						echo '<td>'.$filamomentoestructuracion['momento'].'</td>';
 					echo "</tr>";
 

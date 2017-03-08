@@ -231,7 +231,7 @@
 		    <td>
                                   <select name="cod_momentoliquidacion">
 					<?php
-					$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones");
+					$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones   ORDER BY momentoliquidacion asc ");
 					while($filamomentoliquidacion=mysql_fetch_array($consultamomentoliquidacion)){
 						echo '<option value="'.$filamomentoliquidacion['cod_momentoliquidacion'].'">'.$filamomentoliquidacion['momentoliquidacion'].'</option>';
 					}

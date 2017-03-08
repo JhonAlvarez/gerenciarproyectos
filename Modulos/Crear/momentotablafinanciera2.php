@@ -74,19 +74,14 @@
 
 		<table border="1">
 		  <tr>
-		    <td>
-			<strong>Codigo Momento Tabla Financiera - </strong>
-		    </td>
-		    <td>
-			<strong> - Momento Tabla Financiera</strong>
-		    </td>
+		  
 		  </tr>
 
 			<?php
-				$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras ORDER BY cod_momentotablafinanciera DESC");
+				$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras ORDER BY momentotablafinanciera asc");
 				while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
 					echo '<tr>';
-					echo '<td>'.$filamomentotablafinanciera['cod_momentotablafinanciera'].'</td>';
+					
 					echo '<td>'.$filamomentotablafinanciera['momentotablafinanciera'].'</td>';
  					echo '<tr>';
 				}

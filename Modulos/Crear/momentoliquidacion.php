@@ -64,14 +64,13 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Momento Liquidacion - </strong></td>
-			<td><strong> - Momento Liquidacion </strong></td>
+			<td><strong>  </strong></td>
 
 			<?php
-				$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones");
+				$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones  ORDER BY momentoliquidacion asc");
 					while($filamomentoliquidacion=mysql_fetch_array($consultamomentoliquidacion)){
 					echo "<tr>";
-						echo '<td>'.$filamomentoliquidacion['cod_momentoliquidacion'].'</td>';
+						
 						echo '<td>'.$filamomentoliquidacion['momentoliquidacion'].'</td>';
 					echo "</tr>";
 

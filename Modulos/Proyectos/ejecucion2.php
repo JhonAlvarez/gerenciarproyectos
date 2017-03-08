@@ -217,7 +217,7 @@
 		    <td>
                                   <select name="cod_momentoejecucion">
 					<?php
-					$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones ");
+					$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones ORDER BY momentoejecucion asc ");
 					while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
 						echo '<option value="'.$filamomentoejecucion['cod_momentoejecucion'].'">'.$filamomentoejecucion['momentoejecucion'].'</option>';
 					}

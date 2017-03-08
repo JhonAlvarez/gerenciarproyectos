@@ -64,14 +64,13 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Momento Ejecucion - </strong></td>
-			<td><strong> - Momento Ejecucion </strong></td>
+			<td><strong>  </strong></td>
 
 			<?php
-				$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones");
+				$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones ORDER BY momentoejecucion asc ");
 					while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
 					echo "<tr>";
-						echo '<td>'.$filamomentoejecucion['cod_momentoejecucion'].'</td>';
+						
 						echo '<td>'.$filamomentoejecucion['momentoejecucion'].'</td>';
 					echo "</tr>";
 
