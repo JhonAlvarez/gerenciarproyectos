@@ -57,7 +57,7 @@
 
 
 					<?php
-					$consultacod_proyecto=mysql_query("SELECT * FROM proyectos where estadodelproyecto=17");
+					$consultacod_proyecto=mysql_query("SELECT * FROM proyectos ORDER BY cod_proyecto desc");
                      $cantRegistros=mysql_num_rows( $consultacod_proyecto);
                         echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
 

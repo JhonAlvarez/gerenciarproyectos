@@ -392,7 +392,7 @@ Eliminar tabla financiera
 							echo '<td>'.$filamomentotablafinanciera['momentotablafinanciera'].'</td>';
 						}
 					echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
-					echo '<td>'.$filatablafinanciera['valor'].'</td>';
+					echo '<td> $'.round($filatablafinanciera['valor']).'</td>';
 					echo '<td>'.$filatablafinanciera['observaciones'].'</td>';
 			?>
                     <td>

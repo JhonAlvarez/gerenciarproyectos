@@ -64,7 +64,7 @@
                     </td>
                   </tr>
                 </table>
-                <div align="right">
+                <div align="center">
 		<table>
 		<tr>
 		<td>
@@ -148,113 +148,8 @@
 		</td>
 
 
-		<td>
-			<strong>Buscar por Politica: </strong>
+		
 
-				<form method="POST" action="buscar_proyecto_politica.php">
-
-                                  <select name="cod_politica">
-
-					<?php
-
-					$consultapolitica=mysql_query("SELECT * FROM estrategiadelproyecto");
-
-					while($filapolitica=mysql_fetch_array($consultapolitica)){
-
-						echo '<option value="'.$filapolitica['cod_estrategiadelproyecto'].'">'.$filapolitica['estrategiadelproyecto'].'</option>';
-
-					}
-
-					?>
-
-                                  </select>
-
-				<input type="submit" value="Buscar">
-
-				</form>
-
-		</td>
-
-		<td>
-			<strong>B. por Sector de Inversion: </strong>
-
-				<form method="POST" action="buscar_proyecto_inversion.php">
-
-                                  <select name="cod_sectordeinversion">
-
-					<?php
-
-					$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion");
-
-					while($filasectordeinversion=mysql_fetch_array($consultasectordeinversion)){
-
-						echo '<option value="'.$filasectordeinversion['cod_sectordeinversion'].'">'.$filasectordeinversion['sectordeinversion'].'</option>';
-
-					}
-
-					?>
-
-                                  </select>
-
-				<input type="submit" value="Buscar">
-
-				</form>
-
-		</td>
-
-		<td>
-			<strong>Buscar por Subsector: </strong>
-
-				<form method="POST" action="buscar_proyecto_subsector.php">
-
-                                  <select name="cod_subsector">
-
-					<?php
-
-					$consultasubsector=mysql_query("SELECT * FROM subsector");
-
-					while($filasubsector=mysql_fetch_array($consultasubsector)){
-
-						echo '<option value="'.$filasubsector['cod_subsector'].'">'.$filasubsector['subsector'].'</option>';
-
-					}
-
-					?>
-
-                                  </select>
-
-				<input type="submit" value="Buscar">
-
-				</form>
-
-		</td>
-
-		<td>
-			<strong>Buscar por Ente Ejecutor: </strong>
-
-				<form method="POST" action="buscar_proyecto_ente.php">
-
-                                  <select name="cod_enteejecutor">
-
-					<?php
-
-					$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor");
-
-					while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
-
-						echo '<option value="'.$filaenteejecutor['cod_enteejecutor'].'">'.$filaenteejecutor['enteejecutor'].'</option>';
-
-					}
-
-					?>
-
-                                  </select>
-
-				<input type="submit" value="Buscar">
-
-				</form>
-
-		</td>
 
 		</tr>
 		</table>
@@ -324,18 +219,24 @@
 						}
 					}
 				?>
-                <table class="table table-bordered">
+                <table class="table table-bordered" align="center">
                   <tr class="well">
                     <td><strong>Codigo Proyecto</strong></td>
                     <td><strong>Objeto del Proyecto</strong></td>
                     <td><strong>Municipio </strong></td>
                     <td><strong>Estado del Proyecto</strong></td>
                     <td><strong>Supervisor</strong></td>
+                    <td><strong>Meta</strong></td>
+
+
+<!--
                     <td><strong>Politica</strong></td>
                     <td><strong>Sector de Inversion</strong></td>
                     <td><strong>Subsector</strong></td>
                     <td><strong>Ente Ejecutor</strong></td>
+                    Para el informe del proyecto
 
+-->
                     <!--
                     Con opcion de quitar la meta
                     -->
@@ -404,7 +305,7 @@
 					}
 			?>
 			</td>
-
+<!--
 			<td>
 			<?php
 				$id_estrategiadelproyecto=$row['estrategia'];
@@ -414,7 +315,9 @@
 					}
 			?>
 			</td>
+-->
 
+<!--
 			<td>
 			<?php
 				$id_sectordeinversion=$row['sectordeinversion'];
@@ -424,7 +327,9 @@
 					}
 			?>
 			</td>
+-->
 
+<!--
 			<td>
 			<?php
 				$id_subsector=$row['subsector'];
@@ -434,7 +339,8 @@
 					}
 			?>
 			</td>
-
+-->
+<!--
 			<td>
 			<?php
 				$id_enteejecutor=$row['enteejecutor'];
@@ -444,7 +350,18 @@
 					}
 			?>
 			</td>
+-->
 
+<td>
+                    	<center>
+			<form method="POST" action="agregar_meta.php">
+				<?php
+				 echo '<input type="hidden" name="cod_proyecto" value="'.$row['cod_proyecto'].'">';
+				?>
+				<input type="submit" value="...">
+			</form>
+                        </center>
+                    </td>
 
                   
 
@@ -466,7 +383,7 @@
                                 <input type="text" name="objetivoproyecto" autocomplete="off" required value="<?php echo $row['objetivoproyecto']; ?>"><br>
 
 
-                                <strong>Municipio 1</strong><br>
+                                <strong>Municipio </strong><br>
                                   <select name="municipio1">
 					<?php
 					$paMunicipio=mysql_query("SELECT * FROM municipios");
@@ -481,20 +398,22 @@
                                   </select><br>
 
 
-                                <strong>Municipio 2</strong><br>
-			
-                                  <select name="municipio2">
+
+                              <strong>Supervisor</strong><br>
+                                  <select name="supervisor">
 					<?php
-					$paMunicipio2=mysql_query("SELECT * FROM municipios");
-					while($filamunicipio2=mysql_fetch_array($paMunicipio2)){
-						if($filamunicipio2['cod_municipio']==$row['municipio2']){
-							echo '<option value="'.$filamunicipio2['cod_municipio'].'" selected>'.$filamunicipio2['municipio'].'</option>';
+					$paSupervisor=mysql_query("SELECT * FROM personal");
+					while($filasupervisor=mysql_fetch_array($paSupervisor)){
+						if($filasupervisor['Cedula']==$row['supervisor']){
+							echo '<option value="'.$filasupervisor['Cedula'].'" selected>'.$filasupervisor['Nombres'].' '.$filasupervisor['Nombres'].'</option>';
 						}else{
-							echo '<option value="'.$filamunicipio2['cod_municipio'].'">'.$filamunicipio2['municipio'].'</option>';	
+							echo '<option value="'.$filasupervisor['Cedula'].'">'.$filasupervisor['estadodelproyecto'].' '.$filasupervisor['Nombres'].'</option>';	
 						}
 					}
 					?>
                                   </select><br>
+
+
 
 
                                 <strong>Estado del Proyecto</strong><br>
@@ -513,19 +432,7 @@
 
                             </div>
                             <div class="span6">
-                                <strong>Supervisor</strong><br>
-                                  <select name="supervisor">
-					<?php
-					$paSupervisor=mysql_query("SELECT * FROM personal");
-					while($filasupervisor=mysql_fetch_array($paSupervisor)){
-						if($filasupervisor['Cedula']==$row['supervisor']){
-							echo '<option value="'.$filasupervisor['Cedula'].'" selected>'.$filasupervisor['Nombres'].' '.$filasupervisor['Nombres'].'</option>';
-						}else{
-							echo '<option value="'.$filasupervisor['Cedula'].'">'.$filasupervisor['estadodelproyecto'].' '.$filasupervisor['Nombres'].'</option>';	
-						}
-					}
-					?>
-                                  </select><br>
+                                
 
                                 <strong>Politica</strong><br>
                                   <select name="estrategia">

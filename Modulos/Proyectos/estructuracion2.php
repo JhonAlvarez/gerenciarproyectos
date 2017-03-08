@@ -230,7 +230,7 @@
 		    <td>
                                   <select name="cod_momento">
 					<?php
-					$consultamomento=mysql_query("SELECT * FROM momentos");
+					$consultamomento=mysql_query("SELECT * FROM momentos  ORDER BY momento asc ");
 					while($filamomento=mysql_fetch_array($consultamomento)){
 						echo '<option value="'.$filamomento['cod_momento'].'">'.$filamomento['momento'].'</option>';
 					}
