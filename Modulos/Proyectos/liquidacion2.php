@@ -78,11 +78,11 @@
 								echo '<td>'.$filamunicipio1['municipio'].'</td>';
 							}
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td><strong>Municipio 2: </strong></td>';
+						
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
 							$consultamunicipio2=mysql_query("SELECT * FROM municipios WHERE cod_municipio=".$filacod_proyecto['municipio2']);
 							while($filamunicipio2=mysql_fetch_array($consultamunicipio2)){
-								echo '<td>'.$filamunicipio2['municipio'].'</td>';
+								
 							}
 					echo "</tr>";
 
@@ -198,8 +198,9 @@
 			<strong>Codigo Proyecto</strong>
 		    </td>
 		    
+
 		    <td>
-			<strong>Fecha  </strong>
+			<strong>Fecha</strong>
 		    </td>
 		  </tr>
 
@@ -207,7 +208,7 @@
 		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
-		    
+		   
 		    <td>
 			<input type="date" name="fecha_liquidacion">
 		    </td>
@@ -216,9 +217,9 @@
 
 		  <tr>
 		    <td>
-			<strong>Momento </strong>
+			<strong>Momento Liquidacion</strong>
 		    </td>
-		  
+		   
 		    <td>
 			<strong>Observaciones</strong>
 		    </td>
@@ -231,7 +232,7 @@
 		    <td>
                                   <select name="cod_momentoliquidacion">
 					<?php
-					$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones   ORDER BY momentoliquidacion asc ");
+					$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones ORDER BY momentoliquidacion asc");
 					while($filamomentoliquidacion=mysql_fetch_array($consultamomentoliquidacion)){
 						echo '<option value="'.$filamomentoliquidacion['cod_momentoliquidacion'].'">'.$filamomentoliquidacion['momentoliquidacion'].'</option>';
 					}
@@ -239,7 +240,7 @@
                                   </select>
 
 		    </td>
-		   
+		 
 
 		    <td>
 			<input type="text" name="observaciones" >
@@ -264,7 +265,8 @@
 		    </td>
 		    <td>
 			<strong>Momento </strong>
-		    
+		    </td>
+		 
 
 		    <td>
 			<strong>Observaciones</strong>
@@ -282,7 +284,6 @@
 				while($filaliquidacion=mysql_fetch_array($consultaliquidacion)){
 					echo '<tr>';
 					echo '<td>'.$filaliquidacion['cod_proyecto'].'</td>';
-					
 					echo '<td>'.$filaliquidacion['fecha_liquidacion'].'</td>';
 					$momentoliquidacion=$filaliquidacion['momento_liquidacion'];
 						$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones WHERE cod_momentoliquidacion='$momentoliquidacion'");
@@ -292,7 +293,6 @@
 					echo '<td>'.$filaliquidacion['observaciones'].'</td>';
 			?>
                     <td>
-			
 			<form method="POST" action="cargar_archivo_liquidacion.php">
 			<?php
 			if (file_exists("../../archivos_liquidacion/".$filaliquidacion['cod_liquidacion'].".pdf")){
@@ -341,25 +341,24 @@
 
                                 
 
-                                <strong>Momento </strong><br>
+                                <strong>Momento</strong><br>
                                   <select name="momento_liquidacion">
 					<?php
 					$paLiquidacion=mysql_query("SELECT * FROM momentosliquidaciones");
 					while($filae=mysql_fetch_array($paLiquidacion)){
 						if($filae['cod_momentoliquidacion']==$filaliquidacion['momento_liquidacion']){
-							echo '<option value="'.$filae['cod_momentoliquidacion'].'" selected>'.$filae['cod_momentoliquidacion'].' '.$filae['momentoliquidacion'].'</option>';
+							echo '<option value="'.$filae['cod_momentoliquidacion'].'" selected>'.$filae['momentoliquidacion'].'</option>';
 						}else{
-							echo '<option value="'.$filae['cod_momentoliquidacion'].'">'.$filae['cod_momentoliquidacion'].' '.$filae['momentoliquidacion'].'</option>';	
+							echo '<option value="'.$filae['cod_momentoliquidacion'].'">'.$filae['momentoliquidacion'].'</option>';	
 						}
 					}
 					?>
                                   </select><br>
 
-                                <strong>Fecha Liquidacion</strong><br>
+                                <strong>Fecha</strong><br>
                                 <input type="date" name="fecha_liquidacion" autocomplete="off" value="<?php echo $filaliquidacion['fecha_liquidacion']; ?>"><br>
 
-                                <strong>Fecha Liquidacion Final</strong><br>
-                                <input type="date" name="fecha_liquidacion_final" autocomplete="off" value="<?php echo $filaliquidacion['fecha_liquidacion_final']; ?>"><br>
+                               
 
                                 <strong>Observaciones</strong><br>
                                 <input type="text" name="observaciones" autocomplete="off" value="<?php echo $filaliquidacion['observaciones']; ?>"><br>

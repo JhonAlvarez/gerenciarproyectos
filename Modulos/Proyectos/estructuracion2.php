@@ -78,11 +78,9 @@
 								echo '<td>'.$filamunicipio1['municipio'].'</td>';
 							}
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td><strong>Municipio 2: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
+						
 							$consultamunicipio2=mysql_query("SELECT * FROM municipios WHERE cod_municipio=".$filacod_proyecto['municipio2']);
 							while($filamunicipio2=mysql_fetch_array($consultamunicipio2)){
-								echo '<td>'.$filamunicipio2['municipio'].'</td>';
 							}
 					echo "</tr>";
 
@@ -197,7 +195,7 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
-		   
+		    
 		    <td>
 			<strong>Fecha </strong>
 		    </td>
@@ -207,7 +205,7 @@
 		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
-		  
+		    
 		    <td>
 			<input type="date" name="fecha_estructuracion">
 		    </td>
@@ -230,7 +228,7 @@
 		    <td>
                                   <select name="cod_momento">
 					<?php
-					$consultamomento=mysql_query("SELECT * FROM momentos  ORDER BY momento asc ");
+					$consultamomento=mysql_query("SELECT * FROM momentos   ORDER BY momento asc ");
 					while($filamomento=mysql_fetch_array($consultamomento)){
 						echo '<option value="'.$filamomento['cod_momento'].'">'.$filamomento['momento'].'</option>';
 					}
@@ -254,13 +252,20 @@
 		  <tr>
 		    <td>
 			<strong>Codigo Proyecto</strong>
+			
+
+<!--
+Aqui quedara el editar y eliminar 
+-->
+
+
 		    </td>
-		    
+		   
 		    <td>
 			<strong>Fecha</strong>
 		    </td>
 		    <td>
-			<strong>Momento Estructuracion</strong>
+			<strong>Momento </strong>
 		    </td>
 		    <td>
 			<strong>Observaciones</strong>
@@ -274,7 +279,7 @@
 		  </tr>
 
 			<?php
-				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto' ORDER BY  fecha_estructuracion desc ");
+				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_estructuracion desc");
 				while($filaestructuracion=mysql_fetch_array($consultaestructuracion)){
 					echo '<tr>';
 					echo '<td>'.$filaestructuracion['cod_proyecto'].'</td>';
@@ -297,7 +302,7 @@
 				echo '<img src="../../archivos_estructuracion/defecto.jpg" width="30" height="30">';
 			}
 			?>
-                            <input type="hidden" name="cod_estructuracion" autocomplete="off" required readonly value="">
+                            <input type="hidden" name="cod_estructuracion" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_estructuracion']; ?>">
         	            <button type="submit" class="btn btn-primary"><strong>Cargar</strong></button>
 			</form>			
 		     </td>
@@ -333,26 +338,25 @@
                                 <strong>Codigo Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_proyecto']; ?>"><br>
 
-                                <strong>Codigo Estructuracion</strong><br>
-                                <input type="text" name="cod_estructuracion" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_estructuracion']; ?>"><br>
+                                
 
 
-                                <strong>Momento Estructuracion</strong><br>
+                                <strong>Momento </strong><br>
                                   <select name="momento">
 					<?php
-					$paEstructuracion=mysql_query("SELECT * FROM momentos");
+					$paEstructuracion=mysql_query("SELECT * FROM momentos ORDER BY  momento asc");
 					while($filae=mysql_fetch_array($paEstructuracion)){
 						if($filae['cod_momento']==$filaestructuracion['momento']){
-							echo '<option value="'.$filae['cod_momento'].'" selected>'.$filae['cod_momento'].' '.$filae['momento'].'</option>';
+							echo '<option value="'.$filae['cod_momento'].'" selected>'.$filae['momento'].'</option>';
 						}else{
-							echo '<option value="'.$filae['cod_momento'].'">'.$filae['cod_momento'].' '.$filae['momento'].'</option>';	
+							echo '<option value="'.$filae['cod_momento'].'">'.$filae['momento'].'</option>';	
 						}
 					}
 					?>
                                   </select><br>
 
                                 <strong>Fecha</strong><br>
-                                <input type="text" name="fecha_estructuracion" autocomplete="off" value="<?php echo $filaestructuracion['fecha_estructuracion']; ?>"><br>
+                                <input type="date" name="fecha_estructuracion" autocomplete="off" value="<?php echo $filaestructuracion['fecha_estructuracion']; ?>"><br>
 
                                 <strong>Observaciones</strong><br>
                                 <input type="text" name="observaciones" autocomplete="off" value="<?php echo $filaestructuracion['observaciones']; ?>"><br>

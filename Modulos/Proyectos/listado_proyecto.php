@@ -56,7 +56,7 @@
                         	<div class="input-prepend input-append">
 								<span class="add-on"><i class="icon-search"></i></span>
                         		<input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
-                                autofocus placeholder="Buscar por Codigo de Proyecto">
+                                autofocus placeholder="Ingrese su Busqueda">
                             </div>
                             <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
                     	</form>
@@ -242,10 +242,12 @@
                     -->
                     
                   </tr>
+
+
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
 						$buscar=limpiar($_POST['buscar']);
-						$pame=mysql_query("SELECT * FROM proyectos WHERE cod_proyecto LIKE '%$buscar%' ORDER BY cod_proyecto DESC");	
+						$pame=mysql_query("SELECT * FROM proyectos WHERE cod_proyecto  LIKE '%$buscar%' OR objetivoproyecto  LIKE '%$buscar%'");	
 						/* determinar el número de filas del resultado */
 						$cantRegistros=mysql_num_rows($pame);
 						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
@@ -453,7 +455,8 @@
 					<?php
 					$paSectordeinversion=mysql_query("SELECT * FROM sectordeinversion");
 					while($filasectordeinversion=mysql_fetch_array($paSectordeinversion)){
-						if($filasectordeinversion['cod_sectordeinversion']==$row['sectordeinversion']){
+						if($filasectordeinversion['cod_sectordeinversion']==$row['sec
+							tordeinversion']){
 							echo '<option value="'.$filasectordeinversion['cod_sectordeinversion'].'" selected>'.$filasectordeinversion['sectordeinversion'].'</option>';
 						}else{
 							echo '<option value="'.$filasectordeinversion['cod_sectordeinversion'].'">'.$filasectordeinversion['sectordeinversion'].'</option>';	
