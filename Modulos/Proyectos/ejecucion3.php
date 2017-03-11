@@ -218,17 +218,15 @@
 
 		<table border="1">
 		  <tr>
-		    <td>
-			<strong>Codigo Proyecto</strong>
-		    </td>
-		    
-		    <td>
-			<strong>Momento Ejecucion</strong>
-		    </td>
-
-		    <td>
+		   
+		   <td>
 			<strong>Fecha </strong>
 		    </td>
+		    <td>
+			<strong>Momento </strong>
+		    </td>
+
+		    
 		   
 		    <td>
 			<strong>Avance Programado</strong>
@@ -250,14 +248,13 @@
 				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_ejecucion desc");
 				while($filaejecucion=mysql_fetch_array($consultaejecucion)){
 					echo '<tr>';
-					echo '<td>'.$filaejecucion['cod_proyecto'].'</td>';
+					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
 					$momentoejecucion=$filaejecucion['momento_ejecucion'];
 						$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones WHERE cod_momentoejecucion='$momentoejecucion'");
 						while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
 							echo '<td>'.$filamomentoejecucion['momentoejecucion'].'</td>';
 						}
 
-					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
 					echo '<td>'.$filaejecucion['avance_programado'].'</td>';
 					echo '<td>'.$filaejecucion['avance_ejecutado'].'</td>';
 					echo '<td>'.$filaejecucion['observaciones'].'</td>';

@@ -223,9 +223,7 @@
 		    <td>
 			<strong>Observaciones</strong>
 		    </td>
-		    <td>
-			<strong></strong>
-		    </td>
+		   
 		  </tr>
 
 		  <tr>
@@ -254,15 +252,14 @@
 
 <hr>
 
-		<table border="1">
+		<table border="3">
 		  <tr>
-		    <td>
-			<strong>Codigo Proyecto</strong>
-		    </td>
+		   
 		    
 		    <td>
 			<strong>Fecha </strong>
 		    </td>
+		     
 		    <td>
 			<strong>Momento </strong>
 		    </td>
@@ -274,21 +271,32 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    <td>
-			<strong></strong>
-		    </td>
+		   
 		  </tr>
 
 			<?php
 				$consultaliquidacion=mysql_query("SELECT * FROM liquidaciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_liquidacion desc");
 				while($filaliquidacion=mysql_fetch_array($consultaliquidacion)){
 					echo '<tr>';
-					echo '<td>'.$filaliquidacion['cod_proyecto'].'</td>';
 					echo '<td>'.$filaliquidacion['fecha_liquidacion'].'</td>';
+
+
+
+
+
+					
 					$momentoliquidacion=$filaliquidacion['momento_liquidacion'];
 						$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones WHERE cod_momentoliquidacion='$momentoliquidacion'");
 						while($filamomentoliquidacion=mysql_fetch_array($consultamomentoliquidacion)){
-							echo '<td>'.$filamomentoliquidacion['momentoliquidacion'].'</td>';
+
+
+
+							$EditarMomento=$filaliquidacion['cod_liquidacion'];
+
+							echo "<td><a href=#act$EditarMomento data-toggle=modal >"    .$filamomentoliquidacion['momentoliquidacion']."</a></td>";
+
+
+
 						}
 					echo '<td>'.$filaliquidacion['observaciones'].'</td>';
 			?>
@@ -308,18 +316,7 @@
 			</form>			
 			</td>
 
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $filaliquidacion['cod_liquidacion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-			
-                            <a href="#eli<?php echo $filaliquidacion['cod_liquidacion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-remove"></i>
-                            </a>
-
-                        </center>
-                    </td>
+                  
 
 
 
@@ -330,7 +327,7 @@
                 	<form name="form2" method="post" action="actualizar_liquidacion.php">
                     <input type="hidden" name="cod_liquidacion" value="<?php echo $filaliquidacion['cod_liquidacion']; ?>">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                       
                         <h3 id="myModalLabel">Editar Liquidacion</h3>
                     </div>
                     <div class="modal-body">
@@ -368,26 +365,14 @@
 
                     	</div>
                     </div>
+                     <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
                     <div class="modal-footer">
-    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	            <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
-                    </div>
                     </form>
-                </div>
-<!--Ventana Editar finaliza aqui-->
-
-
-
-<!--Aqui comienza la ventana Eliminar-->
-
-
-                  <div id="eli<?php echo $filaliquidacion['cod_liquidacion']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form3" method="post" action="eliminar_liquidacion.php">
+                    	<form name="form3" method="post" action="eliminar_liquidacion.php">
 	                    <input type="hidden" name="cod_liquidacion" value="<?php echo $filaliquidacion['cod_liquidacion']; ?>">
 	                    <div class="modal-header">
-        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        	                
                 	        <h3 id="myModalLabel">Eliminar Liquidacion</h3>
-				<font color="red">Esta seguro que desea eliminar este registro?</font>
 	                    </div>
                     <div class="modal-body">
                         <div class="row-fluid">
@@ -399,8 +384,19 @@
 
 	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
         	     	       <button type="submit" class="btn btn-primary"><strong>Eliminar</strong></button>
-                            </div>
+    	                
+        	           
+                    </div>
+                    </form>
+                </div>
+<!--Ventana Editar finaliza aqui-->
 
+
+
+<!--Aqui comienza la ventana Eliminar-->
+
+
+                 
 			</form>
 		</div>
 <!--Ventana Eliminar finaliza aqui-->

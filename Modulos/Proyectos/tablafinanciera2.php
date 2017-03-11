@@ -290,7 +290,7 @@
 		    </td>
 		    
 		    <td>
-			<strong>Momento Tabla Financiera</strong>
+			<strong>Momento </strong>
 		    </td>
 		  </tr>
 
@@ -311,6 +311,9 @@
 
 		    </td>
 		  </tr>
+		  <br>
+		  <br>
+		  <br>
 
 
 		  <tr>
@@ -335,7 +338,7 @@
 		    </td>
 
 		    <td>
-			<input type="text" name="valor">
+			<input type="TEXT" name="valor">
 		    </td>
 
 		    <td>
@@ -350,18 +353,16 @@
 
 <hr>
 
-		<table border="1">
+		<table border="3">
 		  <tr>
-		    <td>
-			<strong>Codigo Proyecto</strong>
-		    </td>
 		    
+		     <td>
+			<strong>Fecha </strong>
+		    </td>
 		    <td>
 			<strong>Momento </strong>
 		    </td>
-		    <td>
-			<strong>Fecha </strong>
-		    </td>
+		   
 		    <td>
 			<strong>Valor</strong>
 		    </td>
@@ -378,17 +379,26 @@
 		  </tr>
 
 			<?php
-				$consultatablafinanciera=mysql_query("SELECT * FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_tablafinanciera desc");
+				$consultatablafinanciera=mysql_query("SELECT cod_tablafinanciera,cod_proyecto,momento_tablafinanciera,fecha_tablafinanciera,format(valor,0) as valor,observaciones FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_tablafinanciera desc");
 				while($filatablafinanciera=mysql_fetch_array($consultatablafinanciera)){
 					echo '<tr>';
-					echo '<td>'.$filatablafinanciera['cod_proyecto'].'</td>';
 					$momentotablafinanciera=$filatablafinanciera['momento_tablafinanciera'];
 						$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras WHERE cod_momentotablafinanciera='$momentotablafinanciera'");
 						while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
-							echo '<td>'.$filamomentotablafinanciera['momentotablafinanciera'].'</td>';
+							echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
+
+			$EditarYEliminar=$filatablafinanciera['cod_tablafinanciera']; 
+	echo "<td><a href=#act$EditarYEliminar  data-toggle=modal >" .$filamomentotablafinanciera['momentotablafinanciera']."</a></td>";
+
+
 						}
-					echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
-					echo '<td>'.$filatablafinanciera['valor'].'</td>';
+					
+					echo '<td>$ ' .$filatablafinanciera['valor'].'</td>';
+
+
+
+
+
 					echo '<td>'.$filatablafinanciera['observaciones'].'</td>';
 			?>
                     <td>
@@ -407,28 +417,22 @@
 			</form>			
 			</td>
 
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-			
-                            <a href="#eli<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-remove"></i>
-                            </a>
-                        </center>
-                    </td>
-
+                    
 
 
 
 <!--Ventana Editar comienza aqui-->
 
+
+
                   <div id="act<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
                 	<form name="form2" method="post" action="actualizar_tablafinanciera.php">
+
+
                     <input type="hidden" name="cod_tablafinanciera" value="<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <div class="modal-header" align="center">
+                        
                         <h3 id="myModalLabel">Editar Tabla Financiera</h3>
                     </div>
                     <div class="modal-body">
@@ -464,30 +468,22 @@
                                 <input type="text" name="observaciones" autocomplete="off" value="<?php echo $filatablafinanciera['observaciones']; ?>"><br>
 
 
+
+
                             </div>
 
                     	</div>
+
+                  <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
                     </div>
                     <div class="modal-footer">
-    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	            <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
-                    </div>
                     </form>
-                </div>
-<!--Ventana Editar finaliza aqui-->
-
-
-
-<!--Aqui comienza la ventana Eliminar-->
-
-
-                  <div id="eli<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form3" method="post" action="eliminar_tablafinanciera.php">
+                    <form name="form3" method="post" action="eliminar_tablafinanciera.php">
 	                    <input type="hidden" name="cod_tablafinanciera" value="<?php echo $filaestructuracion['cod_tablafinanciera']; ?>">
 	                    <div class="modal-header">
-        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        	                
                 	        <h3 id="myModalLabel">Eliminar Tabla Financiera</h3>
-				<font color="red">Esta seguro que desea eliminar este registro?</font>
+				
 	                    </div>
                     <div class="modal-body">
                         <div class="row-fluid">
@@ -502,6 +498,25 @@
                             </div>
 			</div>
 			</form>
+
+
+
+
+
+    	                
+        	            
+                    </div>
+                    </form>
+                </div>
+<!--Ventana Editar finaliza aqui-->
+
+
+
+<!--Aqui comienza la ventana Eliminar-->
+
+
+                  <div id="eli<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                	
 		</div>
 <!--Ventana Eliminar finaliza aqui-->
 
@@ -563,26 +578,7 @@
 <!--Aqui comienza la ventana Eliminar Fuente -->
 
 
-                  <div id="eliFuente<?php echo $cod_proyecto; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form5" method="post" action="eliminar_tablafinanciera_fuente.php">
-	                    <input type="hidden" name="cod_proyecto" value="<?php echo $cod_proyecto; ?>">
-	                    <div class="modal-header">
-        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                	        <h3 id="myModalLabel">Eliminar Fuente de Financiacion</h3>
-				<font color="red">Esta seguro que desea eliminar este registro?</font>
-	                    </div>
-                    <div class="modal-body">
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <strong>Codigo Proyecto</strong><br>
-                                <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $cod_proyecto; ?>"><br>
-
-	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	     	       <button type="submit" class="btn btn-primary"><strong>Eliminar</strong></button>
-                            </div>
-
-			</form>
-		</div>
+               
 <!--Ventana Eliminar Fuente finaliza aqui-->
 
 

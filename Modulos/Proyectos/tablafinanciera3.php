@@ -215,15 +215,12 @@
 		<table border="1">
 		  <tr>
 		    <td>
-			<strong>Codigo Proyecto</strong>
+			<strong>Fecha </strong>
 		    </td>
-		    
 		    <td>
 			<strong>Momento </strong>
 		    </td>
-		    <td>
-			<strong>Fecha </strong>
-		    </td>
+		   
 
 		    <td>
 			<strong>Valor</strong>
@@ -238,17 +235,16 @@
 		  </tr>
 
 			<?php
-				$consultatablafinanciera=mysql_query("SELECT * FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto'  ORDER BY fecha_tablafinanciera desc ");
+				$consultatablafinanciera=mysql_query("SELECT cod_tablafinanciera,cod_proyecto,momento_tablafinanciera,fecha_tablafinanciera,format(valor,0) as valor,observaciones FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto'  ORDER BY fecha_tablafinanciera desc ");
 				while($filatablafinanciera=mysql_fetch_array($consultatablafinanciera)){
 					echo '<tr>';
-					echo '<td>'.$filatablafinanciera['cod_proyecto'].'</td>';
+					echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
 					$momentotablafinanciera=$filatablafinanciera['momento_tablafinanciera'];
 						$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras WHERE cod_momentotablafinanciera='$momentotablafinanciera'");
 						while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
 							echo '<td>'.$filamomentotablafinanciera['momentotablafinanciera'].'</td>';
 						}
-					echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
-					echo '<td>'.$filatablafinanciera['valor'].'</td>';
+					echo '<td> $ '.$filatablafinanciera['valor'].'</td>';
 					echo '<td>'.$filatablafinanciera['observaciones'].'</td>';
 			?>
                     <td>

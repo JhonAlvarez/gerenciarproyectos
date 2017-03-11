@@ -272,19 +272,17 @@
 
 <hr>
 
-		<table border="1">
+		<table border="3">
 		  <tr>
+		   
 		    <td>
-			<strong>Codigo Proyecto</strong>
+			<strong>Fecha </strong>
 		    </td>
-		    
 		    <td>
 			<strong>Momento </strong>
 		    </td>
 
-		    <td>
-			<strong>Fecha </strong>
-		    </td>
+		   
 		   
 		    <td>
 			<strong>Avance Programado</strong>
@@ -299,23 +297,22 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    <td>
-			<strong></strong>
-		    </td>
+		  
 		  </tr>
 
 			<?php
 				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_ejecucion desc ");
 				while($filaejecucion=mysql_fetch_array($consultaejecucion)){
 					echo '<tr>';
-					echo '<td>'.$filaejecucion['cod_proyecto'].'</td>';
+						echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
+
 					$momentoejecucion=$filaejecucion['momento_ejecucion'];
 						$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones WHERE cod_momentoejecucion='$momentoejecucion'");
 						while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
-							echo '<td>'.$filamomentoejecucion['momentoejecucion'].'</td>';
+							$EditarMomento=$filaejecucion['cod_ejecucion'];
+		echo "<td><a href=#act$EditarMomento data-toggle=modal >" .$filamomentoejecucion['momentoejecucion']."</a></td>";
 						}
 
-					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
 					echo '<td>'.$filaejecucion['avance_programado'].'</td>';
 					echo '<td>'.$filaejecucion['avance_ejecutado'].'</td>';
 					echo '<td>'.$filaejecucion['observaciones'].'</td>';
@@ -337,18 +334,7 @@
 			</td>
 
 
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $filaejecucion['cod_ejecucion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-			
-                            <a href="#eli<?php echo $filaejecucion['cod_ejecucion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-remove"></i>
-                            </a>
-
-                        </center>
-                    </td>
+                    
 
 
 
@@ -359,7 +345,7 @@
                 	<form name="form2" method="post" action="actualizar_ejecucion.php">
                     <input type="hidden" name="cod_ejecucion" value="<?php echo $filaejecucion['cod_ejecucion']; ?>">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        
                         <h3 id="myModalLabel">Editar Ejecucion</h3>
                     </div>
                     <div class="modal-body">
@@ -405,26 +391,16 @@
 
                     	</div>
                     </div>
+                     <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
                     <div class="modal-footer">
-    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	            <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
-                    </div>
                     </form>
-                </div>
-<!--Ventana Editar finaliza aqui-->
 
-
-
-<!--Aqui comienza la ventana Eliminar-->
-
-
-                  <div id="eli<?php echo $filaejecucion['cod_ejecucion']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form3" method="post" action="eliminar_ejecucion.php">
+                    <form name="form3" method="post" action="eliminar_ejecucion.php">
 	                    <input type="hidden" name="cod_ejecucion" value="<?php echo $filaejecucion['cod_ejecucion']; ?>">
 	                    <div class="modal-header">
-        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        	               
                 	        <h3 id="myModalLabel">Eliminar Ejecucion</h3>
-				<font color="red">Esta seguro que desea eliminar este registro?</font>
+				
 	                    </div>
                     <div class="modal-body">
                         <div class="row-fluid">
@@ -436,7 +412,20 @@
 
 	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
         	     	       <button type="submit" class="btn btn-primary"><strong>Eliminar</strong></button>
-                            </div>
+
+    	                
+        	           
+                    </div>
+                    </form>
+                </div>
+<!--Ventana Editar finaliza aqui-->
+
+
+
+<!--Aqui comienza la ventana Eliminar-->
+
+
+                  
 
 			</form>
 		</div>

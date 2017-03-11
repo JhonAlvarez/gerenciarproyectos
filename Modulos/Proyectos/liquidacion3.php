@@ -214,10 +214,7 @@
 
 		<table border="1">
 		  <tr>
-		    <td>
-			<strong>Codigo Proyecto</strong>
-		    </td>
-		    
+		  
 		    <td>
 			<strong>Fecha  </strong>
 		    </td>
@@ -238,7 +235,6 @@
 				$consultaliquidacion=mysql_query("SELECT * FROM liquidaciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_liquidacion desc ");
 				while($filaliquidacion=mysql_fetch_array($consultaliquidacion)){
 					echo '<tr>';
-					echo '<td>'.$filaliquidacion['cod_proyecto'].'</td>';
 					echo '<td>'.$filaliquidacion['fecha_liquidacion'].'</td>';
 					$momentoliquidacion=$filaliquidacion['momento_liquidacion'];
 						$consultamomentoliquidacion=mysql_query("SELECT * FROM momentosliquidaciones WHERE cod_momentoliquidacion='$momentoliquidacion'");

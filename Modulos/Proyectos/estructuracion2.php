@@ -248,18 +248,17 @@
 
 <hr>
 
-		<table border="1">
+		<table border="3">
 		  <tr>
-		    <td>
-			<strong>Codigo Proyecto</strong>
-			
+		   
+
 
 <!--
 Aqui quedara el editar y eliminar 
 -->
 
 
-		    </td>
+		    
 		   
 		    <td>
 			<strong>Fecha</strong>
@@ -273,24 +272,39 @@ Aqui quedara el editar y eliminar
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    <td>
-			<strong></strong>
-		    </td>
+		    
 		  </tr>
 
 			<?php
 				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_estructuracion desc");
 				while($filaestructuracion=mysql_fetch_array($consultaestructuracion)){
 					echo '<tr>';
-					echo '<td>'.$filaestructuracion['cod_proyecto'].'</td>';
+					
+					
+
+
 					echo '<td>'.$filaestructuracion['fecha_estructuracion'].'</td>';
 					$momento=$filaestructuracion['momento'];
 						$consultamomento=mysql_query("SELECT * FROM momentos WHERE cod_momento='$momento'");
 						while($filamomento=mysql_fetch_array($consultamomento)){
-							echo '<td>'.$filamomento['momento'].'</td>';
+							$AlmacenaEditarYEliminar=$filaestructuracion['cod_estructuracion'];
+							echo "<td><a href=#act$AlmacenaEditarYEliminar data-toggle=modal >".$filamomento['momento']."</a></td>";
+ 
 						}
-					echo '<td>'.$filaestructuracion['observaciones'].'</td>';
+						$LinkObservaciones=$filaestructuracion['observaciones'];
+						if (substr($LinkObservaciones, 0,4)=="http") {
+							echo "<td><a href=$LinkObservaciones target=_blank>".$filaestructuracion['observaciones']."</a></td>";
+						}else{
+							echo "<td>".$filaestructuracion['observaciones']."</td>";
+						}
+					
 			?>
+
+
+			<!--Falta codigo para el link del momento que quede actualizar y eliminar
+			-->
+
+
                     <td>
 			<form method="POST" action="cargar_archivo_estructuracion.php">
 			<?php
@@ -307,26 +321,19 @@ Aqui quedara el editar y eliminar
 			</form>			
 		     </td>
 
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $filaestructuracion['cod_estructuracion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-			
-                            <a href="#eli<?php echo $filaestructuracion['cod_estructuracion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-remove"></i>
-                            </a>
-
-                        </center>
-                    </td>
+                 
 
 
 
 
 <!--Ventana Editar comienza aqui-->
 
-                  <div id="act<?php echo $filaestructuracion['cod_estructuracion']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div id="act<?php echo $filaestructuracion['cod_estructuracion']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" align="center">
+
+                  <!--Archivo de actualizar
+                  -->
                 	<form name="form2" method="post" action="actualizar_estructuracion.php">
+                	
                     <input type="hidden" name="cod_estructuracion" value="<?php echo $filaestructuracion['cod_estructuracion']; ?>">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
@@ -335,6 +342,7 @@ Aqui quedara el editar y eliminar
                     <div class="modal-body">
                         <div class="row-fluid">
                             <div class="span6">
+                           	
                                 <strong>Codigo Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_proyecto']; ?>"><br>
 
@@ -365,42 +373,42 @@ Aqui quedara el editar y eliminar
                             </div>
 
                     	</div>
-                    </div>
+                    	<button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
+                    	</div>
+                    
                     <div class="modal-footer">
-    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	            <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
+    	                
+        	            
+        	             </form>
+        	           	<form name="form3" method="post" action="eliminar_estructuracion.php">
+	                    <input type="hidden" name="cod_estructuracion" value="<?php echo $filaestructuracion['cod_estructuracion']; ?>">
+	                 
+                        <div class="row-fluid">
+                          <h2 id="myModalLabel">Eliminar Tabla Financiera</h3>
+                            <div class="span6">
+                           
+                                <strong>Codigo Proyecto</strong><br>
+                                <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_proyecto']; ?>"><br>
+                                <strong>Codigo Estructuracion</strong><br>
+                                <input type="text" name="cod_estructuracion" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_estructuracion']; ?>"><br>
+ 						<button type="submit" class="btn btn-primary"><strong>Eliminar</strong></button>
+ 						<button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
+			</form>
+                            </div>
                     </div>
-                    </form>
+                    
                 </div>
 <!--Ventana Editar finaliza aqui-->
 
 
 
 <!--Aqui comienza la ventana Eliminar-->
+<!--Se subio para el mismo div del editar
+-->
 
 
-                  <div id="eli<?php echo $filaestructuracion['cod_estructuracion']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form3" method="post" action="eliminar_estructuracion.php">
-	                    <input type="hidden" name="cod_estructuracion" value="<?php echo $filaestructuracion['cod_estructuracion']; ?>">
-	                    <div class="modal-header">
-        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                	        <h3 id="myModalLabel">Eliminar Estructuracion</h3>
-				<font color="red">Esta seguro que desea eliminar este registro?</font>
-	                    </div>
-                    <div class="modal-body">
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <strong>Codigo Proyecto</strong><br>
-                                <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_proyecto']; ?>"><br>
-                                <strong>Codigo Estructuracion</strong><br>
-                                <input type="text" name="cod_estructuracion" autocomplete="off" required readonly value="<?php echo $filaestructuracion['cod_estructuracion']; ?>"><br>
 
-	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	     	       <button type="submit" class="btn btn-primary"><strong>Eliminar</strong></button>
-                            </div>
-
-			</form>
-		</div>
+            
 <!--Ventana Eliminar finaliza aqui-->
 
 

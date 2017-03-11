@@ -213,10 +213,7 @@
 
 		<table border="1">
 		  <tr>
-		    <td>
-			<strong>Codigo Proyecto</strong>
-		    </td>
-		    
+		  
 		    <td>
 			<strong>Fecha</strong>
 		    </td>
@@ -236,7 +233,6 @@
 				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto'  ORDER BY  fecha_estructuracion desc ");
 				while($filaestructuracion=mysql_fetch_array($consultaestructuracion)){
 					echo '<tr>';
-					echo '<td>'.$filaestructuracion['cod_proyecto'].'</td>';
 					
 					echo '<td>'.$filaestructuracion['fecha_estructuracion'].'</td>';
 					$momento=$filaestructuracion['momento'];
