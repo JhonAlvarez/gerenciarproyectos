@@ -20,12 +20,7 @@
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../ico/apple-touch-icon-114-precomposed.png">
@@ -57,143 +52,42 @@
                     </td>
                   </tr>
                 </table>
-                <div align="left">
+                <div align="right">
+			<strong>Buscar por la Dependencia: </strong>
 
-
-<br>
-
-
-<!--
-Buscador 
--->
-			<strong >Buscar por la Dependencia: </strong>
 				<form method="POST" action="buscar_personal_dependencia.php">
+
                                   <select name="cod_dependencia">
+
 					<?php
+
 					$consultadependencia=mysql_query("SELECT * FROM dependencias");
+
 					while($filadependencia=mysql_fetch_array($consultadependencia)){
+
 						echo '<option value="'.$filadependencia['cod_dependencia'].'">'.$filadependencia['dependencia'].'</option>';
+
 					}
+
 					?>
+
                                   </select>
 
-
-
 				<input type="submit" value="Buscar">
+
 				</form>
 	                <!--<a href="#nuevo" role="button" class="btn" data-toggle="modal"><strong>Crear Nuevo Personal</strong></a>-->
                 </div>
-
-
-    <!--
-Tabla de mostrar informacion
-    -->
-
-                
-                <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form1" method="post" action="">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                        <h3 id="myModalLabel">Crear Personal</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <strong>Cedula</strong><br>
-                                <input type="text" name="Cedula" autocomplete="off" required value=""><br>
-                                <strong>Nombres</strong><br>
-                                <input type="text" name="Nombres" autocomplete="off" required value=""><br>
-                                <strong>Apellidos</strong><br>
-                                <input type="text" name="Apellidos" autocomplete="off" required value=""><br>
-                                <strong>Dependencia</strong><br>
-                                <input type="text" name="Dependencia" autocomplete="off" required value=""><br>
-
-                                <strong>Cargo</strong><br>
-                                <input type="text" name="Cargo" autocomplete="off" required value=""><br>
-
-                                <strong>Observaciones</strong><br>
-                                <input type="text" name="Observaciones" autocomplete="off" value=""><br>
-                            </div>
-                            <div class="span6">
-                                <strong>Celular</strong><br>
-                                <input type="text" name="Celular" autocomplete="off" value=""><br>
-
-                                <strong>Profesion</strong><br>
-                                <input type="text" name="Profesion" autocomplete="off" required value=""><br>
-<!--
-Se agrega municipio y barrio 
--->
-   <strong>Municipio</strong><br>
-                                <input type="text" name="Municipio" autocomplete="off" required value=""><br>
-    <strong>Barrio</strong><br>
-                                <input type="text" name="Barrio" autocomplete="off" required value=""><br>
-<!--
-Codigo nuevo de municipio y barrio
--->
-
-
-
-
-                                <strong>Especializacion</strong><br>
-                                <input type="text" name="Especializacion" autocomplete="off" required value=""><br>
-                                <strong>Email</strong><br>
-                                <input type="text" name="Email" autocomplete="off" required value=""><br>
-                            </div>
-                    	</div>
-                    </div>
-                    <div class="modal-footer">
-    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	            <button type="submit" class="btn btn-primary"><strong>Registrar Personal</strong></button>
-                    </div>
-                    </form>
-                </div>
-
-
-
-
-
-<!--
-Se cambio el orden de la tabla algunas cosas
--->
-
                 
                 <br>
-                <?php 
-					if(!empty($_POST['Nombres'])){ 
-						$Cedula=limpiar($_POST['Cedula']);			
-						$Nombres=limpiar($_POST['Nombres']);
-						$Apellidos=limpiar($_POST['Apellidos']);
-						$Dependencia=limpiar($_POST['Dependencia']);
-                        $Cargo=limpiar($_POST['Cargo']);
-						
-						$Celular=limpiar($_POST['Celular']);
-					$Profesion=limpiar($_POST['Profesion']);
-                    $Municipio=limpiar($_POST['Municipio']);
-                    $Barrio=limpiar($_POST['Barrio']);
-						$Especializacion=limpiar($_POST['Especializacion']);	
-                        $Email=limpiar($_POST['Email']);
-                        $Observaciones=limpiar($_POST['Observaciones']);
-						
-						if(empty($_POST['Cedula'])){
-							$oProv=new Proceso_Personal('', $Cedula, $Nombres, $Apellidos, $Dependencia, $Observaciones, $Celular, $Cargo, $Profesion, $Especializacion, $Email);
-							$oProv->crear();
-							echo mensajes('Personal "'.$Nombres.'" Creado con Exito','verde');
-						}else{
-							$Cedula=limpiar($_POST['Cedula']);
-							$oProveedor=new Proceso_Personal($Cedula, $Nombres, $Apellidos, $Dependencia, $Observaciones, $Celular, $Cargo, $Profesion, $Especializacion, $Email);
-							$oProveedor->actualizar();
-							echo mensajes('Personal "'.$Nombres.'" Actualizado con Exito','verde');
-						}
-					}
-				?>
+                
                 <table class="table table-bordered">
                   <tr class="well">
 		    <td><strong>Img</strong></td>
                     <td><strong>Cedula</strong></td>
-                    <td><strong>Nombres</strong></td>
-                    <td><strong>Apellidos</strong></td>
+                    <td><strong>Nombres y Apellidos</strong></td>
+                    
                     <td><strong>Dependencia</strong></td>
-
                     <td><strong>Observaciones</strong></td>
                     <td><strong>Celular</strong></td>
                     <td><strong>Cargo</strong></td>
@@ -201,17 +95,13 @@ Se cambio el orden de la tabla algunas cosas
                     <td><strong>Especializacion</strong></td>
                     <td><strong>Email</strong></td>
                     <td><strong>Accion</strong></td>
-                    <td><strong>Municipio</strong></td>
-                    <td><strong>Barrio</strong></td>
-                    
                   </tr>
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
 						$buscar=limpiar($_POST['buscar']);
 						$pame=mysql_query("SELECT * FROM personal WHERE Nombres LIKE '%$buscar%' ORDER BY Nombres");	
 						/* determinar el número de filas del resultado */
-
-				$cantRegistros=mysql_num_rows($pame);
+						$cantRegistros=mysql_num_rows($pame);
 						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
 
 					}else{
@@ -223,12 +113,7 @@ Se cambio el orden de la tabla algunas cosas
 					}		
 					while($row=mysql_fetch_array($pame)){
 				  ?>
-
-
-
-
-
- <tr>
+                  <tr>
 		    <td>
 			<?php
 			if (file_exists("../../personal_img/".$row['Cedula'].".jpg")){
@@ -239,8 +124,13 @@ Se cambio el orden de la tabla algunas cosas
 			?>
 		    </td>
                     <td><?php echo $row['Cedula']; ?></td>
-                    <td><?php echo $row['Nombres']; ?></td>
-                    <td><?php echo $row['Apellidos']; ?></td>
+
+                    <td>
+                    <a href="crear_personal.php?doc=<?php echo $row['Cedula']; ?>" title="Editar">
+                    <?php echo $row['Nombres'].' '.$row['Apellidos']; ?>
+                    </a>
+                    </td>
+                    
 			<td>
 			    <?php
 				$id_dependencia=$row['Dependencia'];
@@ -269,17 +159,11 @@ Se cambio el orden de la tabla algunas cosas
 						echo $filaProfesion2['profesion'];
 					}
 					?>
-			</td>                    
-
-            <td><?php echo $row['Especializacion'] ?></td>
-                <td><?php echo $row['Email'] ?></td>
-
-
-
-                 <td>
+			</td>                    <td><?php echo $row['Especializacion'] ?></td>
+                    <td><?php echo $row['Email'] ?></td>
+                    <td>
                     	<center>
-
-            <a href="#act<?php echo $row['Cedula']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
+                            <a href="#act<?php echo $row['Cedula']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
                                 <i class="icon-edit"></i>
                             </a>
                             <a href="#eli<?php echo $row['Cedula']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
@@ -287,11 +171,7 @@ Se cambio el orden de la tabla algunas cosas
                             </a>
                         </center>
                     </td>
-
-                    <td><?php echo $row['Municipio']; ?></td>
-                     
-                    <td><?php echo $row['Barrio']; ?></td>
- </tr>
+                  </tr>
 
 
 

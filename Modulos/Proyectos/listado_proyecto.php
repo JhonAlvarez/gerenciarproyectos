@@ -20,12 +20,8 @@
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+      <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
+
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../ico/apple-touch-icon-114-precomposed.png">
@@ -55,7 +51,7 @@
                       	<form name="form3" method="post" action="" class="form-search">
                         	<div class="input-prepend input-append">
 								<span class="add-on"><i class="icon-search"></i></span>
-                        		<input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
+                        		<input type="text" name="buscar" autocomplete="on" class="input-xxlarge search-query" 
                                 autofocus placeholder="Ingrese su Busqueda">
                             </div>
                             <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
