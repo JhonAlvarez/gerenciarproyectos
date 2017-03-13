@@ -117,6 +117,7 @@ Dividir los crear por clases
 -->
 
   <li><a href="#"><i class=""></i> ------------------Personal-----------------</a></li>
+   <li><a href="../Crear/barrio.php"><i class="icon-plus"></i> Crear Barrio</a></li>
 
                     <li><a href="../Crear/municipio.php"><i class="icon-plus"></i> Crear Municipio</a></li>
                     <li><a href="../Crear/cargo.php"><i class="icon-plus"></i> Crear Cargo</a></li>

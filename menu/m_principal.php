@@ -74,7 +74,7 @@ Dividir los crear por clases
 -->
 
   <li><a href="#"><i class=""></i> ------------------Personal-----------------</a></li>
-
+                    <li><a href="Modulos/Crear/barrio.php"><i class="icon-plus"></i> Crear Barrio</a></li>
                     <li><a href="Modulos/Crear/municipio.php"><i class="icon-plus"></i> Crear Municipio</a></li>
                     <li><a href="Modulos/Crear/cargo.php"><i class="icon-plus"></i> Crear Cargo</a></li>
                     <li><a href="Modulos/Crear/dependencia.php"><i class="icon-plus"></i> Crear Dependencia</a></li>
