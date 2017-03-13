@@ -14,8 +14,7 @@
 
           </button>
 
-          <a class="brand" href="#" style="color:#FFF"><img src="../../img/logo.png" width="50">Control</a>
-
+          
           <div class="nav-collapse collapse">
 
             <ul class="nav">

@@ -14,7 +14,7 @@
 
           </button>
 
-          <a class="brand" href="#" style="color:#FFF"><img src="../../img/logo.png" width="50">Control</a>
+         
 
           <div class="nav-collapse collapse">
 
@@ -192,7 +192,7 @@ Dividir los crear por clases
 
                       	<li class="divider"></li>
 
-                      	<li><a href="../../index.htlm"><i class="icon-off"></i> Salir</a></li>
+                      	<li><a href="../../index.html"><i class="icon-off"></i> Salir</a></li>
 
                     </ul>
 

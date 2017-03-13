@@ -99,7 +99,7 @@ Modificado 01-03-2017
                                 <input type="text" name="cod_proyecto" autocomplete="off" required><br>
                             	<strong>Objeto del Proyecto</strong><br>
                                 <input type="text" name="objetivoproyecto" autocomplete="off" required><br>
-                                <strong>Municipio 1</strong><br>
+                                <strong>Municipio </strong><br>
                                   <select name="municipio1">
 					<?php
 					$consultamunicipio=mysql_query("SELECT * FROM municipios");
@@ -110,16 +110,8 @@ Modificado 01-03-2017
                                   </select>
 				<br>
 
-                                <strong>Municipio 2</strong><br>
-                                  <select name="municipio2">
-					<?php
-					$consultamunicipio2=mysql_query("SELECT * FROM municipios");
-					while($filamunicipio2=mysql_fetch_array($consultamunicipio2)){
-						echo '<option value="'.$filamunicipio2['cod_municipio'].'">'.$filamunicipio2['municipio'].'</option>';
-					}
-					?>
-                                  </select>
-				<br>
+                                
+				
 
                                 <strong>Estado del Proyecto</strong><br>
                                   <select name="estadodelproyecto">
@@ -132,17 +124,19 @@ Modificado 01-03-2017
                                   </select>
 				<br>
 
+        <strong>Supervisor</strong><br>
+                                  <select name="supervisor">
+          <?php
+          $consultasupervisor=mysql_query("SELECT * FROM personal");
+          while($filasupervisor=mysql_fetch_array($consultasupervisor)){
+            echo '<option value="'.$filasupervisor['Cedula'].'">'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</option>';
+          }
+          ?>
+                                  </select>
+
                             </div>
                             <div class="span6">
-                            	<strong>Supervisor</strong><br>
-                                  <select name="supervisor">
-					<?php
-					$consultasupervisor=mysql_query("SELECT * FROM personal");
-					while($filasupervisor=mysql_fetch_array($consultasupervisor)){
-						echo '<option value="'.$filasupervisor['Cedula'].'">'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</option>';
-					}
-					?>
-                                  </select>
+                            	
 				<br>
 
                                 <strong>Politica</strong><br>

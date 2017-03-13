@@ -78,11 +78,11 @@
 								echo '<td>'.$filamunicipio1['municipio'].'</td>';
 							}
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						
+						echo '<td><strong>Municipio 2: </strong></td>';
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
 							$consultamunicipio2=mysql_query("SELECT * FROM municipios WHERE cod_municipio=".$filacod_proyecto['municipio2']);
 							while($filamunicipio2=mysql_fetch_array($consultamunicipio2)){
-							
+								echo '<td>'.$filamunicipio2['municipio'].'</td>';
 							}
 					echo "</tr>";
 
@@ -195,7 +195,9 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
-		    
+		    <td>
+			<strong>Codigo Fuente</strong>
+		    </td>
 		    <td>
 			<strong>Fuente de Financiacion</strong>
 		    </td>
@@ -203,7 +205,7 @@
 			<strong>Tipo de Fuente de Financiacion</strong>
 		    </td>
 		    <td>
-			<strong></strong>
+			<strong>Accion</strong>
 		    </td>
 		  </tr>
 
@@ -213,7 +215,7 @@
 			echo mensajes('Este proyecto '.$cod_proyecto.' no tiene fuente de financiacion','rojo');
                     	echo '<center>';
 			echo '<form method=POST action=agregar_tablafinanciera_fuente.php>';
-			
+			echo '<input type="hidden" name="cod_proyecto" readonly value='.$cod_proyecto.'>';
 			echo '    <strong>Fuente de Financiacion</strong>';
 			echo '    <select name="cod_fuentedefinanciacion">';
 					$pafuentedefinanciacion=mysql_query("SELECT * FROM fuentesdefinanciacion");
@@ -298,11 +300,11 @@
 		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
-		   
+		    
 		    <td>
                                   <select name="cod_momentotablafinanciera">
 					<?php
-					$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras ORDER BY momentotablafinanciera asc");
+					$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras ORDER BY momentotablafinanciera asc  ");
 					while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
 						echo '<option value="'.$filamomentotablafinanciera['cod_momentotablafinanciera'].'">'.$filamomentotablafinanciera['momentotablafinanciera'].'</option>';
 					}
@@ -311,14 +313,11 @@
 
 		    </td>
 		  </tr>
-		  <br>
-		  <br>
-		  <br>
 
 
 		  <tr>
 		    <td>
-			<strong>Fecha</strong>
+			<strong>Fecha </strong>
 		    </td>
 
 		    <td>
@@ -338,7 +337,7 @@
 		    </td>
 
 		    <td>
-			<input type="TEXT" name="valor">
+			<input type="text" name="valor">
 		    </td>
 
 		    <td>
@@ -353,9 +352,9 @@
 
 <hr>
 
-		<table border="3">
+		<table border="1">
 		  <tr>
-		    
+		   
 		     <td>
 			<strong>Fecha </strong>
 		    </td>
@@ -373,29 +372,32 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    <td>
-			<strong></strong>
-		    </td>
+		   
 		  </tr>
 
 			<?php
 				$consultatablafinanciera=mysql_query("SELECT cod_tablafinanciera,cod_proyecto,momento_tablafinanciera,fecha_tablafinanciera,format(valor,0) as valor,observaciones FROM tablasfinancieras WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_tablafinanciera desc");
+
+
+
+
 				while($filatablafinanciera=mysql_fetch_array($consultatablafinanciera)){
 					echo '<tr>';
+					echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
+
 					$momentotablafinanciera=$filatablafinanciera['momento_tablafinanciera'];
 						$consultamomentotablafinanciera=mysql_query("SELECT * FROM momentostablasfinancieras WHERE cod_momentotablafinanciera='$momentotablafinanciera'");
 						while($filamomentotablafinanciera=mysql_fetch_array($consultamomentotablafinanciera)){
-							echo '<td>'.$filatablafinanciera['fecha_tablafinanciera'].'</td>';
 
-			$EditarYEliminar=$filatablafinanciera['cod_tablafinanciera']; 
+
+							$EditarYEliminar=$filatablafinanciera['cod_tablafinanciera']; 
 	echo "<td><a href=#act$EditarYEliminar  data-toggle=modal >" .$filamomentotablafinanciera['momentotablafinanciera']."</a></td>";
 
 
 						}
-					
-					echo '<td>$ ' .$filatablafinanciera['valor'].'</td>';
 
 
+					echo '<td>$ '.$filatablafinanciera['valor'].'</td>';
 
 
 
@@ -418,6 +420,7 @@
 			</td>
 
                     
+
 
 
 
@@ -512,13 +515,7 @@
 
 
 
-<!--Aqui comienza la ventana Eliminar-->
 
-
-                  <div id="eli<?php echo $filatablafinanciera['cod_tablafinanciera']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	
-		</div>
-<!--Ventana Eliminar finaliza aqui-->
 
 
 
@@ -578,7 +575,26 @@
 <!--Aqui comienza la ventana Eliminar Fuente -->
 
 
-               
+                  <div id="eliFuente<?php echo $cod_proyecto; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                	<form name="form5" method="post" action="eliminar_tablafinanciera_fuente.php">
+	                    <input type="hidden" name="cod_proyecto" value="<?php echo $cod_proyecto; ?>">
+	                    <div class="modal-header">
+        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                	        <h3 id="myModalLabel">Eliminar Fuente de Financiacion</h3>
+				<font color="red">Esta seguro que desea eliminar este registro?</font>
+	                    </div>
+                    <div class="modal-body">
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <strong>Codigo Proyecto</strong><br>
+                                <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $cod_proyecto; ?>"><br>
+
+	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
+        	     	       <button type="submit" class="btn btn-primary"><strong>Eliminar</strong></button>
+                            </div>
+
+			</form>
+		</div>
 <!--Ventana Eliminar Fuente finaliza aqui-->
 
 

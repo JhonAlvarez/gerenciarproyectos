@@ -14,7 +14,7 @@
 
           </button>
 
-          <a class="brand" href="#" style="color:#FFF"><img src="../../img/logo.png" width="50">Chalxsoft</a>
+          
 
           <div class="nav-collapse collapse">
 
