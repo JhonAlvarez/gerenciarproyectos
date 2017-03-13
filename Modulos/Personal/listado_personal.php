@@ -20,9 +20,12 @@
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    
-    <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
-
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../ico/apple-touch-icon-114-precomposed.png">
@@ -34,26 +37,26 @@
 
     <?php include_once "../../menu/m_personal.php"; ?>
 	<div align="center">
-    <br>
-    <br>
-    <br>
-    
-                    <h1 align="center">Listado del Personal</h1>
-                    <center>
-                        <form name="form3" method="post" action="" class="form-search">
-                            <div class="input-prepend input-append">
-                                <span class="add-on"><i class="icon-search"></i></span>
-                                <input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
-                                autofocus placeholder="Buscar Personal por Nombre">
-                            </div>
-                            <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
-                        </form>
-                        </center>
-
     	<table width="90%">
           <tr>
             <td>
-            	
+            	<table class="table table-bordered">
+                  <tr class="well">
+                    <td>
+                   	 	<h1 align="center">Listado del Personal</h1>
+                        <center>
+                      	<form name="form3" method="post" action="" class="form-search">
+                        	<div class="input-prepend input-append">
+								<span class="add-on"><i class="icon-search"></i></span>
+                        		<input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
+                                autofocus placeholder="Buscar Personal por Nombre">
+                            </div>
+                            <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
+                    	</form>
+                        </center>
+                    </td>
+                  </tr>
+                </table>
                 <div align="right">
 			<strong>Buscar por la Dependencia: </strong>
 
@@ -85,33 +88,24 @@
                 
                 <table class="table table-bordered">
                   <tr class="well">
-		    <td><strong>Img</strong></td>
+		    <td><strong></strong></td>
                     <td><strong>Cedula</strong></td>
                     <td><strong>Nombres y Apellidos</strong></td>
-                    
+                    <td><strong>Municipio</strong></td>
                     <td><strong>Dependencia</strong></td>
-                    <td><strong>Observaciones</strong></td>
-                    <td><strong>Celular</strong></td>
-                    <td><strong>Cargo</strong></td>
-                    <td><strong>Profesion</strong></td>
-                    <td><strong>Especializacion</strong></td>
-                    <td><strong>Email</strong></td>
-                    <td><strong>Accion</strong></td>
+                     <td><strong>Cargo</strong></td>
+                    
+                    
+                    
                   </tr>
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
 						$buscar=limpiar($_POST['buscar']);
 						$pame=mysql_query("SELECT * FROM personal WHERE Nombres LIKE '%$buscar%' ORDER BY Nombres");	
-						/* determinar el número de filas del resultado */
-						$cantRegistros=mysql_num_rows($pame);
-						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
-
+						
 					}else{
 						$pame=mysql_query("SELECT * FROM personal ORDER BY Nombres");		
-						/* determinar el número de filas del resultado */
-						$cantRegistros=mysql_num_rows($pame);
-						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
-
+						
 					}		
 					while($row=mysql_fetch_array($pame)){
 				  ?>
@@ -119,19 +113,29 @@
 		    <td>
 			<?php
 			if (file_exists("../../personal_img/".$row['Cedula'].".jpg")){
-				echo '<img src="../../personal_img/'.$row['Cedula'].'.jpg" width="100" height="100">';
+				echo '<img src="../../personal_img/'.$row['Cedula'].'.jpg" width="30" height="30">';
 			}else{
-				echo '<img src="../../personal_img/adduser.jpg" width="100" height="100">';
+				echo '<img src="../../personal_img/adduser.jpg" width="30" height="30">';
 			}
 			?>
 		    </td>
                     <td><?php echo $row['Cedula']; ?></td>
 
                     <td>
-                    <a href="crear_personal.php?doc=<?php echo $row['Cedula']; ?>" title="Editar">
+                    <a href="editar_personal.php?Cedula=<?php echo $row['Cedula']; ?>" title="Editar" data-toggle="modal">
                     <?php echo $row['Nombres'].' '.$row['Apellidos']; ?>
                     </a>
                     </td>
+
+            <td>
+                <?php
+                $id_municipio=$row['Municipio'];
+                $consultaMunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
+                    while($filaMunicipio=mysql_fetch_array($consultaMunicipio)){
+                        echo $filaMunicipio['municipio'];
+                    }
+                    ?>
+            </td>
                     
 			<td>
 			    <?php
@@ -142,37 +146,19 @@
 					}
 					?>
 			</td>
-                    <td><?php echo $row['Observaciones']; ?></td>
-                    <td><?php echo $row['Celular']; ?></td>
-			<td>
-			    <?php
-				$id_cargo=$row['Cargo'];
-				$consultaCargo2=mysql_query("SELECT * FROM cargos WHERE cod_cargo=$id_cargo");
-					while($filaCargo2=mysql_fetch_array($consultaCargo2)){
-						echo $filaCargo2['cargo'];
-					}
-					?>
-			</td>
-			<td>
-			    <?php
-				$id_profesion=$row['Profesion'];
-				$consultaProfesion2=mysql_query("SELECT * FROM profesiones WHERE cod_profesion=$id_profesion");
-					while($filaProfesion2=mysql_fetch_array($consultaProfesion2)){
-						echo $filaProfesion2['profesion'];
-					}
-					?>
-			</td>                    <td><?php echo $row['Especializacion'] ?></td>
-                    <td><?php echo $row['Email'] ?></td>
-                    <td>
-                    	<center>
-                            <a href="#act<?php echo $row['Cedula']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-edit"></i>
-                            </a>
-                            <a href="#eli<?php echo $row['Cedula']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
-                                <i class="icon-remove"></i>
-                            </a>
-                        </center>
-                    </td>
+            <td>
+                <?php
+                $id_cargo=$row['Cargo'];
+                $consultaCargo2=mysql_query("SELECT * FROM cargos WHERE cod_cargo=$id_cargo");
+                    while($filaCargo2=mysql_fetch_array($consultaCargo2)){
+                        echo $filaCargo2['cargo'];
+                    }
+                    ?>
+            </td>
+                    
+			
+            
+			
                   </tr>
 
 
@@ -260,8 +246,10 @@
 
 
 
-    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	            <button type="submit" class="btn btn-primary"><strong>Actualizar Personal</strong></button>
+    	                
+        	            <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
+                        <button type="submit" class="btn btn-primary"><strong>Eliminar</strong></button>
+                        <center><button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button></center>
                             </div>
                     </form>
 

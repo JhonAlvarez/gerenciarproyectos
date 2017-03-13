@@ -10,7 +10,22 @@ if($_SESSION['tipo_user']=='a'){
 }else{
 	header('Location: ../../php_cerrar.php');
 }
+$muni=$_SESSION['muni2']=@$_REQUEST['muni'];
+$bar = $_SESSION['bar2']=@$_REQUEST['bar'];
+	#$Mun = $_REQUEST['Mun'];
+$query="select * from municipios";
+$res = mysql_query($query);
+$query2 = "select * from barrios where municipio=$muni";
+$res2= mysql_query($query2) ;
 
+
+$selectS = "select municipio from municipios where cod_municipio=$muni";
+$resS2=mysql_query($selectS);
+$rowS2=@mysql_fetch_assoc($resS2);
+
+$selectS3 = "select barrio from barrio where municipio=$muni and cod_barrio=$bar";
+$resS3=mysql_query($selectS3);
+$rowS3=@mysql_fetch_assoc($resS3);
 $titulo='Crear Personal';
 $existe=FALSE;
 $boton='Crear';
@@ -23,6 +38,8 @@ $Cargo='';
 $Profesion='';
 $Especializacion='';
 $Email='';
+$Municipio='';
+$Barrio='';
 $tipo='c';
 
 
@@ -43,6 +60,8 @@ if(!empty($_GET['Cedula'])){
 		$Profesion=$row['Profesion'];
 		$Especializacion=$row['Especializacion'];
 		$Email=$row['Email'];
+		$Municipio=$row['Municipio'];
+		$Barrio=$row['Barrio'];
 		$titulo="Actualizar Usuario [ ".$Nombres." ".$Apellidos." ]";
 	}else{
 		header('Location: crear_personal.php');
@@ -55,8 +74,9 @@ if(!empty($_GET['Cedula'])){
     <meta charset="utf-8">
     <title><?php echo $titulo ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <link href="../../css/bootstrap.css" rel="stylesheet">
+    <script src=../js/functions.js></script>
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -87,12 +107,17 @@ if(!empty($_GET['Cedula'])){
 			$Profesion=limpiar($_POST['Profesion']);
 			$Especializacion=limpiar($_POST['Especializacion']);
 			$Email=limpiar($_POST['Email']);
+			$Municipio=limpiar($_POST['muni']);
+			$Barrio=limpiar($_POST['bar']);
 			$con=$Cedula;
 			$url=$Cedula;
 
 
 			$oConsultar=new Consultar_Usuario($Cedula);
-			$oAlumno=new Proceso_Personal($Cedula, $Nombres, $Apellidos, $Dependencia, $Observaciones, $Celular, $Cargo, $Profesion, $Especializacion, $Email);
+			$oAlumno=new Proceso_Personal($Cedula, $Nombres, $Apellidos, $Dependencia, $Observaciones, $Celular, $Cargo, $Profesion, $Especializacion, $Email, $Municipio, $Barrio);
+			if (isset($_POST['crear'])) {
+				# code...
+			
 
 			if(!empty($_GET['Cedula'])){
 				$oAlumno->actualizar();
@@ -146,6 +171,7 @@ if(!empty($_GET['Cedula'])){
 				}
 			}
 		}
+		}
 		?>
             	<table class="table table-bordered">
                   <tr class="well">
@@ -175,7 +201,84 @@ if(!empty($_GET['Cedula'])){
                                     <input type="text" name="Nombres" autocomplete="off" required value="<?php echo $Nombres; ?>" class="input-xlarge"><br>
                                     <strong>Apellidos</strong><br>
                                     <input type="text" name="Apellidos" autocomplete="off" required value="<?php echo $Apellidos; ?>" class="input-xlarge"><br>
-                   <strong>Dependencia </strong><br>
+
+<strong>Celular</strong><br>
+                             <input type="text" name="Celular" autocomplete="off" value="<?php echo $Celular; ?>" class="input-xlarge"><br>
+
+
+                             <strong>Profesion</strong><br>
+                                  <select name="Profesion" class="input-xlarge">
+					<?php
+					$paProfesion=mysql_query("SELECT * FROM profesiones");
+					while($filaprofesion=mysql_fetch_array($paProfesion)){
+						if($filaprofesion['cod_profesion']==$Profesion){
+							echo '<option value="'.$filaprofesion['cod_profesion'].'" selected>'.$filaprofesion['profesion'].'</option>';
+						}else{
+							echo '<option value="'.$filaprofesion['cod_profesion'].'">'.$filaprofesion['profesion'].'</option>';	
+						}
+					}
+					?>
+                                  </select>
+
+				<br>
+ <strong>Email</strong><br>
+                                    <input type="text" name="Email" autocomplete="off" value="<?php echo $Email; ?>" class="input-xlarge"><br>
+
+
+
+
+
+
+
+
+
+
+                 
+
+
+                                  
+                                   
+
+
+                                </div>
+
+
+
+
+    	                        <div class="span4">
+
+
+    	               <strong>Municipio</strong><br>
+
+                        <select name="muni" onchange="this.form.submit()" >
+							<option value="<?php echo $muni?>" ><?php echo $rowS2['municipio'] ?></option>
+							<?php
+								while ($row=mysql_fetch_array($res)) {?>
+									<option value="<?php echo $row['cod_municipio'] ?>"><?php echo htmlentities($row['municipio']); ?>
+				
+									</option>
+							<?php } ?> 
+						</select>
+
+				<br>
+
+				<strong>Barrio</strong><br>
+				<select name="bar">
+					<option value="<?php echo $bar?>" ><?php echo $rowS3['barrio'] ?></option>
+					<?php
+						while ($row2=mysql_fetch_array($res2)) {?>
+							<option value="<?php echo $row2['cod_barrio'] ?>"><?php echo htmlentities($row2['barrio']); ?>
+				
+							</option>
+					<?php } ?> 
+				</select>
+				
+
+                                    <br>
+
+
+
+                                      <strong>Dependencia </strong><br>
                   <select name="Dependencia" class="input-xlarge">
 					<?php
 					$paDependencia=mysql_query("SELECT * FROM dependencias");
@@ -206,69 +309,11 @@ if(!empty($_GET['Cedula'])){
                                   <br>
 
 
-                                  <strong>Profesion</strong><br>
-                                  <select name="Profesion" class="input-xlarge">
-					<?php
-					$paProfesion=mysql_query("SELECT * FROM profesiones");
-					while($filaprofesion=mysql_fetch_array($paProfesion)){
-						if($filaprofesion['cod_profesion']==$Profesion){
-							echo '<option value="'.$filaprofesion['cod_profesion'].'" selected>'.$filaprofesion['profesion'].'</option>';
-						}else{
-							echo '<option value="'.$filaprofesion['cod_profesion'].'">'.$filaprofesion['profesion'].'</option>';	
-						}
-					}
-					?>
-                                  </select>
-
-				<br>
-                                   
-
-
-                                </div>
-
-
-
-
-    	                        <div class="span4">
-
-
-    	               <strong>Municipio</strong><br>
-
-                                  <select name="cod_municipio">
-
-					<?php
-
-					$consultamunicipio=mysql_query("SELECT * FROM municipios");
-
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-
-						echo '<option value="'.$filamunicipio['cod_municipio'].'">'.$filamunicipio['municipio'].'</option>';
-
-					}
-
-					?>
-
-                                  </select>
-
-				<br>
-
-				<strong>Barrio</strong><br>
-                                    <input type="text" name="Barrio" autocomplete="off" value="<?php echo $Barrio; ?>" class="input-xlarge">
-
-                                    <br>
-
-
-                                    <strong>Celular</strong><br>
-                                    <input type="text" name="Celular" autocomplete="off" value="<?php echo $Celular; ?>" class="input-xlarge"><br>
+                                    
+                              
 
                                     
-                                	
-				<br>
-                                	<strong>Especializacion</strong><br>
-                                    <input type="text" name="Especializacion" autocomplete="off" value="<?php echo $Especializacion; ?>" class="input-xlarge"><br>
-                                    <strong>Email</strong><br>
-                                    <input type="text" name="Email" autocomplete="off" value="<?php echo $Email; ?>" class="input-xlarge"><br>
-
+            
 
                               <strong>Observaciones</strong><br>
                                     <input type="text" name="Observaciones" autocomplete="off" value="<?php echo $Observaciones; ?>" class="input-xlarge"><br>
@@ -281,13 +326,11 @@ if(!empty($_GET['Cedula'])){
                                   <strong>Subir Imagen</strong><br>
                                   <input type="file" name="imagen"><br><br>
                                   <center>
-				<?php
-				if(!empty($Cedula)){
-					echo '<a href="crear_personal.php" class="btn btn-large">Nuevo</a>';
-				}else{
-                                  	echo '<button type="submit" class="btn btn-large btn-primary">Crear</button>';
-				}
-				?>
+				
+				
+                                  	<button type="submit" name="crear" id="crear" class="btn btn-large btn-primary">Crear</button>';
+				
+				
                                     <a href="listado_personal.php" class="btn btn-large">Cancelar</a>
                                   </center>
                                 </div>

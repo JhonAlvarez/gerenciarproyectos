@@ -284,6 +284,7 @@ Aqui quedara el editar y eliminar
 
 
 					echo '<td>'.$filaestructuracion['fecha_estructuracion'].'</td>';
+					
 					$momento=$filaestructuracion['momento'];
 						$consultamomento=mysql_query("SELECT * FROM momentos WHERE cod_momento='$momento'");
 						while($filamomento=mysql_fetch_array($consultamomento)){
