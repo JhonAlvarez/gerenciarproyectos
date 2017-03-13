@@ -64,14 +64,12 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Sector </strong></td>
-			<td><strong>Sector </strong></td>
+			<td><strong></strong></td>
 
 			<?php
-				$consultasector=mysql_query("SELECT * FROM sectores");
+				$consultasector=mysql_query("SELECT * FROM sectores  ORDER BY sector asc");
 					while($filasector=mysql_fetch_array($consultasector)){
 					echo "<tr>";
-						echo '<td>'.$filasector['cod_sector'].'</td>';
 						echo '<td>'.$filasector['sector'].'</td>';
 					echo "</tr>";
 

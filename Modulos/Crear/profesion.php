@@ -64,14 +64,12 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Profesion </strong></td>
-			<td><strong>Profesion </strong></td>
+			<td><strong> </strong></td>
 
 			<?php
-				$consultaprofesion=mysql_query("SELECT * FROM profesiones");
+				$consultaprofesion=mysql_query("SELECT * FROM profesiones ORDER BY profesion asc");
 					while($filaprofesion=mysql_fetch_array($consultaprofesion)){
 					echo "<tr>";
-						echo '<td>'.$filaprofesion['cod_profesion'].'</td>';
 						echo '<td>'.$filaprofesion['profesion'].'</td>';
 					echo "</tr>";
 

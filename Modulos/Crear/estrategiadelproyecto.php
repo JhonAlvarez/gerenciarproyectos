@@ -64,14 +64,13 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Estrategia del Proyecto </strong></td>
-			<td><strong>Estrategia del Proyecto </strong></td>
+			<td><strong> </strong></td>
 
 			<?php
-				$consultaestrategiadelproyecto=mysql_query("SELECT * FROM estrategiadelproyecto");
+				$consultaestrategiadelproyecto=mysql_query("SELECT * FROM estrategiadelproyecto ORDER BY estrategiadelproyecto asc");
 					while($filaestrategiadelproyecto=mysql_fetch_array($consultaestrategiadelproyecto)){
 					echo "<tr>";
-						echo '<td>'.$filaestrategiadelproyecto['cod_estrategiadelproyecto'].'</td>';
+						
 						echo '<td>'.$filaestrategiadelproyecto['estrategiadelproyecto'].'</td>';
 					echo "</tr>";
 

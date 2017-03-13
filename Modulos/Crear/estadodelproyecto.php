@@ -64,14 +64,12 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Estado del Proyecto </strong></td>
-			<td><strong>Estado del Proyecto </strong></td>
+			<td><strong> </strong></td>
 
 			<?php
-				$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto");
+				$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto ORDER BY estadodelproyecto asc");
 					while($filaestadodelproyecto=mysql_fetch_array($consultaestadodelproyecto)){
 					echo "<tr>";
-						echo '<td>'.$filaestadodelproyecto['cod_estadodelproyecto'].'</td>';
 						echo '<td>'.$filaestadodelproyecto['estadodelproyecto'].'</td>';
 					echo "</tr>";
 

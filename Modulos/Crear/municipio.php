@@ -64,14 +64,12 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Municipio </strong></td>
-			<td><strong>Municipio </strong></td>
+			<td><strong> </strong></td>
 
 			<?php
-				$consultamunicipio=mysql_query("SELECT * FROM municipios");
+				$consultamunicipio=mysql_query("SELECT * FROM municipios ORDER BY municipio asc");
 					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
 					echo "<tr>";
-						echo '<td>'.$filamunicipio['cod_municipio'].'</td>';
 						echo '<td>'.$filamunicipio['municipio'].'</td>';
 					echo "</tr>";
 

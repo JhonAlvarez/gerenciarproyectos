@@ -63,15 +63,13 @@
 			<input type="submit" value="Crear >>">
 		    </form>
 
-			<table>
-			<td><strong>Codigo Cargo </strong></td>
-			<td><strong>Cargo </strong></td>
+			<table align="center">
+			<td ><strong> </strong></td>
 
 			<?php
-				$consultacargo=mysql_query("SELECT * FROM cargos");
+				$consultacargo=mysql_query("SELECT * FROM cargos ORDER BY cargo asc");
 					while($filacargo=mysql_fetch_array($consultacargo)){
 					echo "<tr>";
-						echo '<td>'.$filacargo['cod_cargo'].'</td>';
 						echo '<td>'.$filacargo['cargo'].'</td>';
 					echo "</tr>";
 

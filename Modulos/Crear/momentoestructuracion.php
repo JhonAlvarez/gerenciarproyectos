@@ -65,7 +65,7 @@
 
 			<table>
 		
-			<td><strong>Momento  </strong></td>
+			<td><strong> </strong></td>
 
 			<?php
 				$consultamomentoestructuracion=mysql_query("SELECT * FROM momentos ORDER BY momento asc");

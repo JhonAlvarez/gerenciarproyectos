@@ -67,10 +67,9 @@
 			
 
 			<?php
-				$consultasubsector=mysql_query("SELECT * FROM subsector");
+				$consultasubsector=mysql_query("SELECT * FROM subsector ORDER BY subsector asc");
 					while($filasubsector=mysql_fetch_array($consultasubsector)){
 					echo "<tr>";
-						echo '<td>'.$filasubsector['cod_subsector'].'</td>';
 						echo '<td>'.$filasubsector['subsector'].'</td>';
 					echo "</tr>";
 

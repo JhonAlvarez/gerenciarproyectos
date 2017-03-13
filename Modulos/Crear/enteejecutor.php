@@ -64,14 +64,12 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Ente Ejecutor </strong></td>
-			<td><strong>Ente Ejecutor </strong></td>
+			<td><strong> </strong></td>
 
 			<?php
-				$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor");
+				$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor ORDER BY enteejecutor asc");
 					while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
 					echo "<tr>";
-						echo '<td>'.$filaenteejecutor['cod_enteejecutor'].'</td>';
 						echo '<td>'.$filaenteejecutor['enteejecutor'].'</td>';
 					echo "</tr>";
 

@@ -64,14 +64,12 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Dependencia </strong></td>
-			<td><strong>Dependencia </strong></td>
+			<td><strong></strong></td>
 
 			<?php
-				$consultadependencia=mysql_query("SELECT * FROM dependencias");
+				$consultadependencia=mysql_query("SELECT * FROM dependencias ORDER BY dependencia asc");
 					while($filadependencia=mysql_fetch_array($consultadependencia)){
 					echo "<tr>";
-						echo '<td>'.$filadependencia['cod_dependencia'].'</td>';
 						echo '<td>'.$filadependencia['dependencia'].'</td>';
 					echo "</tr>";
 

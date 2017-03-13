@@ -67,10 +67,9 @@
 			
 
 			<?php
-				$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion");
+				$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion ORDER BY sectordeinversion asc");
 					while($filasectordeinversion=mysql_fetch_array($consultasectordeinversion)){
 					echo "<tr>";
-						echo '<td>'.$filasectordeinversion['cod_sectordeinversion'].'</td>';
 						echo '<td>'.$filasectordeinversion['sectordeinversion'].'</td>';
 					echo "</tr>";
 

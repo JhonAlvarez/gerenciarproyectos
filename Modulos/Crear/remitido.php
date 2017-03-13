@@ -64,14 +64,12 @@
 		    </form>
 
 			<table>
-			<td><strong>Codigo Remitido </strong></td>
-			<td><strong>Remitido </strong></td>
+			<td><strong> </strong></td>
 
 			<?php
-				$consultaremitido=mysql_query("SELECT * FROM remitidos");
+				$consultaremitido=mysql_query("SELECT * FROM remitidos ORDER BY remitido asc");
 					while($filaremitido=mysql_fetch_array($consultaremitido)){
 					echo "<tr>";
-						echo '<td>'.$filaremitido['cod_remitido'].'</td>';
 						echo '<td>'.$filaremitido['remitido'].'</td>';
 					echo "</tr>";
 
