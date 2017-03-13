@@ -40,13 +40,10 @@
     ?>
     
 	<div align="center">
-    	<table width="90%">
-          <tr>
-            <td>
-            	<table class="table table-bordered">
-                  <tr class="well">
-                    <td>
-                   	 	<h1 align="center">Listado de Proyectos</h1>
+	<br>
+    <br>
+    <br>
+	<h1 align="center">Listado de Proyectos</h1>
                         <center>
                       	<form name="form3" method="post" action="" class="form-search">
                         	<div class="input-prepend input-append">
@@ -56,10 +53,10 @@
                             </div>
                             <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
                     	</form>
-                        </center>
-                    </td>
-                  </tr>
-                </table>
+    	<table width="90%">
+          <tr>
+            <td>
+            	
                 <div align="center">
 		<table>
 		<tr>

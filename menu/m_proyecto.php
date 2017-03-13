@@ -168,7 +168,7 @@ Dividir los crear por clases
                 	<ul class="dropdown-menu">
 	                    <li><a href="../../perfil.php"><i class="icon-user"></i> Mi Perfil</a></li>
                       	<li class="divider"></li>
-                      	<li><a href="../../php_cerrar.php"><i class="icon-off"></i> Salir</a></li>
+                      	<li><a href="../../index.html"><i class="icon-off"></i> Salir</a></li>
                     </ul>
                 </li>
           	</ul>

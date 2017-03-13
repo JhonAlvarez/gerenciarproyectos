@@ -32,27 +32,26 @@
   <body>
 
     <?php include_once "../../menu/m_solicitudplandedesarrollo.php"; ?>
+
 	<div align="center">
-    	<table width="90%">
-          <tr>
-            <td>
-            	<table class="table table-bordered">
-                  <tr class="well">
-                    <td>
-                   	 	<h1 align="center">Solicitudes Plan de Desarrollo</h1>
+    <br>
+    <br>
+    <br>
+    <h1 align="center">Solicitudes Plan de Desarrollo</h1>
                         <center>
-                      	<form name="form3" method="post" action="" class="form-search">
-                        	<div class="input-prepend input-append">
-								<span class="add-on"><i class="icon-search"></i></span>
-                        		<input type="hidden" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
+                        <form name="form3" method="post" action="" class="form-search">
+                            <div class="input-prepend input-append">
+                                <span class="add-on"><i class="icon-search"></i></span>
+                                <input type="hidden" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
                                 autofocus placeholder="Buscar por Num de solicitud">
                             </div>
                             <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
-                    	</form>
+                        </form>
                         </center>
-                    </td>
-                  </tr>
-                </table>
+    	<table width="90%">
+          <tr>
+            <td>
+            	
                 <div align="right">
 		<table>
 		<tr>

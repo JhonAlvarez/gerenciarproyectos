@@ -10,7 +10,7 @@ include_once "Modulos/funciones.php";
 
 
 
-	if($_SESSION['tipo_user']=='a' or $_SESSION['tipo_user']=='c'){
+	if($_SESSION['tipo_user']=='a' or $_SESSION['tipo_user']=='c'  or $_SESSION['tipo_user']=='b'){
 
 
 
