@@ -52,7 +52,7 @@
 
    <?php include_once "../../menu/m_solicitudescomunidad.php"; ?>
 	<div align="center">
-    	<table width="70%" heigth="300%">
+    	<table width="60%" heigth="200%">
           <tr>
             <td>
             	<table class="table table-bordered">
@@ -75,13 +75,13 @@
                  
                 	<form name="form2" method="post" action="" align="center">
                     
-                    <div class="modal-body">
+                    <div class="modal-body span10" style="max-height: 700px" >
                         <div class="row-fluid">
                             <div class="span6">
                             	<strong>Numero de Radicado AIM</strong><br>
                                 <input type="text" name="cod_radicado" autocomplete="off" required><br>
-                            	<strong>Fecha de Solicitud (AAAA-MM-DD)</strong><br>
-                                <input type="text" name="fecha_solicitud" autocomplete="off" required><br>
+                            	<strong>Fecha de Solicitud </strong><br>
+                                <input type="date" name="fecha_solicitud" autocomplete="off" required><br>
                                 <strong>Numero de Radicado Gobernacion</strong><br>
                                 <input type="text" name="cod_radicado_gobernacion" autocomplete="off"><br>
                                 <strong>Contestada (Si / No)</strong><br>

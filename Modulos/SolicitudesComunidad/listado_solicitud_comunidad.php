@@ -20,7 +20,7 @@
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
+     <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
 
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
@@ -33,10 +33,13 @@
 
     <?php include_once "../../menu/m_solicitudescomunidad.php"; ?>
 	<div align="center">
-	<br>
-    <br>
-    <br>
-	<h1 align="center">Solicitudes de la Comunidad</h1>
+    	<table width="80%">
+          <tr>
+            <td>
+            	<table class="table table-bordered">
+                  <tr class="well">
+                    <td>
+                   	 	<h1 align="center">Solicitudes de la Comunidad</h1>
                         <center>
                       	<form name="form3" method="post" action="" class="form-search">
                         	<div class="input-prepend input-append">
@@ -47,10 +50,9 @@
                             <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
                     	</form>
                         </center>
-    	<table width="90%">
-          <tr>
-            <td>
-            	
+                    </td>
+                  </tr>
+                </table>
                 <div align="center">
 		<table>
 		<tr>
@@ -97,46 +99,11 @@
 				</form>
 		</td>
 		</tr>
-		</table>
+		
 	                <!--<a href="#nuevo" role="button" class="btn" data-toggle="modal"><strong>Crear Nuevo Personal</strong></a>-->
                 </div>
                 
-                <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form1" method="post" action="">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                        <h3 id="myModalLabel">Crear Personal</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <strong>Cedula</strong><br>
-                                <input type="text" name="Cedula" autocomplete="off" required value=""><br>
-                                <strong>Nombres</strong><br>
-                                <input type="text" name="Nombres" autocomplete="off" required value=""><br>
-                                <strong>Apellidos</strong><br>
-                                <input type="text" name="Apellidos" autocomplete="off" required value=""><br>
-                                <strong>Celular</strong><br>
-                                <input type="text" name="Celular" autocomplete="off" required value=""><br>
-                            </div>
-                            <div class="span6">
-                                <strong>Cargo</strong><br>
-                                <input type="text" name="Cargo" autocomplete="off" required value=""><br>
-                                <strong>Profesion</strong><br>
-                                <input type="text" name="Profesion" autocomplete="off" required value=""><br>
-                                <strong>Especializacion</strong><br>
-                                <input type="text" name="Especializacion" autocomplete="off" required value=""><br>
-                                <strong>Email</strong><br>
-                                <input type="text" name="Email" autocomplete="off" required value=""><br>
-                            </div>
-                    	</div>
-                    </div>
-                    <div class="modal-footer">
-    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	            <button type="submit" class="btn btn-primary"><strong>Registrar Personal</strong></button>
-                    </div>
-                    </form>
-                </div>
+
                 
                 <br>
                 <?php 
@@ -171,26 +138,27 @@
 						}
 					}
 				?>
-                <table class="table table-bordered">
+<div class="container">
+                <table class="table table-bordered" style="width: 85%">
                   <tr class="well">
-                    <td><strong>Num Radicado AIM</strong></td>
-                    <td><strong>Fecha solicitud</strong></td>
-                    <td><strong>Num Radicado Gobernacion</strong></td>
-                    <td><strong>Contestada</strong></td>
-                    <td><strong>Municipio</strong></td>
-                    <td><strong>Asunto de la solicitud</strong></td>
-                    <td><strong>Sector</strong></td>
-                    <td><strong>Remitido por</strong></td>
-                    <td><strong>Nombre Peticionario</strong></td>
-                    <td><strong>Cargo Peticionario</strong></td>
-                    <td><strong>Telefono</strong></td>
-                    <td><strong>Direccion</strong></td>
-                    <td><strong>Barrio</strong></td>
-                    <td><strong>Email</strong></td>
-                    <td><strong>Radicado de la respuesta</strong></td>
-                    <td><strong>Via entrega respuesta</strong></td>
-                    <td><strong>Observaciones</strong></td>
-                    <td><strong>Accion</strong></td>
+                    <td style="width: 2%"><strong>Num Radicado AIM</strong></td>
+                    <td style="width: 2%"><strong>Fecha solicitud</strong></td>
+                    <td style="width: 2%"><strong>Num Radicado Gobernacion</strong></td>
+                    <td style="width: 2%"><strong>Contestada</strong></td>
+                    <td style="width: 2%"><strong>Municipio</strong></td>
+                    <td style="width: 2%"><strong>Asunto de la solicitud</strong></td>
+                    <td style="width: 2%"><strong>Sector</strong></td>
+                    <td style="width: 2%"><strong>Remitido por</strong></td>
+                    <td style="width: 2%"><strong>Nombre Peticionario</strong></td>
+                    <td style="width: 2%"><strong>Cargo Peticionario</strong></td>
+                    <td style="width: 2%"><strong>Telefono</strong></td>
+                    <td style="width: 2%"><strong>Direccion</strong></td>
+                    <td style="width: 2%"><strong>Barrio</strong></td>
+                    <td style="width: 2%"><strong>Email</strong></td>
+                    <td style="width: 2%"><strong>Radicado de la respuesta</strong></td>
+                    <td style="width: 2%"><strong>Via entrega respuesta</strong></td>
+                    <td style="width: 2%"><strong>Observaciones</strong></td>
+                    <td style="width: 2%"><strong>Accion</strong></td>
                   </tr>
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
@@ -210,7 +178,7 @@
 					while($row=mysql_fetch_array($pame)){
 				  ?>
                   <tr>
-                    <td>
+                    <td style="width: 2%">
 			<?php echo $row['cod_radicado']; ?>
 			<form method="POST" action="cargar_archivo.php">
 			<?php
@@ -222,16 +190,16 @@
 				echo '<img src="../../archivos_comunidad/defecto.jpg" width="30" height="30">';
 			}
 			?>
-                            <input type="hidden" name="cod_radicado" autocomplete="off" required readonly value="<?php echo $row['cod_radicado']; ?>">
+ <input type="hidden" name="cod_radicado" autocomplete="off" required readonly value="<?php echo $row['cod_radicado']; ?>">
                             <input type="hidden" name="fecha_solicitud" autocomplete="off" required readonly value="<?php echo $row['fecha_solicitud']; ?>">
                             <input type="hidden" name="cod_radicado_gobernacion" autocomplete="off" required readonly value="<?php echo $row['cod_radicado_gobernacion']; ?>">
         	            <button type="submit" class="btn btn-primary"><strong>Cargar</strong></button>
 			</form>			
 			</td>
 
-                    <td><?php echo $row['fecha_solicitud']; ?></td>
-                    <td><?php echo $row['cod_radicado_gobernacion']; ?></td>
-			<td>
+                    <td style="width: 2%"><?php echo $row['fecha_solicitud']; ?></td>
+                    <td style="width: 2%"><?php echo $row['cod_radicado_gobernacion']; ?></td>
+			<td style="width: 2%">
 			    <?php
 				$id_contestada=$row['contestada'];
 				$consultacontestada=mysql_query("SELECT * FROM contestada WHERE cod_contestada=$id_contestada");
@@ -241,7 +209,7 @@
 					?>
 			</td>
 
-			<td>
+			<td style="width: 2%">
 			    <?php
 				$id_municipio=$row['cod_municipio'];
 				$consultamunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
@@ -251,9 +219,9 @@
 					?>
 			</td>
 
-                    <td><?php echo $row['asunto_solicitud']; ?></td>
+                    <td style="width: 2%"><?php echo $row['asunto_solicitud']; ?></td>
 
-			<td>
+			<td style="width: 2%">
 			    <?php
 				$id_sector=$row['sector'];
 				$consultasector=mysql_query("SELECT * FROM sectores WHERE cod_sector=$id_sector");
@@ -263,7 +231,7 @@
 					?>
 			</td>
 
-			<td>
+			<td style="width: 2%">
 			    <?php
 				$id_remitido=$row['remitido'];
 				$consultaremitido=mysql_query("SELECT * FROM remitidos WHERE cod_remitido=$id_remitido");
@@ -273,16 +241,16 @@
 					?>
 			</td>
 
-                    <td><?php echo $row['nombrepeticionario']; ?></td>
-                    <td><?php echo $row['cargopeticionario']; ?></td>
-                    <td><?php echo $row['telefono']; ?></td>
-                    <td><?php echo $row['direccion']; ?></td>
-                    <td><?php echo $row['barrio']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td><?php echo $row['radicadorespuesta']; ?></td>
-                    <td><?php echo $row['entregarespuesta']; ?></td>
-                    <td><?php echo $row['observaciones']; ?></td>
-                    <td>
+                    <td style="width: 2%"><?php echo $row['nombrepeticionario']; ?></td>
+                    <td style="width: 2%"><?php echo $row['cargopeticionario']; ?></td>
+                    <td style="width: 2%"><?php echo $row['telefono']; ?></td>
+                    <td style="width: 2%"><?php echo $row['direccion']; ?></td>
+                    <td style="width: 2%"><?php echo $row['barrio']; ?></td>
+                    <td style="width: 2%"><?php echo $row['email']; ?></td>
+                    <td style="width: 2%"><?php echo $row['radicadorespuesta']; ?></td>
+                    <td style="width: 2%"><?php echo $row['entregarespuesta']; ?></td>
+                    <td style="width: 2%"><?php echo $row['observaciones']; ?></td>
+                    <td style="width: 2%">
                     	<center>
                             <a href="#act<?php echo $row['cod_radicado']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
                                 <i class="icon-edit"></i>
@@ -294,6 +262,8 @@
                         </center>
                     </td>
                   </tr>
+          
+            </div>
 
 
 
@@ -428,7 +398,7 @@
                                 <input type="text" name="fecha_solicitud" autocomplete="off" required readonly value="<?php echo $row['fecha_solicitud']; ?>"><br>
 
 	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	     	       <button type="submit" class="btn btn-primary"><strong>Eliminar Personal</strong></button>
+   <button type="submit" class="btn btn-primary"><strong>Eliminar Personal</strong></button>
                             </div>
 
 			</form>
@@ -440,10 +410,12 @@
             </td>
           </tr>
         </table>
+        </table>
 
 
 
     </div>
+    
     <!-- Le javascript ../../js/jquery.js
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

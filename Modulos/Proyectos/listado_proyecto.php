@@ -53,186 +53,84 @@
                             </div>
                             <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
                     	</form>
-    	<table width="90%">
+                    	<!--<form method="POST" action="buscar_proyecto_municipio.php">-->
+                    	<form method="POST" action="buscador.php">
+							<div class="row">
+								<div class="col-md-4">
+									<strong>Seleccione Municipio: </strong><br>
+								    <select name="cod_municipio">
+
+										<?php
+
+											$consultamunicipio=mysql_query("SELECT * FROM municipios");
+											echo "<option value=0 selected>Todos</option>";
+											while($filamunicipio=mysql_fetch_array($consultamunicipio)){
+
+												echo '<option value="'.$filamunicipio['cod_municipio'].'">'.$filamunicipio['municipio'].'</option>';
+
+											}
+
+											?>
+
+				                    </select>
+
+		                    	</div>
+		                    	<div class="col-md-4">
+		                    		<strong>Seleccione Estado(s) del Proyecto: </strong><br>
+		                    		
+
+										<?php
+
+											$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto");
+											echo "<input type=checkbox name=0 value=0>Todos<br>";
+											echo "-------------<br>";
+											while($filaestadodelproyecto=mysql_fetch_array($consultaestadodelproyecto)){
+
+												//echo '<option value="'.$filaestadodelproyecto['cod_estadodelproyecto'].'">'.$filaestadodelproyecto['estadodelproyecto'].'</option>';
+												echo "<input type=checkbox name='".$filaestadodelproyecto['cod_estadodelproyecto']."' value=".$filaestadodelproyecto['cod_estadodelproyecto'].">".$filaestadodelproyecto['estadodelproyecto']."<br>";
+											}
+
+										?>
+
+		                    		
+		                    		
+		                    	</div>
+		                    	<div class="col-md-4">
+		                    		<strong>Seleccione Supervisor: </strong><br>
+		                    		<select name="cod_supervisor">
+
+										<?php
+
+											$consultasupervisor=mysql_query("SELECT * FROM personal");
+											echo "<option value=0 selected>Todos</option>";
+											while($filasupervisor=mysql_fetch_array($consultasupervisor)){
+
+												echo '<option value="'.$filasupervisor['Cedula'].'">'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</option>';
+
+											}
+
+										?>
+
+		                            </select>
+		                    		
+		                    	</div>
+		                    </div>
+		                    <input type="submit" value="buscar">
+						</form>
+                    	</center>
+    	<table width="95%">
           <tr>
             <td>
-            	
-                <div align="center">
-		<table>
-		<tr>
-		<td>
-			<strong>Buscar por el municipio de: </strong>
-
-				<form method="POST" action="buscar_proyecto_municipio.php">
-
-                                  <select name="cod_municipio">
-
-					<?php
-
-					$consultamunicipio=mysql_query("SELECT * FROM municipios");
-
-					while($filamunicipio=mysql_fetch_array($consultamunicipio)){
-
-						echo '<option value="'.$filamunicipio['cod_municipio'].'">'.$filamunicipio['municipio'].'</option>';
-
-					}
-
-					?>
-
-                                  </select>
-
-				<input type="submit" value="Buscar">
-
-				</form>
-		</td>
-
-		<td>
-			<strong>B. por Estado del Proyecto: </strong>
-
-				<form method="POST" action="buscar_proyecto_estado.php">
-
-                                  <select name="cod_estadodelproyecto">
-
-					<?php
-
-					$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto");
-
-					while($filaestadodelproyecto=mysql_fetch_array($consultaestadodelproyecto)){
-
-						echo '<option value="'.$filaestadodelproyecto['cod_estadodelproyecto'].'">'.$filaestadodelproyecto['estadodelproyecto'].'</option>';
-
-					}
-
-					?>
-
-                                  </select>
-
-				<input type="submit" value="Buscar">
-
-				</form>
-
-		</td>
-
-		<td>
-			<strong>Buscar por Supervisor: </strong>
-
-				<form method="POST" action="buscar_proyecto_supervisor.php">
-
-                                  <select name="cod_supervisor">
-
-					<?php
-
-					$consultasupervisor=mysql_query("SELECT * FROM personal");
-
-					while($filasupervisor=mysql_fetch_array($consultasupervisor)){
-
-						echo '<option value="'.$filasupervisor['Cedula'].'">'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</option>';
-
-					}
-
-					?>
-
-                                  </select>
-
-				<input type="submit" value="Buscar">
-
-				</form>
-
-		</td>
-
-
-		
-
-
-		</tr>
-		</table>
-	                <!--<a href="#nuevo" role="button" class="btn" data-toggle="modal"><strong>Crear Nuevo Personal</strong></a>-->
-                </div>
                 
-                <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                	<form name="form1" method="post" action="">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                        <h3 id="myModalLabel">Crear Personal</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <strong>Cedula</strong><br>
-                                <input type="text" name="Cedula" autocomplete="off" required value=""><br>
-                                <strong>Nombres</strong><br>
-                                <input type="text" name="Nombres" autocomplete="off" required value=""><br>
-                                <strong>Apellidos</strong><br>
-                                <input type="text" name="Apellidos" autocomplete="off" required value=""><br>
-                                <strong>Celular</strong><br>
-                                <input type="text" name="Celular" autocomplete="off" required value=""><br>
-                            </div>
-                            <div class="span6">
-                                <strong>Cargo</strong><br>
-                                <input type="text" name="Cargo" autocomplete="off" required value=""><br>
-                                <strong>Profesion</strong><br>
-                                <input type="text" name="Profesion" autocomplete="off" required value=""><br>
-                                <strong>Especializacion</strong><br>
-                                <input type="text" name="Especializacion" autocomplete="off" required value=""><br>
-                                <strong>Email</strong><br>
-                                <input type="text" name="Email" autocomplete="off" required value=""><br>
-                            </div>
-                    	</div>
-                    </div>
-                    <div class="modal-footer">
-    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
-        	            <button type="submit" class="btn btn-primary"><strong>Registrar Personal</strong></button>
-                    </div>
-                    </form>
-                </div>
                 
-                <br>
-                <?php 
-					if(!empty($_POST['cod_proyecto'])){ 
-						$cod_proyecto=limpiar($_POST['cod_proyecto']);
-						$objetivoproyecto=limpiar($_POST['objetivoproyecto']);
-						$municipio1=limpiar($_POST['municipio1']);
-						$municipio2=limpiar($_POST['municipio2']);
-						$estadodelproyecto=limpiar($_POST['estadodelproyecto']);
-						$supervisor=limpiar($_POST['supervisor']);
-						$estrategia=limpiar($_POST['estrategia']);
-						$sectordeinversion=limpiar($_POST['sectordeinversion']);
-						$subsector=limpiar($_POST['subsector']);
-						$enteejecutor=limpiar($_POST['enteejecutor']);
-						
-						if(empty($_POST['cod_proyecto'])){
-							$oProv=new Proceso_Proyecto('', $cod_proyecto, $objetivoproyecto, $municipio1, $municipio2, $estadodelproyecto, $supervisor, $estrategia, $sectordeinversion, $subsector, $enteejecutor);
-							$oProv->crear();
-							echo mensajes('El Registro "'.$cod_proyecto.'" fue Creado con Exito','verde');
-						}else{
-							$cod_proyecto=limpiar($_POST['cod_proyecto']);
-							$oProveedor=new Proceso_Proyecto($cod_proyecto, $objetivoproyecto, $municipio1, $municipio2, $estadodelproyecto, $supervisor, $estrategia, $sectordeinversion, $subsector, $enteejecutor);
-							$oProveedor->actualizar();
-							echo mensajes('El Registro "'.$cod_proyecto.'" fue Actualizado con Exito','verde');
-						}
-					}
-				?>
-                <table class="table table-bordered" align="center">
+                <table class="table table-bordered" align="center" style="width:95%">
                   <tr class="well">
-                    <td><strong>Codigo Proyecto</strong></td>
-                    <td><strong>Objeto del Proyecto</strong></td>
-                    <td><strong>Municipio </strong></td>
-                    <td><strong>Estado del Proyecto</strong></td>
-                    <td><strong>Supervisor</strong></td>
-                    <td><strong>Meta</strong></td>
-
-
-<!--
-                    <td><strong>Politica</strong></td>
-                    <td><strong>Sector de Inversion</strong></td>
-                    <td><strong>Subsector</strong></td>
-                    <td><strong>Ente Ejecutor</strong></td>
-                    Para el informe del proyecto
-
--->
-                    <!--
-                    Con opcion de quitar la meta
-                    -->
+                    <td style="width:2%"> <strong>Codigo Proyecto</strong></td>
+                    <td style="width:8%"><strong>Objeto del Proyecto</strong></td>
+                    <td style="width:2%"><strong>Municipio </strong></td>
+                    <td style="width:2%"><strong>Estado del Proyecto</strong></td>
+                    <td style="width:2%" ><strong>Supervisor</strong></td>
+                    <td style="width:2%"><strong>Meta</strong></td>
                     
                   </tr>
 
@@ -243,7 +141,7 @@
 						$pame=mysql_query("SELECT * FROM proyectos WHERE cod_proyecto  LIKE '%$buscar%' OR objetivoproyecto  LIKE '%$buscar%'");	
 						/* determinar el número de filas del resultado */
 						$cantRegistros=mysql_num_rows($pame);
-						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
+						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Ses encontraron ".$cantRegistros." registros</strong>";
 
 					}else{
 						$pame=mysql_query("SELECT * FROM proyectos ORDER BY cod_proyecto DESC");		
@@ -255,7 +153,7 @@
 					while($row=mysql_fetch_array($pame)){
 				  ?>
                   <tr>
-                    <td>
+                    <td style="width:2%">
 
 
                     
@@ -269,8 +167,8 @@
 
 
                     </td>
-                    <td><?php echo $row['objetivoproyecto']; ?></td>
-			<td>
+                    <td style="width:8%"><?php echo $row['objetivoproyecto']; ?></td>
+			<td style="width:2%">
 			<?php
 				$id_municipio=$row['municipio1'];
 				$consultamunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
@@ -281,7 +179,7 @@
 			</td>
 
 		
-			<td>
+			<td style="width:2%">
 			<?php
 				$id_estadodelproyecto=$row['estadodelproyecto'];
 				$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto WHERE cod_estadodelproyecto=$id_estadodelproyecto");
@@ -291,7 +189,7 @@
 			?>
 			</td>
 
-			<td>
+			<td style="width:2%">
 			<?php
 				$id_supervisor=$row['supervisor'];
 				$consultasupervisor=mysql_query("SELECT * FROM personal WHERE Cedula=$id_supervisor");
@@ -347,7 +245,7 @@
 			</td>
 -->
 
-<td>
+<td style="width:2%">
                     	<center>
 			<form method="POST" action="agregar_meta.php">
 				<?php

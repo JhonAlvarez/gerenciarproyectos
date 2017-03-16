@@ -45,20 +45,9 @@ $Nombre=$oUsuario->consultar('nom').' '.$oUsuario->consultar('ape');
     <!-- Le styles -->
 
     <link href="css/bootstrap.css" rel="stylesheet">
+       <link rel="stylesheet" type="text/css" href="../../css/listasstylo.css">
 
-    <style type="text/css">
 
-      body {
-
-        padding-top: 60px;
-
-        padding-bottom: 40px;
-
-	background-image:url(img/background.jpg);
-
-      }
-
-    </style>
 
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 

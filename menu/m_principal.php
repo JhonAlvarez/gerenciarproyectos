@@ -1,3 +1,8 @@
+
+
+   <link rel="stylesheet" type="text/css" href="../../css/listastylo.css">
+
+
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">

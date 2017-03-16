@@ -21,12 +21,8 @@
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+      <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
+
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../ico/apple-touch-icon-114-precomposed.png">
@@ -39,13 +35,16 @@
     <?php include_once "../../menu/m_proyecto.php"; ?>
 
 	<div align="center">
-    	<table width="90%">
+    	<table width="80%">
           <tr>
             <td>
             	<table class="table table-bordered">
                   <tr class="well">
                     <td>
-                    	<h2 align="center">Estructuracion del Proyecto No. <?php echo $cod_proyecto=$_POST['cod_proyecto'] ?></h2>
+                    <br>
+		<br>
+		<br>
+                    	<h1 align="center">Estructuracion del Proyecto No. <?php echo $cod_proyecto=$_POST['cod_proyecto'] ?></h2>
                     </td>
                   </tr>
                 </table>
@@ -54,24 +53,18 @@
 		
 			<?php
 			$cod_proyecto=$_POST['cod_proyecto'];
-			echo "<h3 align='center'>Informacion General del Proyecto</h3>";
+			
 
 			echo "<table>";
 
 				$consultacod_proyecto=mysql_query("SELECT * FROM proyectos WHERE cod_proyecto=".$cod_proyecto);
 					while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
 					echo "<tr>";
-						echo '<td><strong>Codigo del Proyecto: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td>'.$filacod_proyecto['cod_proyecto'].'</td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
+						
 						echo '<td><strong>Objeto del Proyecto: </strong></td>';
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
 						echo '<td>'.$filacod_proyecto['objetivoproyecto'].'</td>';
-					echo "</tr>";
-
-					echo "<tr>";
-						echo '<td><strong>Municipio 1: </strong></td>';
+						echo '<td><strong>Municipio: </strong></td>';
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
 							$consultamunicipio1=mysql_query("SELECT * FROM municipios WHERE cod_municipio=".$filacod_proyecto['municipio1']);
 							while($filamunicipio1=mysql_fetch_array($consultamunicipio1)){
@@ -82,54 +75,63 @@
 							$consultamunicipio2=mysql_query("SELECT * FROM municipios WHERE cod_municipio=".$filacod_proyecto['municipio2']);
 							while($filamunicipio2=mysql_fetch_array($consultamunicipio2)){
 							}
-					echo "</tr>";
-
-					echo "<tr>";
-						echo '<td><strong>Estado del Proyecto: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto WHERE cod_estadodelproyecto=".$filacod_proyecto['estadodelproyecto']);
-							while($filaestadodelproyecto=mysql_fetch_array($consultaestadodelproyecto)){
-								echo '<td>'.$filaestadodelproyecto['estadodelproyecto'].'</td>';
-							}
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td><strong>Supervisor: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultasupervisor=mysql_query("SELECT * FROM personal WHERE Cedula=".$filacod_proyecto['supervisor']);
-							while($filasupervisor=mysql_fetch_array($consultasupervisor)){
-								echo '<td>'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</td>';
-							}
-					echo "</tr>";
-
-					echo "<tr>";
-						echo '<td><strong>Politica del Proyecto: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultaestrategiadelproyecto=mysql_query("SELECT * FROM estrategiadelproyecto WHERE cod_estrategiadelproyecto=".$filacod_proyecto['estrategia']);
-							while($filaestrategiadelproyecto=mysql_fetch_array($consultaestrategiadelproyecto)){
-								echo '<td>'.$filaestrategiadelproyecto['estrategiadelproyecto'].'</td>';
-							}
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td><strong>Sector de Inversion: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion WHERE cod_sectordeinversion=".$filacod_proyecto['sectordeinversion']);
-							while($filasectordeinversion=mysql_fetch_array($consultasectordeinversion)){
-								echo '<td>'.$filasectordeinversion['sectordeinversion'].'</td>';
-							}
-					echo "</tr>";
-
-					echo "<tr>";
-						echo '<td><strong>Subsector: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultasubsector=mysql_query("SELECT * FROM subsector WHERE cod_subsector=".$filacod_proyecto['subsector']);
-							while($filasubsector=mysql_fetch_array($consultasubsector)){
-								echo '<td>'.$filasubsector['subsector'].'</td>';
-							}
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
+							echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
 						echo '<td><strong>Ente Ejecutor: </strong></td>';
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
 							$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor WHERE cod_enteejecutor=".$filacod_proyecto['enteejecutor']);
 							while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
 								echo '<td>'.$filaenteejecutor['enteejecutor'].'</td>';
 							}
+
+
+
+					echo "</tr>";
+
+
+					echo "<tr>";
+						
+						echo '<td><strong>Supervisor: </strong></td>';
+						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
+							$consultasupervisor=mysql_query("SELECT * FROM personal WHERE Cedula=".$filacod_proyecto['supervisor']);
+							while($filasupervisor=mysql_fetch_array($consultasupervisor)){
+								echo '<td>'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</td>';
+							}
+
+				echo '<td><strong>Politica del Proyecto: </strong></td>';
+						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
+							$consultaestrategiadelproyecto=mysql_query("SELECT * FROM estrategiadelproyecto WHERE cod_estrategiadelproyecto=".$filacod_proyecto['estrategia']);
+							while($filaestrategiadelproyecto=mysql_fetch_array($consultaestrategiadelproyecto)){
+								echo '<td>'.$filaestrategiadelproyecto['estrategiadelproyecto'].'</td>';
+							}
+						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
+echo '<td><strong>Sector de Inversion: </strong></td>';
+						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
+							$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion WHERE cod_sectordeinversion=".$filacod_proyecto['sectordeinversion']);
+							while($filasectordeinversion=mysql_fetch_array($consultasectordeinversion)){
+								echo '<td>'.$filasectordeinversion['sectordeinversion'].'</td>';
+							}
+
+
+
+
+					echo "</tr>";
+
+					echo "<tr>";
+						
+						
+
+							echo '<td><strong>Subsector: </strong></td>';
+						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
+							$consultasubsector=mysql_query("SELECT * FROM subsector WHERE cod_subsector=".$filacod_proyecto['subsector']);
+							while($filasubsector=mysql_fetch_array($consultasubsector)){
+								echo '<td>'.$filasubsector['subsector'].'</td>';
+							}
+
+					echo "</tr>";
+
+					echo "<tr>";
+						
+						
 					echo "</tr>";
 
 
@@ -185,9 +187,10 @@
 				?>
 		</tr>
 
-		<table>
+		<table align="center" style="width:80%">
+		
 
-			<h3 align='center'>Estructuracion del Proyecto</h3>
+			
 
 		<form method="POST" action="estructuracion3.php">
 		<table>
@@ -248,7 +251,7 @@
 
 <hr>
 
-		<table border="3">
+		<table border="3" style="width:80%">
 		  <tr>
 		   
 
@@ -260,17 +263,17 @@ Aqui quedara el editar y eliminar
 
 		    
 		   
-		    <td>
-			<strong>Fecha</strong>
+		    <td  style="width:2%">
+		Fecha
 		    </td>
-		    <td>
-			<strong>Momento </strong>
+		    <td  style="width:5%">
+			Momento 
 		    </td>
-		    <td>
-			<strong>Observaciones</strong>
+		    <td  style="width:8%" >
+			Observaciones
 		    </td>
-		    <td>
-			<strong>Soporte Digital</strong>
+		    <td  style="width:2%">
+			Soporte Digital
 		    </td>
 		    
 		  </tr>

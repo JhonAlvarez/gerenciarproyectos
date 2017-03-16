@@ -20,12 +20,7 @@
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+   <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../ico/apple-touch-icon-114-precomposed.png">
@@ -42,6 +37,9 @@
             <td>
             	<table class="table table-bordered">
                   <tr class="well">
+                   <br>
+    <br>
+    <br>
                     <td>
                    	 	<h1 align="center">Listado del Personal</h1>
                         <center>
@@ -86,14 +84,16 @@
                 
                 <br>
                 
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="width: 90%" align="center">
                   <tr class="well">
-		    <td><strong></strong></td>
+		        <td><strong>Img</strong></td>
                     <td><strong>Cedula</strong></td>
                     <td><strong>Nombres y Apellidos</strong></td>
                     <td><strong>Municipio</strong></td>
+                    <td><strong>Barrio</strong>
                     <td><strong>Dependencia</strong></td>
-                     <td><strong>Cargo</strong></td>
+                    <td><strong>Cargo</strong></td>
+
                     
                     
                     
@@ -110,7 +110,7 @@
 					while($row=mysql_fetch_array($pame)){
 				  ?>
                   <tr>
-		    <td>
+		    <td style="width: 2%">
 			<?php
 			if (file_exists("../../personal_img/".$row['Cedula'].".jpg")){
 				echo '<img src="../../personal_img/'.$row['Cedula'].'.jpg" width="30" height="30">';
@@ -119,15 +119,15 @@
 			}
 			?>
 		    </td>
-                    <td><?php echo $row['Cedula']; ?></td>
+                    <td style="width: 1%"><?php echo $row['Cedula']; ?></td>
 
-                    <td>
+                    <td style="width: 10%">
                     <a href="editar_personal.php?Cedula=<?php echo $row['Cedula']; ?>" title="Editar" data-toggle="modal">
                     <?php echo $row['Nombres'].' '.$row['Apellidos']; ?>
                     </a>
                     </td>
 
-            <td>
+            <td style="width: 2%">
                 <?php
                 $id_municipio=$row['Municipio'];
                 $consultaMunicipio=mysql_query("SELECT * FROM municipios WHERE cod_municipio=$id_municipio");
@@ -136,8 +136,18 @@
                     }
                     ?>
             </td>
-                    
-			<td>
+                 
+            <td style="width: 2%">
+                <?php
+                $id_barrio=$row['Barrio'];
+                $consultaBarrio=mysql_query("SELECT * FROM barrios WHERE cod_barrio=$id_barrio");
+                    while($filaBarrio=mysql_fetch_array($consultaBarrio)){
+                        echo $filaBarrio['barrio'];
+                    }
+                    ?>
+            </td>
+
+			<td style="width: 2%">
 			    <?php
 				$id_dependencia=$row['Dependencia'];
 				$consultaDependencia2=mysql_query("SELECT * FROM dependencias WHERE cod_dependencia=$id_dependencia");
@@ -146,7 +156,8 @@
 					}
 					?>
 			</td>
-            <td>
+
+            <td style="width: 2%">
                 <?php
                 $id_cargo=$row['Cargo'];
                 $consultaCargo2=mysql_query("SELECT * FROM cargos WHERE cod_cargo=$id_cargo");

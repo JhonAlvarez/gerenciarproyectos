@@ -42,8 +42,8 @@
                         <form name="form3" method="post" action="" class="form-search">
                             <div class="input-prepend input-append">
                                 <span class="add-on"><i class="icon-search"></i></span>
-                                <input type="hidden" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
-                                autofocus placeholder="Buscar por Num de solicitud">
+                                <input  name="buscar" autocomplete="off" class="input-xxlarge search-query" 
+                                autofocus placeholder="Ingrese su busqueda">
                             </div>
                             <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
                         </form>
@@ -52,7 +52,7 @@
           <tr>
             <td>
             	
-                <div align="right">
+                <div align="center">
 		<table>
 		<tr>
 		<td>
@@ -149,22 +149,22 @@
 						}
 					}
 				?>
-                <table class="table table-bordered">
+                <table style="width: 90%" class="table table-bordered" align="center">
                   <tr class="well">
-                    <td><strong>Num Solicitud Plan</strong></td>
-                    <td><strong>Municipio</strong></td>
-                    <td><strong>Sector del Proyecto</strong></td>
-                    <td><strong>Objetivo y Ubicacion del Proyecto</strong></td>
-                    <td><strong>Afectacion</strong></td>
-                    <td><strong>Fase</strong></td>
-                    <td><strong>Valor del Proyecto</strong></td>
+                    <td style="width: 1%"><strong>Num Solicitud Plan</strong></td>
+                    <td style="width: 1%"><strong>Municipio</strong></td>
+                    <td style="width: 1%"><strong>Sector del Proyecto</strong></td>
+                    <td style="width: 10%"><strong>Objetivo y Ubicacion del Proyecto</strong></td>
+                    <td style="width: 10%"><strong>Afectacion</strong></td>
+                    <td style="width: 5%"><strong>Fase</strong></td>
+                    <td style="width: 3%"><strong>Valor del Proyecto</strong></td>
                   </tr>
 
 
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
 						$buscar=limpiar($_POST['buscar']);
-						$pame=mysql_query("SELECT * FROM solicitudesplandedesarrollo WHERE cod_solicitudplan and (cod_solicitudplan='$buscar' or cod_municipio LIKE '%$buscar%') ORDER BY cod_solicitudplan DESC");	
+						$pame=mysql_query("SELECT * FROM solicitudesplandedesarrollo WHERE cod_solicitudplan  LIKE '%$buscar%' OR objetivoyubicacion LIKE '%$buscar%'");	
 						/* determinar el número de filas del resultado */
 						$cantRegistros=mysql_num_rows($pame);
 						echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
