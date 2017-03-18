@@ -21,7 +21,7 @@
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
+      <link rel="stylesheet" type="text/css" href="../../css/styloproy.css">
 
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
@@ -35,201 +35,104 @@
     <?php include_once "../../menu/m_proyecto.php"; ?>
 
 	<div align="center">
-    	<table width="80%">
+    	<table width="100%" >
           <tr>
             <td>
             	<table class="table table-bordered">
                   <tr class="well">
                     <td>
-                    <br>
-		<br>
-		<br>
-                    	<h1 align="center">Estructuracion del Proyecto No. <?php echo $cod_proyecto=$_POST['cod_proyecto'] ?></h2>
+      
+                    	   	<p align="center"><font size="6">
+                    	ESTRUCTURACION DEL PROYECTO N°. <?php echo $cod_proyecto=$_POST['cod_proyecto'] ?></p></font>
                     </td>
                   </tr>
                 </table>
-                <div align="center">
+             <div align="center">
 
 		
-			<?php
+<?php
 			$cod_proyecto=$_POST['cod_proyecto'];
 			
 
-			echo "<table>";
+			echo "<table  align=center  class=table table-bordered  style=width:100%> ";
 
 				$consultacod_proyecto=mysql_query("SELECT * FROM proyectos WHERE cod_proyecto=".$cod_proyecto);
 					while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
-					echo "<tr>";
+					echo "<tr >";
 						
-						echo '<td><strong>Objeto del Proyecto: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td>'.$filacod_proyecto['objetivoproyecto'].'</td>';
-						echo '<td><strong>Municipio: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
+					
+						
+						echo '<td style="width: 30%"> <h1 font size=3 align=center> OBJETO <br>  <br> </h1> '.$filacod_proyecto['objetivoproyecto'].'   </td>';
+
+
+
+				
+							$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto WHERE cod_estadodelproyecto=".$filacod_proyecto['estadodelproyecto']);
+							while($filaestadodelproyecto=mysql_fetch_array($consultaestadodelproyecto)){
+								echo '<td style="width: 4%" >  <h1 font size=8> ESTADO <br>  <br> </h1>    '.$filaestadodelproyecto['estadodelproyecto'].'</td>';
+							}
+
+
+
+						
 							$consultamunicipio1=mysql_query("SELECT * FROM municipios WHERE cod_municipio=".$filacod_proyecto['municipio1']);
 							while($filamunicipio1=mysql_fetch_array($consultamunicipio1)){
-								echo '<td>'.$filamunicipio1['municipio'].'</td>';
+								echo '<td style="width: 4%"> <h1 font size=8> MUNICIPIO <br>  <br> </h1>  '.$filamunicipio1['municipio'].'</td>';
 							}
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
+						
 						
 							$consultamunicipio2=mysql_query("SELECT * FROM municipios WHERE cod_municipio=".$filacod_proyecto['municipio2']);
 							while($filamunicipio2=mysql_fetch_array($consultamunicipio2)){
 							}
-							echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td><strong>Ente Ejecutor: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultaenteejecutor=mysql_query("SELECT * FROM enteejecutor WHERE cod_enteejecutor=".$filacod_proyecto['enteejecutor']);
-							while($filaenteejecutor=mysql_fetch_array($consultaenteejecutor)){
-								echo '<td>'.$filaenteejecutor['enteejecutor'].'</td>';
-							}
-
-
-
-					echo "</tr>";
-
-
-					echo "<tr>";
 						
-						echo '<td><strong>Supervisor: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
+						
+
 							$consultasupervisor=mysql_query("SELECT * FROM personal WHERE Cedula=".$filacod_proyecto['supervisor']);
 							while($filasupervisor=mysql_fetch_array($consultasupervisor)){
-								echo '<td>'.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</td>';
+								echo '<td style="width: 2%"> <h1 font size=5> SUPERVISOR  <br>  <br> </h1>  '.$filasupervisor['Nombres'].' '.$filasupervisor['Apellidos'].'</td>';
 							}
 
-				echo '<td><strong>Politica del Proyecto: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultaestrategiadelproyecto=mysql_query("SELECT * FROM estrategiadelproyecto WHERE cod_estrategiadelproyecto=".$filacod_proyecto['estrategia']);
-							while($filaestrategiadelproyecto=mysql_fetch_array($consultaestrategiadelproyecto)){
-								echo '<td>'.$filaestrategiadelproyecto['estrategiadelproyecto'].'</td>';
-							}
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-echo '<td><strong>Sector de Inversion: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultasectordeinversion=mysql_query("SELECT * FROM sectordeinversion WHERE cod_sectordeinversion=".$filacod_proyecto['sectordeinversion']);
-							while($filasectordeinversion=mysql_fetch_array($consultasectordeinversion)){
-								echo '<td>'.$filasectordeinversion['sectordeinversion'].'</td>';
-							}
-
-
-
-
-					echo "</tr>";
-
-					echo "<tr>";
-						
-						
-
-							echo '<td><strong>Subsector: </strong></td>';
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-							$consultasubsector=mysql_query("SELECT * FROM subsector WHERE cod_subsector=".$filacod_proyecto['subsector']);
-							while($filasubsector=mysql_fetch_array($consultasubsector)){
-								echo '<td>'.$filasubsector['subsector'].'</td>';
-							}
-
-					echo "</tr>";
-
-					echo "<tr>";
-						
-						
-					echo "</tr>";
-
-
+		
+				
 					}
+					echo "</tr>";
 			echo "</table>";
 
-			echo "<h3 align='center'>Informacion del Plan de Desarrollo del Proyecto</h3>";
-
-				echo "<table>";
+				echo "<table style=width:100%>";
 				echo "<tr>";
 				$consultaplan=mysql_query("SELECT * FROM proyectosconmetas WHERE cod_proyectoconmeta=".$cod_proyecto);
 					while($fila=mysql_fetch_array($consultaplan)){
-						echo '<td><strong>Plan de Desarrollo: </strong></td><td>'.$fila['cod_planConMeta'];
-							$consultaplanConMeta=mysql_query("SELECT * FROM plandedesarrollo WHERE cod_plan=".$fila['cod_planConMeta']);
-								while($filaplanConMeta=mysql_fetch_array($consultaplanConMeta)){
-									echo " - ".$filaplanConMeta['plan'].'</td>';
-							}
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td><strong>Eje: </strong></td><td>'.$fila['cod_ejeConMeta'];
-							$consultaejeConMeta=mysql_query("SELECT * FROM plandedesarrolloeje WHERE cod_eje=".$fila['cod_ejeConMeta']);
-								while($filaejeConMeta=mysql_fetch_array($consultaejeConMeta)){
-									echo " - ".$filaejeConMeta['eje'].'</td>';
-							}
+
 						echo "</tr>";
-						echo "<tr>";
-						echo '<td><strong>Politica: </strong></td><td>'.$fila['cod_estrategiaConMeta'];
-							$consultaestrategiaConMeta=mysql_query("SELECT * FROM plandedesarrolloestrategia WHERE cod_estrategia=".$fila['cod_estrategiaConMeta']);
-								while($filaestrategiaConMeta=mysql_fetch_array($consultaestrategiaConMeta)){
-									echo " - ".$filaestrategiaConMeta['estrategia'].'</td>';
-							}
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td><strong>Programa: </strong></td><td>'.$fila['cod_programaConMeta'];
-							$consultaprogramaConMeta=mysql_query("SELECT * FROM plandedesarrolloprograma WHERE cod_programa=".$fila['cod_programaConMeta']);
-								while($filaprogramaConMeta=mysql_fetch_array($consultaprogramaConMeta)){
-									echo " - ".$filaprogramaConMeta['programa'].'</td>';
-							}
-						echo "</tr>";
-						echo "<tr>";
-						echo '<td><strong>Subprograma: </strong></td><td>'.$fila['cod_subprogramaConMeta'];
-							$consultasubprogramaConMeta=mysql_query("SELECT * FROM plandedesarrollosubprograma WHERE cod_subprograma=".$fila['cod_subprogramaConMeta']);
-								while($filasubprogramaConMeta=mysql_fetch_array($consultasubprogramaConMeta)){
-									echo " - ".$filasubprogramaConMeta['subprograma'].'</td>';
-							}
-						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						echo '<td><strong>Meta: </strong></td><td>'.$fila['cod_metaConMeta'];
-							$consultametaConMeta=mysql_query("SELECT * FROM plandedesarrollometa WHERE cod_meta=".$fila['cod_metaConMeta']);
-								while($filametaConMeta=mysql_fetch_array($consultametaConMeta)){
-									echo " - ".$filametaConMeta['meta'].'</td>';
-							}
+	
 					}
+
 
 
 				?>
 		</tr>
 
-		<table align="center" style="width:80%">
-		
-
-			
-
+<table align="center" style="width:70%">
 		<form method="POST" action="estructuracion3.php">
 		<table>
 		  <tr>
 		    <td>
 			<strong>Codigo Proyecto</strong>
-		    </td>
-		    
-		    <td>
-			<strong>Fecha </strong>
-		    </td>
-		  </tr>
-
-		  <tr>
-		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
 		    
 		    <td>
+			<strong>Fecha </strong>
 			<input type="date" name="fecha_estructuracion">
 		    </td>
 		  </tr>
 
 
-		  <tr>
-		    <td>
-			<strong>Momento </strong>
-		    </td>
-		    <td>
-			<strong>Observaciones</strong>
-		    </td>
-		    <td>
-			<strong></strong>
-		    </td>
-		  </tr>
 
 		  <tr>
 		    <td>
-                                  <select name="cod_momento">
+			<strong>Momento </strong>
+			 <select name="cod_momento">
 					<?php
 					$consultamomento=mysql_query("SELECT * FROM momentos   ORDER BY momento asc ");
 					while($filamomento=mysql_fetch_array($consultamomento)){
@@ -237,46 +140,45 @@ echo '<td><strong>Sector de Inversion: </strong></td>';
 					}
 					?>
                                   </select>
-
 		    </td>
 		    <td>
-			<input type="text" name="observaciones" >
+			<strong>Observaciones</strong>
+			<input type="text" size="30" name="observaciones" >
+
 		    </td>
 		    <td>
 			<input type="submit" value="Agregar >>">
 		    </td>
 		  </tr>
+
+
 		</table>
 		</form>
 
-<hr>
 
-		<table border="3" style="width:80%">
+
+<table  style="width:100%">
 		  <tr>
 		   
 
 
-<!--
-Aqui quedara el editar y eliminar 
--->
-
-
 		    
 		   
-		    <td  style="width:2%">
-		Fecha
+		    <td  style="width:7%">
+		<strong>Fecha</strong>
 		    </td>
 		    <td  style="width:5%">
-			Momento 
+			<strong>Momento </strong>
 		    </td>
-		    <td  style="width:8%" >
-			Observaciones
+		    <td  style="width:2%" >
+			<strong>Observaciones</strong>
 		    </td>
 		    <td  style="width:2%">
-			Soporte Digital
+			<strong>Soporte Digital</strong>
 		    </td>
 		    
 		  </tr>
+
 
 			<?php
 				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_estructuracion desc");
@@ -286,20 +188,20 @@ Aqui quedara el editar y eliminar
 					
 
 
-					echo '<td>'.$filaestructuracion['fecha_estructuracion'].'</td>';
+					echo '<td  style=width:7%>'.$filaestructuracion['fecha_estructuracion'].'</td>';
 					
 					$momento=$filaestructuracion['momento'];
 						$consultamomento=mysql_query("SELECT * FROM momentos WHERE cod_momento='$momento'");
 						while($filamomento=mysql_fetch_array($consultamomento)){
 							$AlmacenaEditarYEliminar=$filaestructuracion['cod_estructuracion'];
-							echo "<td><a href=#act$AlmacenaEditarYEliminar data-toggle=modal >".$filamomento['momento']."</a></td>";
+							echo "<td   style=width:2%><a href=#act$AlmacenaEditarYEliminar data-toggle=modal >".$filamomento['momento']."</a></td>";
  
 						}
 						$LinkObservaciones=$filaestructuracion['observaciones'];
 						if (substr($LinkObservaciones, 0,4)=="http") {
-							echo "<td><a href=$LinkObservaciones target=_blank>".$filaestructuracion['observaciones']."</a></td>";
+							echo "<td  style=width:2%> <a href=$LinkObservaciones target=_blank>".$filaestructuracion['observaciones']."</a></td>";
 						}else{
-							echo "<td>".$filaestructuracion['observaciones']."</td>";
+							echo "<td  style=width:2%>" .$filaestructuracion['observaciones']."</td>";
 						}
 					
 			?>
@@ -325,7 +227,7 @@ Aqui quedara el editar y eliminar
 			</form>			
 		     </td>
 
-                 
+         
 
 
 
