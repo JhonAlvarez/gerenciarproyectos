@@ -20,12 +20,8 @@ if($_SESSION['tipo_user']=='a'){
 
 
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+     <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
+
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
 	<link rel="shortcut icon" href="../../ico/favicon.png">
   </head>
@@ -39,9 +35,11 @@ if($_SESSION['tipo_user']=='a'){
             <td>
             	<table class="table table-bordered">
                   <tr class="well">
+                  <br>
+                  <br>
+                  <br>
                     <td>
                     	<h1 align="center">
-                    		<img src="../../img/logo.png" width="100" height="100">
                     		Consultar Usuario
                     	</h1>
                         <center>
@@ -49,7 +47,7 @@ if($_SESSION['tipo_user']=='a'){
                         	<div class="input-prepend input-append">
 					<span class="add-on"><i class="icon-search"></i></span>
                         		<input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
-                                autofocus placeholder="Buscar Usuario por Documento o Nombre">
+                                autofocus placeholder="Ingrese su busqueda">
                             </div>
                             <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
                     	</form>
@@ -58,7 +56,7 @@ if($_SESSION['tipo_user']=='a'){
                   </tr>
                 </table>
                 
-            	<table class="table table-bordered">
+            	<table class="table table-bordered" style="width: 90%" align="center">
                   <tr class="well">
                     <td width="18%"><strong>Documento</strong></td>
                     <td width="62%"><strong>Nombre y Apellidos</strong></td>

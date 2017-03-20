@@ -93,11 +93,9 @@
                     <td><strong>Barrio</strong>
                     <td><strong>Dependencia</strong></td>
                     <td><strong>Cargo</strong></td>
-
-                    
-                    
-                    
                   </tr>
+
+                  
 				  <?php 
 				  	if(!empty($_POST['buscar'])){
 						$buscar=limpiar($_POST['buscar']);

@@ -78,11 +78,11 @@
 								echo '<td>'.$filamunicipio1['municipio'].'</td>';
 							}
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-						
+						echo '<td><strong>Municipio 2: </strong></td>';
 						echo '<td>&nbsp; &nbsp; &nbsp; &nbsp; </td>';
 							$consultamunicipio2=mysql_query("SELECT * FROM municipios WHERE cod_municipio=".$filacod_proyecto['municipio2']);
 							while($filamunicipio2=mysql_fetch_array($consultamunicipio2)){
-								
+								echo '<td>'.$filamunicipio2['municipio'].'</td>';
 							}
 					echo "</tr>";
 
@@ -197,39 +197,54 @@
 		    <td>
 			<strong>Codigo Proyecto</strong>
 		    </td>
-		    
 		    <td>
-			<strong>Momento </strong>
+			<strong>Codigo Ejecucion</strong>
 		    </td>
 		    <td>
-			<strong>Fecha </strong>
+			<strong>Momento Ejecucion</strong>
+		    </td>
+		    <td>
+			<strong>Fecha Inicial (aaaa-mm-dd)</strong>
 		    </td>
 
-		   
+		    <td>
+			<strong>Fecha Final (aaaa-mm-dd)</strong>
+		    </td>
 		  </tr>
 
 		  <tr>
 		    <td>
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
-		    
+		    <td>
+			<?php
+				$consultaejecucion=mysql_query("SELECT MAX(cod_ejecucion) AS ultimaEjecucion FROM ejecuciones");
+					while($filaejecucion=mysql_fetch_array($consultaejecucion)){
+						$nuevoCod_ejecucion=$filaejecucion['ultimaEjecucion']+1;
+						echo '<input type="text" name="cod_ejecucion" readonly value="'.$nuevoCod_ejecucion.'">';
+					}
+			?>
+
+		    </td>
 
 		    <td>
                                   <select name="cod_momentoejecucion">
 					<?php
-					$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones  ORDER BY momentoejecucion asc");
+					$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones");
 					while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
-						echo '<option value="'.$filamomentoejecucion['cod_momentoejecucion'].'">'.$filamomentoejecucion['momentoejecucion'].'</option>';
+						echo '<option value="'.$filamomentoejecucion['cod_momentoejecucion'].'">'.$filamomentoejecucion['cod_momentoejecucion'].' '.$filamomentoejecucion['momentoejecucion'].'</option>';
 					}
 					?>
                                   </select>
 
 		    </td>
 		    <td>
-			<input type="date" name="fecha_ejecucion">
+			<input type="text" name="fecha_ejecucion">
 		    </td>
 
-		  
+		    <td>
+			<input type="text" name="fecha_ejecucion_final">
+		    </td>
 
 		  </tr>
 
@@ -247,7 +262,7 @@
 			<strong>Observaciones</strong>
 		    </td>
 		    <td>
-			<strong></strong>
+			<strong>Accion</strong>
 		    </td>
 		  </tr>
 
@@ -272,18 +287,25 @@
 
 <hr>
 
-		<table border="3">
+		<table border="1">
 		  <tr>
-		   
 		    <td>
-			<strong>Fecha </strong>
+			<strong>Codigo Proyecto</strong>
 		    </td>
 		    <td>
-			<strong>Momento </strong>
+			<strong>Codigo Ejecucion</strong>
+		    </td>
+		    <td>
+			<strong>Momento Ejecucion</strong>
 		    </td>
 
-		   
-		   
+		    <td>
+			<strong>Fecha Inicial</strong>
+		    </td>
+		    <td>
+			<strong>Fecha Final</strong>
+		    </td>
+
 		    <td>
 			<strong>Avance Programado</strong>
 		    </td>
@@ -297,27 +319,31 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		  
+		    <td>
+			<strong>Accion</strong>
+		    </td>
 		  </tr>
 
 			<?php
-				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_ejecucion desc ");
+				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto'");
 				while($filaejecucion=mysql_fetch_array($consultaejecucion)){
 					echo '<tr>';
-						echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
-
+					echo '<td>'.$filaejecucion['cod_proyecto'].'</td>';
+					echo '<td>'.$filaejecucion['cod_ejecucion'].'</td>';
 					$momentoejecucion=$filaejecucion['momento_ejecucion'];
 						$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones WHERE cod_momentoejecucion='$momentoejecucion'");
 						while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
-							$EditarMomento=$filaejecucion['cod_ejecucion'];
-		echo "<td><a href=#act$EditarMomento data-toggle=modal >" .$filamomentoejecucion['momentoejecucion']."</a></td>";
+							echo '<td>'.$filamomentoejecucion['cod_momentoejecucion'].' '.$filamomentoejecucion['momentoejecucion'].'</td>';
 						}
 
+					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
+					echo '<td>'.$filaejecucion['fecha_ejecucion_final'].'</td>';
 					echo '<td>'.$filaejecucion['avance_programado'].'</td>';
 					echo '<td>'.$filaejecucion['avance_ejecutado'].'</td>';
 					echo '<td>'.$filaejecucion['observaciones'].'</td>';
 			?>
                     <td>
+			<?php echo $filaejecucion['cod_ejecucion']; ?>
 			<form method="POST" action="cargar_archivo_ejecucion.php">
 			<?php
 			if (file_exists("../../archivos_ejecucion/".$filaejecucion['cod_ejecucion'].".pdf")){
@@ -334,7 +360,19 @@
 			</td>
 
 
-                    
+                    <td>
+                    	<center>
+			<?php echo $filaejecucion['cod_ejecucion']; ?>
+                            <a href="#act<?php echo $filaejecucion['cod_ejecucion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
+                                <i class="icon-edit"></i>
+                            </a>
+			
+                            <a href="#eli<?php echo $filaejecucion['cod_ejecucion']; ?>" role="button" class="btn btn-mini" data-toggle="modal">
+                                <i class="icon-remove"></i>
+                            </a>
+
+                        </center>
+                    </td>
 
 
 
@@ -345,7 +383,7 @@
                 	<form name="form2" method="post" action="actualizar_ejecucion.php">
                     <input type="hidden" name="cod_ejecucion" value="<?php echo $filaejecucion['cod_ejecucion']; ?>">
                     <div class="modal-header">
-                        
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         <h3 id="myModalLabel">Editar Ejecucion</h3>
                     </div>
                     <div class="modal-body">
@@ -354,28 +392,30 @@
                                 <strong>Codigo Proyecto</strong><br>
                                 <input type="text" name="cod_proyecto" autocomplete="off" required readonly value="<?php echo $filaejecucion['cod_proyecto']; ?>"><br>
 
-                                
+                                <strong>Codigo Ejecucion</strong><br>
+                                <input type="text" name="cod_ejecucion" autocomplete="off" required readonly value="<?php echo $filaejecucion['cod_ejecucion']; ?>"><br>
 
                                 <strong>Momento Ejecucion</strong><br>
                                   <select name="momento_ejecucion">
 					<?php
-					$paEjecucion=mysql_query("SELECT * FROM momentosejecuciones ORDER BY momentoejecucion asc");
+					$paEjecucion=mysql_query("SELECT * FROM momentosejecuciones");
 					while($filae=mysql_fetch_array($paEjecucion)){
 						if($filae['cod_momentoejecucion']==$filaejecucion['momento_ejecucion']){
-							echo '<option value="'.$filae['cod_momentoejecucion'].' '.$filae['momentoejecucion'].'</option>';
+							echo '<option value="'.$filae['cod_momentoejecucion'].'" selected>'.$filae['cod_momentoejecucion'].' '.$filae['momentoejecucion'].'</option>';
 						}else{
-							echo '<option value="'.$filae['cod_momentoejecucion'].'">'.$filae['momentoejecucion'].'</option>';	
+							echo '<option value="'.$filae['cod_momentoejecucion'].'">'.$filae['cod_momentoejecucion'].' '.$filae['momentoejecucion'].'</option>';	
 						}
 					}
 					?>
                                   </select><br>
 
-                                <strong>Fecha</strong><br>
-                                <input type="date" name="fecha_ejecucion" autocomplete="off" value="<?php echo $filaejecucion['fecha_ejecucion']; ?>"><br>
+                                <strong>Fecha Inicial</strong><br>
+                                <input type="text" name="fecha_ejecucion" autocomplete="off" value="<?php echo $filaejecucion['fecha_ejecucion']; ?>"><br>
 
 			    </div>
                             <div class="span6">
-                                
+                                <strong>Fecha Final</strong><br>
+                                <input type="text" name="fecha_ejecucion_final" autocomplete="off" value="<?php echo $filaejecucion['fecha_ejecucion_final']; ?>"><br>
 
                                 <strong>Avance Programado</strong><br>
                                 <input type="text" name="avance_programado" autocomplete="off" value="<?php echo $filaejecucion['avance_programado']; ?>"><br>
@@ -391,16 +431,26 @@
 
                     	</div>
                     </div>
-                     <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
                     <div class="modal-footer">
+    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
+        	            <button type="submit" class="btn btn-primary"><strong>Actualizar</strong></button>
+                    </div>
                     </form>
+                </div>
+<!--Ventana Editar finaliza aqui-->
 
-                    <form name="form3" method="post" action="eliminar_ejecucion.php">
+
+
+<!--Aqui comienza la ventana Eliminar-->
+
+
+                  <div id="eli<?php echo $filaejecucion['cod_ejecucion']; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                	<form name="form3" method="post" action="eliminar_ejecucion.php">
 	                    <input type="hidden" name="cod_ejecucion" value="<?php echo $filaejecucion['cod_ejecucion']; ?>">
 	                    <div class="modal-header">
-        	               
+        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 	        <h3 id="myModalLabel">Eliminar Ejecucion</h3>
-				
+				<font color="red">Esta seguro que desea eliminar este registro?</font>
 	                    </div>
                     <div class="modal-body">
                         <div class="row-fluid">
@@ -412,20 +462,7 @@
 
 	    	                <button class="btn" data-dismiss="modal" aria-hidden="true"><strong>Cerrar</strong></button>
         	     	       <button type="submit" class="btn btn-primary"><strong>Eliminar</strong></button>
-
-    	                
-        	           
-                    </div>
-                    </form>
-                </div>
-<!--Ventana Editar finaliza aqui-->
-
-
-
-<!--Aqui comienza la ventana Eliminar-->
-
-
-                  
+                            </div>
 
 			</form>
 		</div>

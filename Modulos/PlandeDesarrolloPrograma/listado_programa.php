@@ -28,7 +28,7 @@
 
     <meta charset="utf-8">
 
-    <title>Gestion de Proyectos ...::... Chalxsoft</title>
+    <title>Gerenciar Proyectos Meta</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -42,17 +42,8 @@
 
     <link href="../../css/bootstrap.css" rel="stylesheet">
 
-    <style type="text/css">
+                 <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
 
-      body {
-
-        padding-top: 60px;
-
-        padding-bottom: 40px;
-
-      }
-
-    </style>
 
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -93,10 +84,15 @@
             	<table class="table table-bordered">
 
                   <tr class="well">
+                   <br>
+    <br>
+<br>
 
                     <td>
 
-                   	 	<h1 align="center">Listado de Programas</h1>
+
+                   	 	<h1 align="center" ><font size="6">LISTADO DE PROGRAMAS </h1>
+                   	 	
 
                         <center>
 
@@ -108,7 +104,7 @@
 
                         		<input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
 
-                                autofocus placeholder="Buscar por Programa">
+                                autofocus placeholder="Ingrese su busqueda">
 
                             </div>
 
@@ -166,25 +162,22 @@
 
 				?>
 
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="width:90%" align="center">
 
                   <tr class="well">
 
-                    <td><strong>Codigo Plan de Desarrollo</strong></td>
+                    
 
-                    <td><strong>Nombre de Planes de Desarrollo</strong></td>
+                    <td style="width:5%"><strong>Nombre de Planes de Desarrollo</strong></td>
 
-                    <td><strong>Codigo Eje</strong></td>
 
-                    <td><strong>Nombre de Eje</strong></td>
+                    <td style="width:5%"><strong>Nombre de Eje</strong></td>
 
-                    <td><strong>Codigo Politica</strong></td>
 
-                    <td><strong>Nombre de Politica</strong></td>
+                    <td style="width:5%"><strong>Nombre de Politica</strong></td>
 
-                    <td><strong>Codigo Programa</strong></td>
 
-                    <td><strong>Nombre del Programa</strong></td>
+                    <td style="width:5%"><strong>Nombre del Programa</strong></td>
                     <?php
                       if($_SESSION['tipo_user']=='a'){
                     ?>
@@ -213,16 +206,7 @@
 
                   <tr>
 
-                    <td>
-                     <a href="#act<?php echo $row['cod_programa']; ?>"  data-toggle="modal">
-
-                                
-
-
-                    <?php echo $row['cod_plan']; ?>
-                        
-
-                    </td>
+                   
 
 					<?php
 
@@ -230,7 +214,7 @@
 
 					while($filaplan=mysql_fetch_array($consultaplan)){
 
-						echo '<td>'.$filaplan['plan'].'</td>';
+						echo '<td style="width:5%">'.$filaplan['plan'].'</td>';
 
 					}
 
@@ -238,7 +222,6 @@
 
 
 
-                    <td><?php echo $row['cod_eje']; ?></td>
 
 					<?php
 
@@ -246,7 +229,7 @@
 
 					while($filaeje=mysql_fetch_array($consultaeje)){
 
-						echo '<td>'.$filaeje['eje'].'</td>';
+						echo '<td style="width:5%">'.$filaeje['eje'].'</td>';
 
 					}
 
@@ -254,7 +237,6 @@
 
 
 
-                    <td><?php echo $row['cod_estrategia']; ?></td>
 
 					<?php
 
@@ -262,7 +244,7 @@
 
 					while($filaestrategia=mysql_fetch_array($consultaestrategia)){
 
-						echo '<td>'.$filaestrategia['estrategia'].'</td>';
+						echo '<td style="width:5%">'.$filaestrategia['estrategia'].'</td>';
 
 					}
 
@@ -272,9 +254,8 @@
 
 
 
-                    <td><?php echo $row['cod_programa']; ?></td>
 
-                    <td><?php echo $row['programa']; ?></td>
+                    <td style="width:5%"><?php echo $row['programa']; ?></td>
 
 
                     <?php

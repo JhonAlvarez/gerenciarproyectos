@@ -28,7 +28,7 @@
 
     <meta charset="utf-8">
 
-    <title>Gestion de Proyectos ...::... Chalxsoft</title>
+    <title>Gerenciar Proyectos Meta</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -42,17 +42,8 @@
 
     <link href="../../css/bootstrap.css" rel="stylesheet">
 
-    <style type="text/css">
+                 <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
 
-      body {
-
-        padding-top: 60px;
-
-        padding-bottom: 40px;
-
-      }
-
-    </style>
 
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -85,7 +76,7 @@
 
 	<div align="center">
 
-    	<table width="90%">
+    	<table width="80%">
 
           <tr>
 
@@ -94,10 +85,13 @@
             	<table class="table table-bordered">
 
                   <tr class="well">
-
+                   <br>
+    <br>
+<br>
                     <td>
-
-                   	 	<h1 align="center">Listado de Planes de Desarrollo</h1>
+ 
+   
+<h1 align="center">LISTADO PLANES DESARROLLO</h1>                   	 	  	
 
                         <center>
 
@@ -109,7 +103,7 @@
 
                         		<input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
 
-                                autofocus placeholder="Buscar por Codigo de Plan o Nombre del plan">
+                                autofocus placeholder="Ingrese su busqueda">
 
                             </div>
 
@@ -124,8 +118,7 @@
                   </tr>
 
                 </table>
-                <br>
-
+               
                 <?php 
 
 					if(!empty($_POST['cod_plan'])){ 
@@ -160,13 +153,14 @@
 
 				?>
 
-                <table class="table table-bordered">
+                <table class="table table-bordered" align="center"  style="width: 90%"  >
 
                   <tr class="well">
 
-                    <td><strong>Codigo Plan de Desarrollo</strong></td>
 
-                    <td><strong>Nombre de Planes de Desarrollo</strong></td>
+           
+
+                    <td align="center"><strong>NOMBRE DE PLANES DE DESARROLLO</strong></td>
 
                     <?php
                    if($_SESSION['tipo_user']=='a'){
@@ -197,16 +191,11 @@
 
                   <tr>
 
-                    <td>
-                     <button data-target="#act<?php echo $row['cod_plan']; ?>" class="btn-link" data-toggle="modal">
+                 
 
+                    
 
-                    <?php echo $row['cod_plan']; ?> 
-                    </button>
-
-                    </td>
-
-                    <td><?php echo $row['plan']; ?></td>
+                    <td style="width:5%"><?php echo $row['plan']; ?></td>
 
 
                     <?php

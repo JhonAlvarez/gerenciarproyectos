@@ -21,12 +21,8 @@
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+           <link rel="stylesheet" type="text/css" href="../../css/styloproy.css">
+
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../ico/apple-touch-icon-114-precomposed.png">
@@ -45,7 +41,7 @@
             	<table class="table table-bordered">
                   <tr class="well">
                     <td>
-                    	<h2 align="center">Tabla Financiera del Proyecto No. <?php echo $cod_proyecto=$_POST['cod_proyecto'] ?></h2>
+                    		<p align="center"><font size="6">TABLA FINANCIERA DEL PROYECTO N°. <?php echo $cod_proyecto=$_POST['cod_proyecto'] ?></font></p>
                     </td>
                   </tr>
                 </table>

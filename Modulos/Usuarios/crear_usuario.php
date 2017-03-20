@@ -308,7 +308,7 @@ if(!empty($_GET['doc'])){
 
 	                            <div class="span4">
 
-                                	<strong>Documento / Identidad</strong><br>
+                                	<strong>Documento </strong><br>
 
                                     <input type="text" name="doc" autocomplete="off" <?php if($existe==TRUE){ echo 'readonly'; }else{ echo 'required'; } ?>   value="<?php echo $doc; ?>" class="input-xlarge"><br>
 
@@ -344,7 +344,7 @@ if(!empty($_GET['doc'])){
 
     	                        <div class="span4">
 
-                                	<strong>Fecha de Nacimiento </strong>(AAAA-MM-DD)<br>
+                                	<strong>Fecha de Nacimiento </strong><br>
 
                                     <input type="date" name="fecha" autocomplete="off" required value="<?php echo $fecha; ?>" class="input-xlarge"><br>
 

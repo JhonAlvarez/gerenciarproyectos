@@ -218,16 +218,22 @@
 
 		<table border="1">
 		  <tr>
-		   
-		   <td>
-			<strong>Fecha </strong>
+		    <td>
+			<strong>Codigo Proyecto</strong>
 		    </td>
 		    <td>
-			<strong>Momento </strong>
+			<strong>Codigo Ejecucion</strong>
+		    </td>
+		    <td>
+			<strong>Momento Ejecucion</strong>
 		    </td>
 
-		    
-		   
+		    <td>
+			<strong>Fecha Inicial</strong>
+		    </td>
+		    <td>
+			<strong>Fecha Final</strong>
+		    </td>
 		    <td>
 			<strong>Avance Programado</strong>
 		    </td>
@@ -241,25 +247,31 @@
 		    <td>
 			<strong>Soporte Digital</strong>
 		    </td>
-		    
+		    <td>
+			<strong>Accion</strong>
+		    </td>
 		  </tr>
 
 			<?php
-				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_ejecucion desc");
+				$consultaejecucion=mysql_query("SELECT * FROM ejecuciones WHERE cod_proyecto='$cod_proyecto'");
 				while($filaejecucion=mysql_fetch_array($consultaejecucion)){
 					echo '<tr>';
-					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
+					echo '<td>'.$filaejecucion['cod_proyecto'].'</td>';
+					echo '<td>'.$filaejecucion['cod_ejecucion'].'</td>';
 					$momentoejecucion=$filaejecucion['momento_ejecucion'];
 						$consultamomentoejecucion=mysql_query("SELECT * FROM momentosejecuciones WHERE cod_momentoejecucion='$momentoejecucion'");
 						while($filamomentoejecucion=mysql_fetch_array($consultamomentoejecucion)){
-							echo '<td>'.$filamomentoejecucion['momentoejecucion'].'</td>';
+							echo '<td>'.$filamomentoejecucion['cod_momentoejecucion'].' '.$filamomentoejecucion['momentoejecucion'].'</td>';
 						}
 
+					echo '<td>'.$filaejecucion['fecha_ejecucion'].'</td>';
+					echo '<td>'.$filaejecucion['fecha_ejecucion_final'].'</td>';
 					echo '<td>'.$filaejecucion['avance_programado'].'</td>';
 					echo '<td>'.$filaejecucion['avance_ejecutado'].'</td>';
 					echo '<td>'.$filaejecucion['observaciones'].'</td>';
 			?>
                     <td>
+			<?php echo $filaejecucion['cod_ejecucion']; ?>
 			<form method="POST" action="cargar_archivo_ejecucion.php">
 			<?php
 			if (file_exists("../../archivos_ejecucion/".$filaejecucion['cod_ejecucion'].".pdf")){

@@ -334,7 +334,7 @@ $id_doc=$_GET['doc'];
 
     	                        <div class="span4">
 
-                                	<strong>Fecha de Nacimiento </strong>(AAAA-MM-DD)<br>
+                                	<strong>Fecha de Nacimiento </strong><br>
 
                                     <input type="date" name="fecha" autocomplete="off" required value="<?php echo $fecha; ?>" class="input-xlarge"><br>
 

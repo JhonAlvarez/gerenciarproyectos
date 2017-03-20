@@ -28,7 +28,7 @@
 
     <meta charset="utf-8">
 
-    <title>Gestion de Proyectos ...::... Chalxsoft</title>
+    <title>Gerenciar Proyectos Meta</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -42,17 +42,8 @@
 
     <link href="../../css/bootstrap.css" rel="stylesheet">
 
-    <style type="text/css">
+                 <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
 
-      body {
-
-        padding-top: 60px;
-
-        padding-bottom: 40px;
-
-      }
-
-    </style>
 
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -93,10 +84,13 @@
             	<table class="table table-bordered">
 
                   <tr class="well">
-
+ <br>
+    <br>
+<br>
                     <td>
 
-                   	 	<h1 align="center">Listado de Politicas</h1>
+                   	 <h1 align="center" >LISTADO DE POLITICAS </h1>
+                   	 
 
                         <center>
 
@@ -108,7 +102,7 @@
 
                         		<input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
 
-                                autofocus placeholder="Buscar por Politica">
+                                autofocus placeholder="Ingrese su busqueda">
 
                             </div>
 
@@ -124,7 +118,7 @@
 
                 </table>
 
-                <br>
+             
 
                 <?php 
 
@@ -164,26 +158,33 @@
 
 				?>
 
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="width:90%" align="center">
 
                   <tr class="well">
 
+
+                  <!--
+
                     <td><strong>Codigo Plan de Desarrollo</strong></td>
-
-                    <td><strong>Nombre de Planes de Desarrollo</strong></td>
-
+-->
+                    <td style="width:5%"><strong>Nombre de Planes de Desarrollo</strong></td>
+  <!--
                     <td><strong>Codigo Eje</strong></td>
-
-                    <td><strong>Nombre de Eje</strong></td>
-
+-->
+                    <td style="width:5%"><strong>Nombre de Eje</strong></td>
+  <!--
                     <td><strong>Codigo Politica</strong></td>
-
-                    <td><strong>Nombre Politica</strong></td>
+-->
+                    <td style="width:5%"><strong>Nombre Politica</strong></td>
 
                     <?php
                       if($_SESSION['tipo_user']=='a'){
                     ?>
+
+<!--
                     <td><strong>Editar</strong></td>
+
+                    -->
                     <?php } ?>
 
                   </tr>
@@ -207,8 +208,11 @@
 				  ?>
 
                   <tr>
+<!--
 
                     <td><?php echo $row['cod_plan']; ?></td>
+
+                    -->
 
 					<?php
 
@@ -216,15 +220,16 @@
 
 					while($filaplan=mysql_fetch_array($consultaplan)){
 
-						echo '<td>'.$filaplan['plan'].'</td>';
+						echo '<td style="width:5%">'.$filaplan['plan'].'</td>';
 
 					}
 
 					?>
 
 
-
+<!--
                     <td><?php echo $row['cod_eje']; ?></td>
+                    -->
 
 					<?php
 
@@ -232,7 +237,7 @@
 
 					while($filaeje=mysql_fetch_array($consultaeje)){
 
-						echo '<td>'.$filaeje['eje'].'</td>';
+						echo '<td style="width:5%">'.$filaeje['eje'].'</td>';
 
 					}
 
@@ -241,15 +246,18 @@
 
 
 
-
+<!--
                     <td><?php echo $row['cod_estrategia']; ?></td>
+                    -->
 
-                    <td><?php echo $row['estrategia']; ?></td>
+                    <td style="width:5%"><?php echo $row['estrategia']; ?></td>
 
 
                    <?php
                          if($_SESSION['tipo_user']=='a'){
                    ?>
+
+<!--
                    <td>
 
                     	<center>
@@ -265,6 +273,7 @@
                         </center>
 
                     </td>
+-->
                     <?php } ?>
 
                   </tr>
