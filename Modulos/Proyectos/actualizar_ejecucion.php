@@ -48,7 +48,7 @@ $observaciones=$_POST['observaciones'];
 
     <?php include_once "../../menu/m_proyecto.php"; ?>
 	<div align="center">
-    	<table width="90%">
+    	<table width="70%">
           <tr>
             <td>
 		<?php

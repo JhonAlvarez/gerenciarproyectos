@@ -20,7 +20,7 @@ $cod_tablafinanciera=$_POST['cod_tablafinanciera'];
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Gerenciar Proyectos ...::... Chalxsoft</title>
+    <title>Gerenciar Proyectos Meta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Chalxsoft">
@@ -66,7 +66,7 @@ $cod_tablafinanciera=$_POST['cod_tablafinanciera'];
                 <table class="table table-bordered">
                 	<tr>
                     	<td>
-			<form method="POST" action="tablafinanciera2.php">
+			<form method="GET" action="tablafinanciera2.php">
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 			<br>
 			<input type="submit" value="   Volver   ">
