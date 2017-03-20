@@ -35,7 +35,7 @@
     <?php include_once "../../menu/m_proyecto.php"; ?>
 
 	<div align="center">
-    	<table width="100%">
+    	<table width="90%">
           <tr>
             <td>
             	<table class="table table-bordered">
@@ -51,13 +51,13 @@
 			<?php
 			$cod_proyecto=$_GET['cod_proyecto'];
 
-			echo "<table  align=center  class=table table-bordered  style=width:100%> ";
+			echo "<table  align=center  class=table table-bordered  style=width:70%> ";
 
 				$consultacod_proyecto=mysql_query("SELECT * FROM proyectos WHERE cod_proyecto=".$cod_proyecto);
 					while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
 					echo "<tr>";
 
-						echo '<td style="width: 30%"> <h1 font size=3 align=center> OBJETO <br>  <br> </h1> '.$filacod_proyecto['objetivoproyecto'].'   </td>';
+						echo '<td style="width: 20%"> <h1 font size=3 align=center> OBJETO <br>  <br> </h1> '.$filacod_proyecto['objetivoproyecto'].'   </td>';
 
 
 					$consultaestadodelproyecto=mysql_query("SELECT * FROM estadodelproyecto WHERE cod_estadodelproyecto=".$filacod_proyecto['estadodelproyecto']);
@@ -105,7 +105,7 @@ $consultasupervisor=mysql_query("SELECT * FROM personal WHERE Cedula=".$filacod_
 
            <p align="center"><font size="5">FUENTE DEL PROYECTO</font></p>
 
-		<table align="center" style="width:60%">
+		<table align="center" style="width:50%">
 		  <tr>
 		    <td style="width:2%">
 			<strong>Codigo Proyecto</strong>

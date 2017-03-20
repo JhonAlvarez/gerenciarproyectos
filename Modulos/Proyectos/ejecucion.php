@@ -14,19 +14,15 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Gestion de Proyectos ...::... Chalxsoft</title>
+    <title>Gerenciar Proyectos Meta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Chalxsoft">
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+            <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
+
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../ico/apple-touch-icon-114-precomposed.png">
@@ -39,31 +35,52 @@
     <?php include_once "../../menu/m_proyecto.php"; ?>
 
 	<div align="center">
-    	<table width="90%">
+    	<table width="100%">
           <tr>
             <td>
+            <br>
+            <br>
+            <br>
             	<table class="table table-bordered">
                   <tr class="well">
                     <td>
-                    	<h2 align="center">Ejecucion</h2>
+                    	<h1 align="center">Ejecucion</h1>
                     </td>
                   </tr>
                 </table>
-                <div align="center">
-                            	<strong>Elija el Proyecto a Ejecucion</strong><br>
-			<form method="POST" action="ejecucion2.php">
-                                  <select name="cod_proyecto" class="input-xlarge">
+             
+                            	
+			
 					<?php
-					$consultacod_proyecto=mysql_query("SELECT * FROM proyectos ORDER BY cod_proyecto DESC");
-					while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
-						echo '<option value="'.$filacod_proyecto['cod_proyecto'].'">'.$filacod_proyecto['cod_proyecto'].' '.$filacod_proyecto['objetivoproyecto'].'</option>';
+					$consultacod_proyecto=mysql_query("SELECT * FROM proyectos ORDER BY cod_proyecto desc");
+                      $cantRegistros=mysql_num_rows( $consultacod_proyecto);
+                        echo "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Se encontraron ".$cantRegistros." registros</strong>";
+
+
+                                ?>
+                    </div>	
+
+ <table class="table table-bordered" style="width: 80%" align="center">
+                  <tr class="well">
+		      
+                    <td style="width:1%"><strong>CODIGO </strong></td>
+
+                    <td style="width:5%"><strong>PROYECTO</strong></td>
+                 
+                  </tr>
+                                
+
+<?php
+		while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
+		echo "<tr>";
+						echo "<td style=width:1%><a href=ejecucion2.php?cod_proyecto=".$filacod_proyecto['cod_proyecto'].">".$filacod_proyecto['cod_proyecto']."</a></td>" ;
+						echo '<td style=width:5%>'.$filacod_proyecto['objetivoproyecto'].' </td> ';
+						echo "</tr>";
 					}
 					?>
-                                  </select>
-				<input type="submit" value="Siguiente >>">
-			</form>
-
-                </div>	
+                             
+					</table>
+				
     </div>
     <!-- Le javascript ../../js/jquery.js
     ================================================== -->
