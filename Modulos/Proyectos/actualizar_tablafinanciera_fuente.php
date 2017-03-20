@@ -61,7 +61,7 @@ $cod_fuentedefinanciacion=$_POST['cod_fuentedefinanciacion'];
                 <table class="table table-bordered">
                 	<tr>
                     	<td>
-			<form method="POST" action="tablafinanciera2.php">
+			<form method="GET" action="tablafinanciera2.php">
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 			<br>
 			<input type="submit" value="   Volver   ">

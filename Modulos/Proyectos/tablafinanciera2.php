@@ -14,7 +14,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Gestion de Proyectos ...::... Chalxsoft</title>
+    <title>Gerenciar Proyectos Meta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Chalxsoft">
@@ -41,7 +41,7 @@
             	<table class="table table-bordered">
                   <tr class="well">
                     <td>
-                    	 	<p align="center"><font size="6">TABLA FINANCIERA DEL PROYECTO N°. <?php echo $cod_proyecto=$_POST['cod_proyecto'] ?></font></p>
+                    	 	<p align="center"><font size="6">TABLA FINANCIERA DEL PROYECTO N°. <?php echo $cod_proyecto=$_GET['cod_proyecto'] ?></font></p>
                     </td>
                   </tr>
                 </table>
@@ -49,7 +49,7 @@
 
 		
 			<?php
-			$cod_proyecto=$_POST['cod_proyecto'];
+			$cod_proyecto=$_GET['cod_proyecto'];
 
 			echo "<table  align=center  class=table table-bordered  style=width:100%> ";
 
@@ -101,11 +101,11 @@ $consultasupervisor=mysql_query("SELECT * FROM personal WHERE Cedula=".$filacod_
 				?>
 		</tr>
 
-		<table>
+		
 
            <p align="center"><font size="5">FUENTE DEL PROYECTO</font></p>
 
-		<table align="center" style="width:70%">
+		<table align="center" style="width:60%">
 		  <tr>
 		    <td style="width:2%">
 			<strong>Codigo Proyecto</strong>

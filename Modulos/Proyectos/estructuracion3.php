@@ -15,7 +15,8 @@
   <head>
     <meta charset="utf-8">
     <title>Gestion de Proyectos ...::... Chalxsoft</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-widt
+    h, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Chalxsoft">
 
@@ -79,7 +80,7 @@
 		<table>
 
 			
-			<form method="POST" action="estructuracion2.php">
+			<form method="GET" action="estructuracion2.php">
 			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 			<input type="submit" value="   Volver  ">
 			</form>

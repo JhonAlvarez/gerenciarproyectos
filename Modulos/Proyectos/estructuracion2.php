@@ -14,7 +14,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Gestion de Proyectos ...::... Chalxsoft</title>
+    <title>Gerenciar Proyectos Meta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Chalxsoft">
@@ -43,7 +43,7 @@
                     <td>
       
                     	   	<p align="center"><font size="6">
-                    	ESTRUCTURACION DEL PROYECTO N°. <?php echo $cod_proyecto=$_POST['cod_proyecto'] ?></p></font>
+                    	ESTRUCTURACION DEL PROYECTO N°. <?php echo $cod_proyecto=$_GET['cod_proyecto'] ?></p></font>
                     </td>
                   </tr>
                 </table>
@@ -51,7 +51,7 @@
 
 		
 <?php
-			$cod_proyecto=$_POST['cod_proyecto'];
+			$cod_proyecto=$_GET['cod_proyecto'];
 			
 
 			echo "<table  align=center  class=table table-bordered  style=width:100%> ";
@@ -118,7 +118,7 @@
 		  <tr>
 		    <td>
 			<strong>Codigo Proyecto</strong>
-			<input type="text" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
+			<input type="text" class="form-control" rows="3" name="cod_proyecto" readonly value="<?php echo $cod_proyecto; ?>">
 		    </td>
 		    
 		    <td>
@@ -143,7 +143,7 @@
 		    </td>
 		    <td>
 			<strong>Observaciones</strong>
-			<input type="text" size="30" name="observaciones" >
+			<input class="form-control" rows="3" name="observaciones" >
 
 		    </td>
 		    <td>
@@ -181,12 +181,11 @@
 
 
 			<?php
-				$consultaestructuracion=mysql_query("SELECT * FROM estructuracion WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_estructuracion desc");
+				$consultaestructuracion=mysql_query("SELECT cod_estructuracion,cod_proyecto,date_format(fecha_estructuracion, '%d/%m/%Y') as fecha_estructuracion,momento,observaciones FROM estructuracion WHERE cod_proyecto='$cod_proyecto' ORDER BY fecha_estructuracion desc");
 				while($filaestructuracion=mysql_fetch_array($consultaestructuracion)){
 					echo '<tr>';
 					
 					
-
 
 					echo '<td  style=width:7%>'.$filaestructuracion['fecha_estructuracion'].'</td>';
 					

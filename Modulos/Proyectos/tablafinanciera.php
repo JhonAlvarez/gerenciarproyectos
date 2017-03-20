@@ -14,19 +14,15 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Gestion de Proyectos ...::... Chalxsoft</title>
+    <title>Gerenciar Proyectos Meta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Chalxsoft">
 
     <!-- Le styles -->
     <link href="../../css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
+        <link rel="stylesheet" type="text/css" href="../../css/stylo.css">
+
     <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../ico/apple-touch-icon-114-precomposed.png">
@@ -39,13 +35,16 @@
     <?php include_once "../../menu/m_proyecto.php"; ?>
 
 	<div align="center">
-    	<table width="90%">
+    	<table width="100%">
           <tr>
             <td>
             	<table class="table table-bordered">
+            	<br>
+            	<br>
+            	<br>
                   <tr class="well">
                     <td>
-                    	<h2 align="center">Tabla Financiera</h2>
+                    	<h1 align="center">Tabla Financiera</h1>
                     </td>
                   </tr>
                 </table>
@@ -59,23 +58,34 @@
 
 
                                 ?>
+                    </div>	
 
-<form method="POST" action="tablafinanciera2.php">
+ <table class="table table-bordered" style="width: 80%" align="center">
+                  <tr class="well">
+		      
+                    <td style="width:1%"><strong>CODIGO </strong></td>
 
-
-                                  <select name="cod_proyecto" class="input-xlarge">
+                    <td style="width:5%"><strong>PROYECTO</strong></td>
+                 
+                  </tr>
                                 
 
 <?php
-					while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
-						echo '<option value="'.$filacod_proyecto['cod_proyecto'].'">'.$filacod_proyecto['cod_proyecto'].' '.$filacod_proyecto['objetivoproyecto'].'</option>';
+		while($filacod_proyecto=mysql_fetch_array($consultacod_proyecto)){
+		echo "<tr>";
+						echo "<td style=width:1%><a href=tablafinanciera2.php?cod_proyecto=".$filacod_proyecto['cod_proyecto'].">".$filacod_proyecto['cod_proyecto']."</a></td>" ;
+						echo '<td style=width:5%>'.$filacod_proyecto['objetivoproyecto'].' </td> ';
+						echo "</tr>";
 					}
 					?>
-                                  </select>
-				<input type="submit" value="Siguiente >>">
-			</form>
+                             
+					</table>
+				
 
-                </div>	
+
+
+
+
     </div>
     <!-- Le javascript ../../js/jquery.js
     ================================================== -->
